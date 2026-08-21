@@ -13,6 +13,11 @@
 		nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 		
 		hardware.bluetooth.enable = true;
+		preservation.preserveAt."/persistent" = {
+			directories = [
+				"/var/lib/bluetooth"
+			];
+		};
 
 		hardware.graphics = {
 			enable = true;

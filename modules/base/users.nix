@@ -1,11 +1,23 @@
 { self, inputs, ... }: {
 	flake.nixosModules.base = { pkgs, lib, ... }: {
-		users.users = {
-			jorink = {
+		users = {
+			users.jorink = {
 				isNormalUser = true;
-				# initialPassword = "12345"; # For system setup
 				hashedPasswordFile = "/persistent/passwd"; # mkpasswd -m yescrypt > /persistent/passwd
 				extraGroups = [ "wheel" "networkmanager" ];
+			};
+		};
+		
+		preservation.preserveAt."/persistent" = {
+			users.jorink = {
+				home = "/home/jorink";
+				directories = [
+					"NixOS"
+					"repos"
+					".ssh"
+					".config/micro"
+					".local/share/zsh"
+				];
 			};
 		};
 	};

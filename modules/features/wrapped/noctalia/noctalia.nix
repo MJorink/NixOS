@@ -18,6 +18,12 @@
 				"noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
 			];
 		};
+
+		preservation.preserveAt."/persistent" = {
+			users.jorink.directories = [
+				".local/state/noctalia"
+			];
+		};
 	};
 
 	perSystem = { pkgs, lib, ... }: {

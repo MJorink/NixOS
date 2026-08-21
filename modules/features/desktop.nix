@@ -13,7 +13,16 @@
 		fonts.packages = with pkgs; [
 			nerd-fonts.ubuntu
 			nerd-fonts.ubuntu-mono
-		];		
+		];
+
+		preservation.preserveAt."/persistent" = {
+			users.jorink.directories = [
+				".local/state/wireplumber"
+				".local/share/keyrings"
+				"Downloads"
+				"Documents"
+			];
+		};
 	};
 
 	flake.nixosModules.desktopExtras = { pkgs, lib, ... }: {
@@ -25,5 +34,12 @@
 			filezilla
 			qbittorrent
 		];
+
+		preservation.preserveAt."/persistent" = {
+			users.jorink.directories = [
+				".config/librewolf"
+				".local/share/me.proton.authenticator"
+			];
+		};
 	};
 }

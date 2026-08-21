@@ -6,6 +6,12 @@
 		
 		time.timeZone = "Europe/Amsterdam";
 		networking.networkmanager.enable = true;
+
+		preservation.preserveAt."/persistent" = {
+			directories = [
+				"/etc/NetworkManager/system-connections"
+			];
+		};
 		
 		boot.kernelPackages = pkgs.linuxPackages_latest;
 		boot.loader.systemd-boot.enable = true;

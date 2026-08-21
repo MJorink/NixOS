@@ -13,5 +13,16 @@
 			EDITOR = "micro";
 			NH_FLAKE = "/home/jorink/NixOS";
 		};
+
+		preservation.preserveAt."/persistent" = {
+			users.jorink = {
+				directories = [
+					".claude"
+				];
+				files = [
+					".claude.json"
+				];
+			};
+		};
 	};
 }

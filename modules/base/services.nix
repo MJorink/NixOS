@@ -14,5 +14,16 @@
 				};
 			};
 		};
+
+		preservation = {
+			preserveAt."/persistent" = {
+				directories = [
+					"/etc/mullvad-vpn"
+				];
+				users.jorink.directories = [
+					".config/Mullvad VPN"
+				];
+			};
+		};
 	};
 }

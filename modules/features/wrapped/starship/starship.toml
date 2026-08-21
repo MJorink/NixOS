@@ -1,0 +1,40 @@
+palette = "noctalia"
+
+[palettes.noctalia]
+# Standard colors
+blue      = "#b85a30"
+red       = "#c25d4e"
+green     = "#8b9a5a"
+yellow    = "#d8a657"
+cyan      = "#c4856a"
+magenta   = "#cc8977"
+white     = "#b8aca2"
+black     = "#1d1816"
+
+# Extended palette
+rosewater = "#dbb98f"
+flamingo  = "#d47761"
+pink      = "#cc8977"
+mauve     = "#cc8977"
+maroon    = "#d47761"
+peach     = "#dbb98f"
+teal      = "#c4856a"
+sky       = "#c4856a"
+sapphire  = "#c86d45"
+lavender  = "#cc8977"
+
+# Text shades
+text      = "#e6dbd3"
+subtext1  = "#b8aca2"
+subtext0  = "#463b38"
+
+# Surface shades
+overlay2  = "#463b38"
+overlay1  = "#463b38"
+overlay0  = "#1d1816"
+surface2  = "#1d1816"
+surface1  = "#1d1816"
+surface0  = "#231d1b"
+base      = "#231d1b"
+mantle    = "#231d1b"
+crust     = "#231d1b"

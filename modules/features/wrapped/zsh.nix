@@ -1,0 +1,40 @@
+{ self, inputs, ... }: {
+	perSystem = { pkgs, lib, ... }: {
+		packages.myZsh = inputs.wrapper-modules.wrappers.zsh.wrap {
+			inherit pkgs;
+			runtimePkgs = [
+				self.packages.${pkgs.stdenv.hostPlatform.system}.myStarship
+				self.packages.${pkgs.stdenv.hostPlatform.system}.myYazi
+				self.packages.${pkgs.stdenv.hostPlatform.system}.myGit
+				self.packages.${pkgs.stdenv.hostPlatform.system}.myBtop
+				pkgs.micro
+				pkgs.nh
+				pkgs.figlet
+			];
+			zshAliases = {
+				clr = "clear;~/NixOS/modules/features/scripts/greeting.sh";
+				batstat = "~/NixOS/modules/features/scripts/batstat.sh";
+				ls = "ls -a --color";
+				yazi = "sudo yazi";
+			};
+			zshrc.content = ''
+				HISTFILE=~/.local/share/zsh/history
+				HISTSIZE=10000
+				SAVEHIST=10000
+				mkdir -p ~/.local/share/zsh
+				setopt APPEND_HISTORY
+				setopt SHARE_HISTORY
+
+				source ${pkgs.zsh-autosuggestions}/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+				eval "$(starship init zsh)"
+				source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+				if [[ ! -o login ]]; then
+					if [ -e ~/NixOS/modules/features/scripts/greeting.sh ]; then
+						~/NixOS/modules/features/scripts/greeting.sh
+					fi
+				fi
+			'';
+		};
+	};
+}

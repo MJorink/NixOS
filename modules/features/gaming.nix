@@ -9,6 +9,7 @@
 			users.jorink.directories = [
 				".steam"
 				".local/share/Steam"
+				".local/share/PrismLauncher"
 			];
 		};
 	};

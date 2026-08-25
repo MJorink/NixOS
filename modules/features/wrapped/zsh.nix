@@ -16,6 +16,7 @@
 				batstat = "~/NixOS/modules/features/scripts/batstat.sh";
 				ls = "ls -a --color";
 				yazi = "sudo yazi";
+				dnb = "clear;dotnet build";
 			};
 			zshrc.content = ''
 				HISTFILE=~/.local/share/zsh/history

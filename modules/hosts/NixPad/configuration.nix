@@ -8,7 +8,7 @@
 		networking.hostName = "NixPad";
 		imports = [
 			self.nixosModules.base
-			self.nixosModules.hostNixPadPackages
+			self.nixosModules.hostNixPadPackages # packages.nix
 			self.nixosModules.terminal # terminal.nix
 			self.nixosModules.mango # mango.nix
 			self.nixosModules.desktop # desktop.nix

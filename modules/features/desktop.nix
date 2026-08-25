@@ -1,6 +1,6 @@
 { self, inputs, ... }: {
 	flake.nixosModules.desktop = { pkgs, lib, ... }: {
-		# General cross-desktop stuff, import actual desktop module in host module
+		# General cross-desktop stuff, import standalone desktop module in host config
 		services.mullvad-vpn.gui.enable = true;
 		services.displayManager.ly.enable = true;
 		services.pipewire.enable = true;

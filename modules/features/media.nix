@@ -7,6 +7,7 @@
 		preservation.preserveAt."/persistent" = {
 			users.jorink.directories = [
 				".config/spotify"
+				".cache/spotify"
 			];
 		};
 	};

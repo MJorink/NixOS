@@ -20,6 +20,8 @@
 		};
 		services.upower.enable = true;
 		services.gnome.gnome-keyring.enable = true;
+
+		systemd.packages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.myMango ]; # For hot-reloading
 	};
 
 	perSystem = { pkgs, lib, ... }: {
@@ -33,6 +35,7 @@
 				pkgs.wl-clip-persist
 				pkgs.wl-clipboard
 			];
+			hotReload.enable = true;
 			autostart_sh = ''
 				wl-clip-persist --clipboard regular --reconnect-tries 0 &
 				wl-paste --type text --watch cliphist store &
@@ -41,8 +44,12 @@
 				mullvad-vpn
 			'';
 			settings = {
+				exec-once = [
+					"systemctl --user start mango-reload.service"
+				];
 				bind = [
 					"SUPER, Return, spawn, foot"
+					"SUPER+SHIFT, Return, spawn, foot"
 					"SUPER+SHIFT, e, spawn, foot yazi ~/NixOS/modules"
 					"SUPER+CTRL, e, spawn, foot yazi ~/repos"
 					"SUPER, e, spawn, foot --app-id yazi yazi"

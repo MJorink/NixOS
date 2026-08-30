@@ -40,73 +40,15 @@
 				wl-clip-persist --clipboard regular --reconnect-tries 0 &
 				wl-paste --type text --watch cliphist store &
 				noctalia &
-				sleep 1 &
 				mullvad-vpn
 			'';
 			settings = {
 				exec-once = [
 					"systemctl --user start mango-reload.service"
 				];
-				bind = [
-					"SUPER, Return, spawn, foot"
-					"SUPER+SHIFT, Return, spawn, foot"
-					"SUPER+SHIFT, e, spawn, foot yazi ~/NixOS/modules"
-					"SUPER+CTRL, e, spawn, foot yazi ~/repos"
-					"SUPER, e, spawn, foot --app-id yazi yazi"
-					"SUPER, m, spawn, spotify"
-					"SUPER, u, spawn, foot --hold --app-id rebuild nh os switch"
-					"SUPER, q, killclient"
-					"SUPER+SHIFT, m, quit"
-					"SUPER, b, spawn, librewolf"
-					"SUPER, i, minimized"
-					"SUPER+SHIFT, i, restore_minimized"
-					"SUPER+CTRL, Left, resizewin, -50, 0"
-					"SUPER+CTRL, Right, resizewin, +50, 0"
-					"SUPER+CTRL, Up, resizewin, 0, -50"
-					"SUPER+CTRL, Down, resizewin, 0, +50"
-					"SUPER+CTRL, r, spawn, noctalia"
-					"ALT, Tab, focusstack, next"
-					"SUPER, Left, focusdir, left"
-					"SUPER, Right, focusdir, right"
-					"SUPER, Up, focusdir, up"
-					"SUPER, Down, focusdir, down"
-					"SUPER+SHIFT, Up, exchange_client, up"
-					"SUPER+SHIFT, Down, exchange_client, down"
-					"SUPER+SHIFT, Left, exchange_client, left"
-					"SUPER+SHIFT, Right, exchange_client, right"
-					"SUPER, backslash, togglefloating"
-					"SUPER, f, togglemaximizescreen"
-					"SUPER+SHIFT, f, togglefullscreen"
-					"SUPER, 1, view, 1, 0"
-					"SUPER, 2, view, 2, 0"
-					"SUPER, 3, view, 3, 0"
-					"SUPER, 4, view, 4, 0"
-					"SUPER, 5, view, 5, 0"
-					"SUPER, 6, view, 6, 0"
-					"SUPER, 7, view, 7, 0"
-					"SUPER, 8, view, 8, 0"
-					"SUPER, 9, view, 9, 0"
-					"SUPER+SHIFT, 1, tag, 1, 0"
-					"SUPER+SHIFT, 2, tag, 2, 0"
-					"SUPER+SHIFT, 3, tag, 3, 0"
-					"SUPER+SHIFT, 4, tag, 4, 0"
-					"SUPER+SHIFT, 5, tag, 5, 0"
-					"SUPER+SHIFT, 6, tag, 6, 0"
-					"SUPER+SHIFT, 7, tag, 7, 0"
-					"SUPER+SHIFT, 8, tag, 8, 0"
-					"SUPER+SHIFT, 9, tag, 9, 0"
-					"SUPER,space,spawn,noctalia msg panel-toggle launcher"
-					"SUPER,s,spawn,noctalia msg panel-toggle control-center"
-					"SUPER+SHIFT,s,spawn,noctalia msg screenshot-region"
-					"SUPER,comma,spawn,noctalia msg settings-toggle"
-					"SUPER,l,spawn,noctalia msg session lock"
-					"SUPER,p,spawn,noctalia msg panel-toggle session"
-					"NONE,XF86AudioRaiseVolume,spawn,noctalia msg volume-up"
-					"NONE,XF86AudioLowerVolume,spawn,noctalia msg volume-down"
-					"NONE,XF86AudioMute,spawn,noctalia msg volume-mute"
-					"NONE,XF86AudioMicMute,spawn,noctalia msg mic-mute"
-					"NONE,XF86MonBrightnessUp,spawn,noctalia msg brightness-up all"
-					"NONE,XF86MonBrightnessDown,spawn,noctalia msg brightness-down all"
+				monitorrule = [
+					"name:^HDMI-A-1$,width:2560,height:1440,refresh:144,x:0,y:1080"
+					"name:^eDP-1$,width:1920,height:1080,refresh:60,x:0,y:0"
 				];
 				mousebind = [
 					"SUPER, btn_left, moveresize, curmove"
@@ -127,75 +69,136 @@
 					"appid:yazi,isfloating:1"
 					"appid:rebuild,isfloating:1"
 				];
-				monitorrule = [
-					"name:^HDMI-A-1$,width:2560,height:1440,refresh:144,x:0,y:0"
-					"name:^eDP-1$,width:1920,height:1080,refresh:60,x:2560,y:0"
+				bind = [
+					# Spawn
+					"SUPER, Return, spawn, foot"
+					"SUPER+SHIFT, Return, spawn, foot"
+					"SUPER+SHIFT, e, spawn, foot yazi ~/NixOS/modules"
+					"SUPER+CTRL, e, spawn, foot yazi ~/repos"
+					"SUPER, e, spawn, foot --app-id yazi yazi"
+					"SUPER, m, spawn, spotify"
+					"SUPER, u, spawn, foot --hold --app-id rebuild nh os switch"
+					"SUPER, b, spawn, librewolf"
+					
+					# Noctalia
+					"SUPER+CTRL, r, spawn, noctalia"
+					"NONE,XF86AudioRaiseVolume,spawn,noctalia msg volume-up"
+					"NONE,XF86AudioLowerVolume,spawn,noctalia msg volume-down"
+					"NONE,XF86AudioMute,spawn,noctalia msg volume-mute"
+					"NONE,XF86AudioMicMute,spawn,noctalia msg mic-mute"
+					"NONE,XF86MonBrightnessUp,spawn,noctalia msg brightness-up all"
+					"NONE,XF86MonBrightnessDown,spawn,noctalia msg brightness-down all"
+					"SUPER,space,spawn,noctalia msg panel-toggle launcher"
+					"SUPER,s,spawn,noctalia msg panel-toggle control-center"
+					"SUPER+SHIFT,s,spawn,noctalia msg screenshot-region"
+					"SUPER,comma,spawn,noctalia msg settings-toggle"
+					"SUPER,l,spawn,noctalia msg session lock"
+					"SUPER,p,spawn,noctalia msg panel-toggle session"
+
+					# Common binds
+					"SUPER, q, killclient"
+					"SUPER+SHIFT, m, quit"
+					"SUPER, i, minimized"
+					"SUPER+SHIFT, i, restore_minimized"
+					"SUPER, backslash, togglefloating"
+					"SUPER, f, togglemaximizescreen"
+					"SUPER+SHIFT, f, togglefullscreen"
+
+					# Move/Resize
+					"SUPER+CTRL, Left, resizewin, -50, 0"
+					"SUPER+CTRL, Right, resizewin, +50, 0"
+					"SUPER+CTRL, Up, resizewin, 0, -50"
+					"SUPER+CTRL, Down, resizewin, 0, +50"
+					"SUPER+SHIFT, Up, tagmon, up"
+					"SUPER+SHIFT, Down, tagmon, down"
+					"SUPER+SHIFT, Left, exchange_client, left"
+					"SUPER+SHIFT, Right, exchange_client, right"
+
+					# Focus
+					"ALT, Tab, focusstack, next"
+					"SUPER, Left, focusdir, left"
+					"SUPER, Right, focusdir, right"
+					"SUPER, Up, focusdir, up"
+					"SUPER, Down, focusdir, down"
+
+					# Tags
+					"SUPER, 1, view, 1, 0"
+					"SUPER, 2, view, 2, 0"
+					"SUPER, 3, view, 3, 0"
+					"SUPER, 4, view, 4, 0"
+					"SUPER, 5, view, 5, 0"
+					"SUPER, 6, view, 6, 0"
+					"SUPER, 7, view, 7, 0"
+					"SUPER, 8, view, 8, 0"
+					"SUPER, 9, view, 9, 0"
+					"SUPER+SHIFT, 1, tag, 1, 0"
+					"SUPER+SHIFT, 2, tag, 2, 0"
+					"SUPER+SHIFT, 3, tag, 3, 0"
+					"SUPER+SHIFT, 4, tag, 4, 0"
+					"SUPER+SHIFT, 5, tag, 5, 0"
+					"SUPER+SHIFT, 6, tag, 6, 0"
+					"SUPER+SHIFT, 7, tag, 7, 0"
+					"SUPER+SHIFT, 8, tag, 8, 0"
+					"SUPER+SHIFT, 9, tag, 9, 0"
 				];
-				allow_tearing=2;
+
+				# Animations
 				animations=0;
 				layer_animations=0;
-				animation_type_open="slide";
-				animation_type_close="slide";
-				animation_fade_in=1;
-				animation_fade_out=1;
-				tag_animation_direction=1;
-				zoom_initial_ratio=0.4;
-				zoom_end_ratio=0.7;
-				fadein_begin_opacity=0.8;
-				fadeout_begin_opacity=0.8;
-				animation_duration = {
-					move=500;
-					open=400;
-					tag=350;
-					close=800;
-					focus=400;					
-				};
-				animation_curve = {
-					open="0.46,1.0,0.29,1.1";
-					move="0.46,1.0,0.29,1";
-					tag="0.46,1.0,0.29,1";
-					close="0.08,0.92,0,1";
-					focus="0.46,1.0,0.29,1";
-					opafadeout="0.58,0.98,0.58,0.98";
-					opafadein="0.46,1.0,0.29,1";
-				};
+
+				# Blur/Shadows
 				blur=0;
 				blur_layer=0;
 				shadows=0;
 				layer_shadows=0;
 				focused_opacity = 1.0;
 				unfocused_opacity = 1.0;
-				border_radius = 16;
+
+				# Behaviour
 				enable_hotarea = 0;
-				no_border_when_single = 0;
 				focus_on_activate = 1;
 				sloppyfocus = 1;
 				warpcursor 	= 1;
 				focus_cross_monitor = 1;
-				cursor_size = 16;
-				cursor_theme = "Bibata-Modern-Amber";
+				allow_tearing=2;
+				drag_lock = 0;
 				drag_tile_to_tile = 1;
 				drag_tile_small = 0;
-				repeat_rate = 35;
-				repeat_delay = 300;
+
+				# Cursor
+				cursor_size = 16;
+				cursor_theme = "Bibata-Modern-Amber";
+
+				# Keyboard
+				repeat_rate = 40;
+				repeat_delay = 250;
 				xkb_rules_layout = "us";
 				xkb_rules_variant = "intl";
-				tap_to_click = 0;
-				tap_and_drag = 0;
-				drag_lock = 0;
+
+				# Mouse/Trackpad
 				trackpad_accel_profile = 1;
 				trackpad_accel_speed = 0.75;
 				mouse_natural_scrolling = 0;
 				mouse_accel_profile = 1;
 				mouse_accel_speed = -0.5;
+				tap_to_click = 0;
+				tap_and_drag = 0;
+
+				# Layout
+				new_is_master = 0;
+				default_mfact = 0.5;
+				
+				# Gaps/Border
+				no_border_when_single = 0;
+				border_radius = 16;
+				borderpx = 2;
+				smartgaps = 0;
 				gappih = 5;
 				gappiv = 5;
 				gappoh = 10;
 				gappov = 10;
-				borderpx = 2;
-				new_is_master = 0;
-				default_mfact = 0.5;
-				smartgaps = 0;
+				
+				# Colors
 				rootcolor = "0x231d1bff";
 				bordercolor = "0x76655fff";
 				dropcolor = "0xb85a3080";

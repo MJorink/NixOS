@@ -7,6 +7,7 @@
 			wget
 			fastfetch
 			claude-code
+			nodejs-slim
 		];
 		
 		environment.variables = {

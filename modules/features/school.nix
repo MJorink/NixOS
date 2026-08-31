@@ -3,11 +3,5 @@
 		environment.systemPackages = with pkgs; [
 			
 		];
-
-		preservation.preserveAt."/persistent" = {
-			users.jorink.directories = [
-				""
-			];
-		};
 	};
 }

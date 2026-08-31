@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-	perSystem = { pkgs, lib, ... }: {
+	perSystem = { lib, pkgs, ... }: {
 		packages.myGit = inputs.wrapper-modules.wrappers.git.wrap {
 			inherit pkgs;
 			runtimePkgs = [ pkgs.git-credential-oauth ];

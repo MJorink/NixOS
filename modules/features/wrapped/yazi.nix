@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-	perSystem = { pkgs, lib, ... }: {
+	perSystem = { lib, pkgs, ... }: {
 		packages.myYazi = inputs.wrapper-modules.wrappers.yazi.wrap {
 			inherit pkgs;
 			runtimePkgs = [ pkgs.micro pkgs.mpv ];

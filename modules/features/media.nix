@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-	flake.nixosModules.music = { pkgs, lib, ... }: {
+	flake.nixosModules.music = { lib, pkgs, ... }: {
 		environment.systemPackages = with pkgs; [
 			spotify
 		];
@@ -12,7 +12,7 @@
 		};
 	};
 
-	flake.nixosModules.video = { pkgs, lib, ... }: {
+	flake.nixosModules.video = { lib, pkgs, ... }: {
 		environment.systemPackages = with pkgs; [
 			mpv
 		];

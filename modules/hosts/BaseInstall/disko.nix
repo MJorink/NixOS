@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-	flake.nixosModules.hostBaseInstall = {
+	flake.nixosModules.hostBaseInstall = { lib, pkgs, ... }: {
 		imports = [
 			inputs.disko.nixosModules.disko
 		];

@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-	flake.nixosModules.hostNixPad = {
+	flake.nixosModules.hostNixPad = { lib, pkgs, ... }: {
 		imports = [
 			inputs.disko.nixosModules.disko
 		];

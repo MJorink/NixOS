@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-	flake.nixosModules.desktop = { pkgs, lib, ... }: {
+	flake.nixosModules.desktop = { lib, pkgs, ... }: {
 	
 		# General cross-desktop stuff, import standalone desktop module in host config
 		services.mullvad-vpn.gui.enable = true;
@@ -26,7 +26,7 @@
 		};
 	};
 
-	flake.nixosModules.desktopExtras = { pkgs, lib, ... }: {
+	flake.nixosModules.desktopExtras = { lib, pkgs, ... }: {
 		# Install personal packages here (for all hosts)
 		environment.systemPackages = with pkgs; [
 			librewolf

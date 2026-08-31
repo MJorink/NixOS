@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-	flake.nixosModules.FlatGames = { pkgs, lib, ... }: {
+	flake.nixosModules.FlatGames = { lib, pkgs, ... }: {
 		programs.steam.enable = true;
 		environment.systemPackages = with pkgs; [
 			protonup-qt
@@ -14,7 +14,7 @@
 		};
 	};
 
-	flake.nixosModules.VRGames = { pkgs, lib, ... }: {
+	flake.nixosModules.VRGames = { lib, pkgs, ... }: {
 		# Use on top of FlatGames
 		services.wivrn = {
 			enable = true;

@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-	flake.nixosModules.noctalia = { pkgs, lib, ... }: {
+	flake.nixosModules.noctalia = { lib, pkgs, ... }: {
 		imports = [
 			inputs.noctalia.nixosModules.default
 		];
@@ -26,7 +26,7 @@
 		};
 	};
 
-	perSystem = { pkgs, lib, ... }: {
+	perSystem = { lib, pkgs, ... }: {
 		packages.myNoctalia = inputs.wrapper-modules.wrappers.noctalia-shell.wrap {
 			inherit pkgs;
 			package = inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default;

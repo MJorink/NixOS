@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-	flake.nixosModules.terminal = { pkgs, lib, ... }: {
+	flake.nixosModules.terminal = { lib, pkgs, ... }: {
 		environment.systemPackages = with pkgs; [
 			unzip
 			zip

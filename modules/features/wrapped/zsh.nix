@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-	perSystem = { pkgs, lib, ... }: {
+	perSystem = { lib, pkgs, ... }: {
 		packages.myZsh = inputs.wrapper-modules.wrappers.zsh.wrap {
 			inherit pkgs;
 			runtimePkgs = [

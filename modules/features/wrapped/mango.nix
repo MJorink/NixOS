@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-	flake.nixosModules.mango = { pkgs, lib, ... }: {
+	flake.nixosModules.mango = { lib, pkgs, ... }: {
 		imports = [
 			inputs.mangowm.nixosModules.mango
 			self.nixosModules.noctalia
@@ -24,7 +24,7 @@
 		systemd.packages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.myMango ]; # For hot-reloading
 	};
 
-	perSystem = { pkgs, lib, ... }: {
+	perSystem = { lib, pkgs, ... }: {
 		packages.myMango = inputs.wrapper-modules.wrappers.mangowc.wrap {
 			inherit pkgs;
 			package = inputs.mangowm.packages.${pkgs.stdenv.hostPlatform.system}.mango;

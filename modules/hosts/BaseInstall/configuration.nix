@@ -4,7 +4,7 @@
 			self.nixosModules.hostBaseInstall
 		];
 	};
-	flake.nixosModules.hostBaseInstall = { lib, ... }: {
+	flake.nixosModules.hostBaseInstall = { lib, pkgs, ... }: {
 		networking.hostName = "BaseInstall";
 		imports = [
 			self.nixosModules.base

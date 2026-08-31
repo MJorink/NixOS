@@ -4,7 +4,7 @@
 			self.nixosModules.hostVictus
 		];
 	};
-	flake.nixosModules.hostVictus = { lib, ... }: {
+	flake.nixosModules.hostVictus = { lib, pkgs, ... }: {
 		networking.hostName = "Victus";
 		imports = [
 			self.nixosModules.base

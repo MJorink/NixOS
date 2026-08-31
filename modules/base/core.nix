@@ -1,15 +1,15 @@
 { self, inputs, ... }: {
-	flake.nixosModules.base = { pkgs, ... }: {
+	flake.nixosModules.base = { lib, pkgs, ... }: {
 		security.sudo.wheelNeedsPassword = false;
 		users.defaultUserShell = self.packages.${pkgs.stdenv.hostPlatform.system}.myZsh;
 		environment.shells = [ "${self.packages.${pkgs.stdenv.hostPlatform.system}.myZsh}/bin/zsh" ];
 		
 		time.timeZone = "Europe/Amsterdam";
 		networking.networkmanager.enable = true;
-
+		
 		preservation.preserveAt."/persistent" = {
 			directories = [
-				"/etc/NetworkManager/system-connections"
+				"/etc/NetworkManager/"
 			];
 		};
 		

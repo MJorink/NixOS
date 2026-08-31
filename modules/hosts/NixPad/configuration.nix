@@ -4,7 +4,7 @@
 			self.nixosModules.hostNixPad
 		];
 	};
-	flake.nixosModules.hostNixPad = { lib, ... }: {
+	flake.nixosModules.hostNixPad = { lib, pkgs, ... }: {
 		networking.hostName = "NixPad";
 		imports = [
 			self.nixosModules.base
@@ -15,6 +15,7 @@
 			self.nixosModules.desktopExtras # desktop.nix
 			self.nixosModules.video # media.nix
 			self.nixosModules.music # media.nix
+			# self.nixosModules.school # school.nix
 		];
 	};
 }

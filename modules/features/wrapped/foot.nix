@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-	perSystem = { pkgs, lib, ... }: {
+	perSystem = { lib, pkgs, ... }: {
 		packages.myFoot = inputs.wrapper-modules.wrappers.foot.wrap {
 			inherit pkgs;
 			settings = {

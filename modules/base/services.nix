@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-	flake.nixosModules.base = {
+	flake.nixosModules.base = { lib, pkgs, ... }: {
 		services = {
 			mullvad-vpn.enable = true;
 			auto-cpufreq = {

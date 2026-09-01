@@ -8,7 +8,7 @@
 		networking.hostName = "Victus";
 		imports = [
 			self.nixosModules.base
-			self.nixosModules.hostVictusPackages # packages.nix
+			self.nixosModules.home # home.nix
 			self.nixosModules.terminal # terminal.nix
 			self.nixosModules.mango # mango.nix
 			self.nixosModules.desktop # desktop.nix

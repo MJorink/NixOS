@@ -7,7 +7,7 @@
 		wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
 		preservation.url = "github:nix-community/preservation";
 		disko.url = "github:nix-community/disko";
-		home-manager.url = "github:nix-community/home-manager/release-unstable";
+		home-manager.url = "github:nix-community/home-manager";
 		# Desktop
 		mangowm.url = "github:mangowm/mango";
 		noctalia.url = "github:noctalia-dev/noctalia/cachix";

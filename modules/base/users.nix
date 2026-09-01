@@ -15,7 +15,6 @@
 					"NixOS"
 					"repos"
 					".ssh"
-					".config/micro"
 					".local/share/zsh"
 				];
 			};

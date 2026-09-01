@@ -14,7 +14,6 @@
 				directories = [
 					"NixOS"
 					"repos"
-					".ssh"
 					".local/share/zsh"
 				];
 			};

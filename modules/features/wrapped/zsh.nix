@@ -18,6 +18,7 @@
 				ls = "ls -a --color";
 				yazi = "sudo yazi";
 				dnb = "clear;dotnet build";
+				dnball = "~/NixOS/modules/features/scripts/build-mods.sh";
 			};
 			zshrc.content = ''
 				HISTFILE=~/.local/share/zsh/history

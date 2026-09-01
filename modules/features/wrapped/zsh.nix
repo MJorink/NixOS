@@ -14,6 +14,7 @@
 			zshAliases = {
 				clr = "clear;~/NixOS/modules/features/scripts/greeting.sh";
 				batstat = "~/NixOS/modules/features/scripts/batstat.sh";
+				system-age-info = "~/NixOS/modules/features/scripts/system-age-info.sh file /persistent/passwd";
 				ls = "ls -a --color";
 				yazi = "sudo yazi";
 				dnb = "clear;dotnet build";

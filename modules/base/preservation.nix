@@ -4,7 +4,7 @@
 			inputs.preservation.nixosModules.default
 		];
 
-		systemd.suppressedSystemUnits = [ "systemd-machine-id-commit.service" ]; # We manually preserve /etc/machine-id.
+		systemd.suppressedSystemUnits = [ "systemd-machine-id-commit.service" ]; # /etc/machine-id is preserved with preservation
 		
 		preservation = {
 			enable = true;
@@ -12,7 +12,6 @@
 				directories = [
 					{ directory = "/var/lib/nixos"; inInitrd = true; }
 				];
-				
 				files = [
 					{ file = "/etc/machine-id"; inInitrd = true; }
 				];

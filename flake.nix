@@ -5,10 +5,10 @@
 		flake-parts.url = "github:hercules-ci/flake-parts";
 		import-tree.url = "github:vic/import-tree";
 		wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
-		# Impermanent Setup
 		preservation.url = "github:nix-community/preservation";
 		disko.url = "github:nix-community/disko";
-		# Other
+		home-manager.url = "github:nix-community/home-manager/release-unstable";
+		# Desktop
 		mangowm.url = "github:mangowm/mango";
 		noctalia.url = "github:noctalia-dev/noctalia/cachix";
 	};

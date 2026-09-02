@@ -15,7 +15,7 @@
 			self.nixosModules.desktopExtras # desktop.nix
 			self.nixosModules.video # media.nix
 			self.nixosModules.music # media.nix
-			# self.nixosModules.school # school.nix
+			self.nixosModules.school # school.nix
 		];
 	};
 }

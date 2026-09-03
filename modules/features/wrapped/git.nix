@@ -4,7 +4,6 @@
 			inherit pkgs;
 			runtimePkgs = [
 				pkgs.git-credential-oauth
-				pkgs.lazygit
 			];
 			
 			configFile.content = ''

@@ -7,6 +7,7 @@
 				self.packages.${pkgs.stdenv.hostPlatform.system}.myYazi
 				self.packages.${pkgs.stdenv.hostPlatform.system}.myGit
 				self.packages.${pkgs.stdenv.hostPlatform.system}.myBtop
+				pkgs.lazygit
 				pkgs.micro
 				pkgs.nh
 				pkgs.figlet

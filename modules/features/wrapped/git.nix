@@ -2,7 +2,11 @@
 	perSystem = { lib, pkgs, ... }: {
 		packages.myGit = inputs.wrapper-modules.wrappers.git.wrap {
 			inherit pkgs;
-			runtimePkgs = [ pkgs.git-credential-oauth ];
+			runtimePkgs = [
+				pkgs.git-credential-oauth
+				pkgs.lazygit
+			];
+			
 			configFile.content = ''
 				[init]
 					defaultBranch = main

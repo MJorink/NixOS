@@ -1,8 +1,6 @@
 { self, inputs, ... }: {
 	flake.nixosModules.hostNixPad = { lib, pkgs, ... }: {
-		imports = [
-			inputs.disko.nixosModules.disko
-		];
+		imports = [ inputs.disko.nixosModules.disko ];
 
 		fileSystems."/nix".neededForBoot = true;
 		fileSystems."/persistent".neededForBoot = true;

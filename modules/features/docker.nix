@@ -9,9 +9,7 @@
 		};
 
 		preservation.preserveAt."/persistent" = {
-			users.jorink.directories = [
-				"docker"
-			];
+			users.jorink.directories = [ "docker" ];
 		};
 	};
 }

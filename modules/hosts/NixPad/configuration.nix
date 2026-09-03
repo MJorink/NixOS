@@ -1,24 +1,21 @@
 { self, inputs, ... }: {
 	flake.nixosConfigurations.NixPad = inputs.nixpkgs.lib.nixosSystem {
-		modules = [
-			self.nixosModules.hostNixPad
-		];
+		modules = [ self.nixosModules.hostNixPad ];
 	};
+	
 	flake.nixosModules.hostNixPad = { lib, pkgs, ... }: {
 		networking.hostName = "NixPad";
 		imports = [
 			self.nixosModules.base
-			self.nixosModules.home # home.nix
-			self.nixosModules.terminal # terminal.nix
-			self.nixosModules.mango # mango.nix
-			self.nixosModules.desktop # desktop.nix
-			self.nixosModules.desktopExtras # desktop.nix
-			self.nixosModules.video # media.nix
-			self.nixosModules.music # media.nix
-			self.nixosModules.school # school.nix
-			self.nixosModules.docker # docker.nix
-			self.nixosModules.dotnet # dotnet.nix
-			self.nixosModules.bonelab # bonelab.nix
+			self.nixosModules.home
+			self.nixosModules.cli
+			self.nixosModules.claude
+			self.nixosModules.mango
+			self.nixosModules.desktop
+			self.nixosModules.desktopExtras
+			self.nixosModules.spotify
+			self.nixosModules.office
+			self.nixosModules.docker
 		];
 	};
 }

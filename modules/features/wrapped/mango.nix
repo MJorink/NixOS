@@ -4,20 +4,12 @@
 			inputs.mangowm.nixosModules.mango
 			self.nixosModules.noctalia
 		];
+		
 		programs.mango = {
 			enable = true;
 			package = self.packages.${pkgs.stdenv.hostPlatform.system}.myMango;
 		};
-		xdg.portal = {
-			enable = true;
-			extraPortals = with pkgs; [ xdg-desktop-portal-gtk xdg-desktop-portal-wlr ];
-			config.common = {
-				default = [ "gtk" ];
-				"org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
-				"org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
-				"org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
-			};
-		};
+		
 		services.upower.enable = true;
 		services.gnome.gnome-keyring.enable = true;
 
@@ -28,32 +20,37 @@
 		packages.myMango = inputs.wrapper-modules.wrappers.mangowc.wrap {
 			inherit pkgs;
 			package = inputs.mangowm.packages.${pkgs.stdenv.hostPlatform.system}.mango;
+			
 			runtimePkgs = [
-				self.packages.${pkgs.stdenv.hostPlatform.system}.myNoctalia
+				# self.packages.${pkgs.stdenv.hostPlatform.system}.myNoctalia
 				self.packages.${pkgs.stdenv.hostPlatform.system}.myFoot
 				pkgs.cliphist
 				pkgs.wl-clip-persist
 				pkgs.wl-clipboard
 			];
+			
 			hotReload.enable = true;
+			
 			autostart_sh = ''
 				wl-clip-persist --clipboard regular --reconnect-tries 0 &
 				wl-paste --type text --watch cliphist store &
 				noctalia &
 				mullvad-vpn
 			'';
+			
 			settings = {
-				exec-once = [
-					"systemctl --user start mango-reload.service"
-				];
+				exec-once = [ "systemctl --user start mango-reload.service" ];
+				
 				monitorrule = [
 					"name:^HDMI-A-1$,width:2560,height:1440,refresh:144,x:0,y:1080"
 					"name:^eDP-1$,width:1920,height:1080,refresh:60,x:0,y:0"
 				];
+				
 				mousebind = [
 					"SUPER, btn_left, moveresize, curmove"
 					"SUPER, btn_right, moveresize, curresize"
 				];
+				
 				tagrule = [
 					"id:1, layout_name:fair"
 					"id:2, layout_name:fair"
@@ -65,10 +62,12 @@
 					"id:8, layout_name:fair"
 					"id:9, layout_name:fair"
 				];
+				
 				windowrule = [
 					"appid:yazi,isfloating:1"
 					"appid:rebuild,isfloating:1"
 				];
+				
 				bind = [
 					# Spawn
 					"SUPER, Return, spawn, foot"

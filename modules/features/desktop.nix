@@ -1,30 +1,12 @@
 { self, inputs, ... }: {
 	flake.nixosModules.desktop = { lib, pkgs, ... }: {
-	
-		# General cross-desktop stuff, import standalone desktop module in host config
+		# General cross-desktop stuff
 		services.mullvad-vpn.gui.enable = true;
 		services.displayManager.ly.enable = true;
 		services.pipewire.enable = true;
 		services.pipewire.pulse.enable = true;
 
-		security.polkit.enable = true;
-		systemd.user.services.polkit-gnome-authentication-agent-1 = {
-		  description = "polkit-gnome-authentication-agent-1";
-		  wantedBy = [ "graphical-session.target" ];
-		  wants = [ "graphical-session.target" ];
-		  after = [ "graphical-session.target" ];
-		  serviceConfig = {
-		    Type = "simple";
-		    ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-		    Restart = "on-failure";
-		    RestartSec = 1;
-		    TimeoutStopSec = 10;
-		  };
-		};
-
-		environment.systemPackages = with pkgs; [
-			bibata-cursors
-		];
+		environment.systemPackages = with pkgs; [ bibata-cursors ];
 
 		fonts.packages = with pkgs; [
 			nerd-fonts.ubuntu
@@ -46,9 +28,7 @@
 		environment.systemPackages = with pkgs; [
 			librewolf
 			proton-authenticator
-			localsend
-			filezilla
-			qbittorrent
+			mpv
 		];
 
 		preservation.preserveAt."/persistent" = {

@@ -3,6 +3,7 @@
 		packages.myFoot = inputs.wrapper-modules.wrappers.foot.wrap {
 			inherit pkgs;
 			settings = {
+				main.font = "UbuntuMono Nerd Font:size=14";
 				colors-dark = {
 					foreground="e6dbd3";
 					background="231d1b";
@@ -25,9 +26,6 @@
 					selection-foreground="1d1816";
 					selection-background="b8aca2";
 					cursor="1d1816 b85a30";
-				};
-				main = {
-					font = "UbuntuMono Nerd Font:size=14";
 				};
 			};
 		};

@@ -10,7 +10,11 @@
 				pkgs.micro
 				pkgs.nh
 				pkgs.figlet
+				pkgs.unzip
+				pkgs.zip
+				pkgs.wget
 			];
+			
 			zshAliases = {
 				clr = "clear;~/NixOS/modules/features/scripts/greeting.sh";
 				batstat = "~/NixOS/modules/features/scripts/batstat.sh";
@@ -20,6 +24,7 @@
 				dnb = "clear;dotnet build";
 				dnball = "~/NixOS/modules/features/scripts/build-mods.sh";
 			};
+			
 			zshrc.content = ''
 				HISTFILE=~/.local/share/zsh/history
 				HISTSIZE=10000

@@ -16,6 +16,9 @@
 			self.nixosModules.video # media.nix
 			self.nixosModules.music # media.nix
 			self.nixosModules.school # school.nix
+			self.nixosModules.docker # docker.nix
+			self.nixosModules.dotnet # dotnet.nix
+			self.nixosModules.bonelab # bonelab.nix
 		];
 	};
 }

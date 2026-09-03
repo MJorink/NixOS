@@ -4,7 +4,7 @@
 			users.jorink = {
 				isNormalUser = true;
 				hashedPasswordFile = "/persistent/passwd"; # mkpasswd -m yescrypt > /persistent/passwd
-				extraGroups = [ "wheel" "networkmanager" ];
+				extraGroups = [ "wheel" "networkmanager" "docker" ];
 			};
 		};
 		

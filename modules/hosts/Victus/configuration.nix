@@ -15,9 +15,9 @@
 			self.nixosModules.desktopExtras # desktop.nix
 			self.nixosModules.video # media.nix
 			self.nixosModules.music # media.nix
-			self.nixosModules.bonelab # bonelab.nix
-			self.nixosModules.FlatGames # gaming.nix
-			self.nixosModules.VRGames # gaming.nix
+			self.nixosModules.dotnet # bonelab.nix
+			self.nixosModules.steam # gaming.nix
+			self.nixosModules.vr # gaming.nix
 		];
 	};
 }

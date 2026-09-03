@@ -10,8 +10,10 @@
 					name = Jorink
 					email = maxjorink@gmail.com
 				[credential]
-					helper = cache --timeout 21600
+					helper = store
 					helper = oauth
+				[credential "https://gitlab.windesheim.nl"]
+					oauthClientId = df9234c956328152bd180824d4ebaf9ab7b758477234be94a1fd89fd48924e1b
 			'';			
 		};
 	};

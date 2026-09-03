@@ -1,7 +1,14 @@
 { self, inputs, ... }: {
 	flake.nixosModules.school = { lib, pkgs, ... }: {
 		environment.systemPackages = with pkgs; [
-			libreoffice
+			onlyoffice-desktopeditors
 		];
+
+		preservation.preserveAt."/persistent" = {
+			users.jorink.directories = [
+				".local/share/onlyoffice"
+				".config/onlyoffice"
+			];
+		};
 	};
 }

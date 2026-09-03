@@ -13,10 +13,10 @@ mods=(JLib Downed HealthRegenToggle NoVirtualCrouch QuestGraphicsSettings SprInp
 
 build() {
 	m=$1
-	dotnet build "$HOME/repos/$m" > "/tmp/build-$m.log" 2>&1 &&
-		cp "$HOME/repos/$m/Staging/Thunderstore/Mods/$m.dll" "$quest/" &&
-		{ [ "$m" = QuestGraphicsSettings ] || cp "$HOME/repos/$m/Staging/Thunderstore/Mods/$m.dll" "$pc/"; } &&
-		{ [ -z "$stage" ] || { mkdir -p "$quest/Staging" && rm -f "$quest/Staging/$m.zip" && (cd "$HOME/repos/$m/Staging/Thunderstore" && zip -qr "$quest/Staging/$m.zip" .); }; } &&
+	dotnet build "$HOME/repos/BONELAB/$m" > "/tmp/build-$m.log" 2>&1 &&
+		cp "$HOME/repos/BONELAB/$m/Staging/Thunderstore/Mods/$m.dll" "$quest/" &&
+		{ [ "$m" = QuestGraphicsSettings ] || cp "$HOME/repos/BONELAB/$m/Staging/Thunderstore/Mods/$m.dll" "$pc/"; } &&
+		{ [ -z "$stage" ] || { mkdir -p "$quest/Staging" && rm -f "$quest/Staging/$m.zip" && (cd "$HOME/repos/BONELAB/$m/Staging/Thunderstore" && zip -qr "$quest/Staging/$m.zip" .); }; } &&
 		echo "ok   $m" ||
 		{ echo "FAIL $m (see /tmp/build-$m.log)"; return 1; }
 }
@@ -36,11 +36,11 @@ for p in "${pids[@]}"; do wait "$p" || fail=1; done
 
 dirty=()
 for m in "${mods[@]}"; do
-	git -C "$HOME/repos/$m" add -A
-	git -C "$HOME/repos/$m" diff --cached --quiet && continue
+	git -C "$HOME/repos/BONELAB/$m" add -A
+	git -C "$HOME/repos/BONELAB/$m" diff --cached --quiet && continue
 	dirty+=("$m")
 	echo "=== $m ==="
-	git -C "$HOME/repos/$m" --no-pager diff --cached
+	git -C "$HOME/repos/BONELAB/$m" --no-pager diff --cached
 done
 
 [ ${#dirty[@]} -eq 0 ] && { echo "nothing to push"; exit $fail; }
@@ -52,8 +52,8 @@ case "$ans" in
 esac
 
 for m in "${dirty[@]}"; do
-	git -C "$HOME/repos/$m" commit -qm "Scripted Push" &&
-		git -C "$HOME/repos/$m" push -q origin main &&
+	git -C "$HOME/repos/BONELAB/$m" commit -qm "Scripted Push" &&
+		git -C "$HOME/repos/BONELAB/$m" push -q origin main &&
 		echo "pushed $m" ||
 		{ echo "FAIL push $m"; fail=1; }
 done

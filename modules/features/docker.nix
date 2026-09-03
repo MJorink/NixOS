@@ -1,5 +1,9 @@
 { self, inputs, ... }: {
 	flake.nixosModules.docker = { lib, pkgs, ... }: {
+		environment.systemPackages = with pkgs; [
+			lazydocker
+		];
+		
 		virtualisation.docker = {
 			enable = true;
 			storageDriver = "btrfs";

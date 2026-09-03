@@ -15,7 +15,10 @@
 			self.nixosModules.desktopExtras # desktop.nix
 			self.nixosModules.video # media.nix
 			self.nixosModules.music # media.nix
+<<<<<<< HEAD
 			self.nixosModules.dotnet # bonelab.nix
+=======
+>>>>>>> a26d97b (Update Configs)
 			self.nixosModules.steam # gaming.nix
 			self.nixosModules.vr # gaming.nix
 		];

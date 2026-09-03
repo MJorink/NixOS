@@ -17,6 +17,11 @@
 		boot.loader.systemd-boot.enable = true;
 		boot.loader.efi.canTouchEfiVariables = true;
 
+		# Fixes scripts that need /bin/bash to exist
+		systemd.tmpfiles.rules = [
+		  "L+ /bin/bash - - - - ${pkgs.bash}/bin/bash"
+		];
+
 		nixpkgs.config.allowUnfree = true;
 		nix.settings.experimental-features = [ "nix-command" "flakes" ];
 		system.stateVersion = "26.05";

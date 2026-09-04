@@ -26,7 +26,7 @@
 			config.common.defualt = "*";
 			wlr.settings = {
 				screencast = {
-					output_name = "eDP-1";
+					# output_name = "eDP-1";
 					max_fps = 60;
 					chooser_type = "none";
 				};

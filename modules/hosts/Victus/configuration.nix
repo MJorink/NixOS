@@ -9,7 +9,6 @@
 			self.nixosModules.base
 			self.nixosModules.home
 			self.nixosModules.claude
-			self.nixosModules.mango
 			self.nixosModules.desktop
 			self.nixosModules.desktopExtras
 			self.nixosModules.spotify

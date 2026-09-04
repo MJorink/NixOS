@@ -24,6 +24,8 @@
 				yazi = "sudo yazi";
 				dnb = "clear;dotnet build";
 				dnball = "~/NixOS/modules/features/scripts/build-mods.sh";
+				lg = "lazygit";
+				ld = "lazydocker";
 			};
 			
 			zshrc.content = ''

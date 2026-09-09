@@ -17,14 +17,16 @@
 			];
 			
 			zshAliases = {
-				clr = "clear;~/NixOS/modules/features/scripts/greeting.sh";
-				batstat = "~/NixOS/modules/features/scripts/batstat.sh";
-				system-age-info = "~/NixOS/modules/features/scripts/system-age-info.sh file /persistent/passwd";
+				clr = "clear";
 				ls = "ls -a --color";
 				dnb = "clear;dotnet build";
-				dnball = "~/NixOS/modules/features/scripts/build-mods.sh";
 				lg = "lazygit";
 				ld = "lazydocker";
+
+				# Scripts
+				batstat = "~/NixOS/modules/features/scripts/batstat.sh";
+				system-age-info = "~/NixOS/modules/features/scripts/system-age-info.sh file /persistent/passwd";
+				dnball = "~/NixOS/modules/features/scripts/build-mods.sh";
 			};
 			
 			zshrc.content = ''
@@ -40,9 +42,8 @@
 				source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 				if [[ ! -o login ]]; then
-					if [ -e ~/NixOS/modules/features/scripts/greeting.sh ]; then
-						~/NixOS/modules/features/scripts/greeting.sh
-					fi
+					echo -e "\e[32m$(uname -n | figlet -f slant)\e[0m"
+					echo -e "\e[34m$(uname -r)\e[0m";echo ""
 				fi
 			'';
 		};

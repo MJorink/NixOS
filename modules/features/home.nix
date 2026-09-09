@@ -15,6 +15,7 @@
 
 				configs = {
 					micro = "micro";
+					noctalia = "noctalia";
 				};
 			in {
 				home = {

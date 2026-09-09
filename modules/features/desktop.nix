@@ -22,21 +22,16 @@
 		xdg.portal = {
 			enable = true;
 			wlr.enable = true;
+			wlr.settings.screencast.chooser_type = "none";
 			extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
 			config.common.defualt = "*";
-			wlr.settings = {
-				screencast = {
-					# output_name = "eDP-1";
-					max_fps = 60;
-					chooser_type = "none";
-				};
-			};
 		};
 
 		programs.noctalia = {
 			enable = true;
 			recommendedServices.enable = false;
 			# package = self.packages.${pkgs.stdenv.hostPlatform.system}.myNoctalia;
+			# Wrapper module is not updated for v5. We use home-manager for now. (home.nix)
 		};
 
 		nix.settings = {

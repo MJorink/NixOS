@@ -5,8 +5,8 @@
 
 		preservation.preserveAt."/persistent" = {
 			users.jorink.directories = [
-				".steam"
 				".local/share/Steam"
+				".steam"
 			];
 		};
 	};

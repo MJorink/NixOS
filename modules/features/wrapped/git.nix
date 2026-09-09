@@ -9,8 +9,8 @@
 					name = Jorink
 					email = maxjorink@gmail.com
 				[credential]
-					helper = store
-			'';			
+					helper = store --file ~/.config/git/credentials
+			'';
 		};
 	};
 }

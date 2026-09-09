@@ -14,6 +14,8 @@
 				directories = [
 					"NixOS"
 					"repos"
+					".config/git"
+					".config/lazygit"
 					".local/share/zsh"
 				];
 			};

@@ -71,11 +71,13 @@
 			proton-authenticator
 			mpv
 			obs-studio
+			discord
 		];
 
 		preservation.preserveAt."/persistent" = {
 			users.jorink.directories = [
 				".config/librewolf"
+				".config/discord"
 				".config/obs-studio"
 				".local/share/me.proton.authenticator"
 			];

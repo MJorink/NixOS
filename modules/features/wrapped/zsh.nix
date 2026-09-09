@@ -21,7 +21,6 @@
 				batstat = "~/NixOS/modules/features/scripts/batstat.sh";
 				system-age-info = "~/NixOS/modules/features/scripts/system-age-info.sh file /persistent/passwd";
 				ls = "ls -a --color";
-				yazi = "sudo yazi";
 				dnb = "clear;dotnet build";
 				dnball = "~/NixOS/modules/features/scripts/build-mods.sh";
 				lg = "lazygit";

@@ -67,6 +67,7 @@
 			mpv
 			obs-studio
 			discord
+			zed-editor
 		];
 
 		preservation.preserveAt."/persistent" = {

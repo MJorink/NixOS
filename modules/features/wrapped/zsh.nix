@@ -40,6 +40,7 @@
 				source ${pkgs.zsh-autosuggestions}/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 				eval "$(starship init zsh)"
 				source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+				eval "$(direnv hook zsh)"
 
 				if [[ ! -o login ]]; then
 					echo -e "\e[32m$(uname -n | figlet -f slant)\e[0m"

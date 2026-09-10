@@ -47,7 +47,6 @@
 				];
 				
 				windowrule = [
-					"appid:yazi,isfloating:1"
 					"appid:rebuild,isfloating:1"
 				];
 				
@@ -57,7 +56,7 @@
 					"SUPER+SHIFT, Return, spawn, foot"
 					"SUPER+SHIFT, e, spawn, foot yazi ~/NixOS/modules"
 					"SUPER+CTRL, e, spawn, foot yazi ~/repos"
-					"SUPER, e, spawn, foot --app-id yazi yazi"
+					"SUPER, e, spawn, foot yazi"
 					"SUPER, m, spawn, spotify"
 					"SUPER, u, spawn, foot --hold --app-id rebuild nh os switch"
 					"SUPER, b, spawn, librewolf"

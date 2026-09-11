@@ -13,7 +13,6 @@
 			self.nixosModules.desktopExtras
 			self.nixosModules.spotify
 			self.nixosModules.steam
-			self.nixosModules.vr
 			self.nixosModules.office
 			self.nixosModules.minecraft
 		];

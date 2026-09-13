@@ -1,8 +1,8 @@
 { self, inputs, ... }: {
-	flake.nixosModules.base	= { lib, pkgs, ... }: {
-		programs.direnv = {
-			enable = true;
-			nix-direnv.enable = true;
-		};
-	};
+  flake.nixosModules.base = { lib, pkgs, ... }: {
+    programs.direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
+  };
 }

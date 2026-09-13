@@ -1,19 +1,19 @@
 { self, inputs, ... }: {
-	flake.nixosModules.docker = { lib, pkgs, ... }: {
-		environment.systemPackages = with pkgs; [
-			lazydocker
-		];
-		
-		virtualisation.docker = {
-			enable = true;
-			storageDriver = "btrfs";
-			daemon.settings = {
-				data-root = "/home/jorink/docker";
-			};
-		};
+  flake.nixosModules.docker = { lib, pkgs, ... }: {
+    environment.systemPackages = with pkgs; [
+      lazydocker
+    ];
 
-		preservation.preserveAt."/persistent" = {
-			users.jorink.directories = [ "docker" ];
-		};
-	};
+    virtualisation.docker = {
+      enable = true;
+      storageDriver = "btrfs";
+      daemon.settings = {
+        data-root = "/home/jorink/docker";
+      };
+    };
+
+    preservation.preserveAt."/persistent" = {
+      users.jorink.directories = [ "docker" ];
+    };
+  };
 }

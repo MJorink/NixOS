@@ -1,4 +1,4 @@
-{ self, inputs, ... }: {
+{ ... }: {
   flake.nixosModules.claude = { lib, pkgs, ... }: {
     environment.systemPackages = with pkgs; [
       claude-code

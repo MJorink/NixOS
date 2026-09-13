@@ -1,4 +1,4 @@
-{ self, inputs, ... }: {
+{ inputs, ... }: {
   flake.nixosModules.base = { lib, pkgs, ... }: {
     imports = [ inputs.preservation.nixosModules.default ];
 

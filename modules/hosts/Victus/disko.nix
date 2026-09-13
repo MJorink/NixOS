@@ -1,4 +1,4 @@
-{ self, inputs, ... }: {
+{ inputs, ... }: {
   flake.nixosModules.hostVictus = { lib, pkgs, ... }: {
     imports = [ inputs.disko.nixosModules.disko ];
 

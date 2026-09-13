@@ -1,4 +1,4 @@
-{ self, inputs, ... }: {
+{ inputs, ... }: {
   perSystem = { lib, pkgs, ... }: {
     packages.myBtop = inputs.wrapper-modules.wrappers.btop.wrap {
       inherit pkgs;

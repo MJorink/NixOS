@@ -1,4 +1,4 @@
-{ self, inputs, ... }: {
+{ ... }: {
   flake.nixosModules.spotify = { lib, pkgs, ... }: {
     environment.systemPackages = with pkgs; [ spotify ];
 

@@ -1,4 +1,4 @@
-{ self, inputs, ... }: {
+{ inputs, ... }: {
   perSystem = { lib, pkgs, ... }: {
     packages.myYazi = inputs.wrapper-modules.wrappers.yazi.wrap {
       inherit pkgs;

@@ -1,4 +1,4 @@
-{ self, inputs, ... }: {
+{ ... }: {
   flake.nixosModules.base = { lib, pkgs, ... }: {
     services = {
       mullvad-vpn.enable = true;

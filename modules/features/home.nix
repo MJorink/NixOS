@@ -1,4 +1,4 @@
-{ self, inputs, ... }: {
+{ inputs, ... }: {
   flake.nixosModules.home = { lib, pkgs, ... }: {
     # Manage dotfiles for packages that are not available in nix-wrapper-modules.
     imports = [ inputs.home-manager.nixosModules.home-manager ];

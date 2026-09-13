@@ -1,4 +1,4 @@
-{ self, inputs, ... }: {
+{ self, ... }: {
   flake.nixosModules.base = { lib, pkgs, ... }: {
     security.sudo.wheelNeedsPassword = false;
     users.defaultUserShell = self.packages.${pkgs.stdenv.hostPlatform.system}.myShell;

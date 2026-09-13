@@ -1,4 +1,4 @@
-{ self, inputs, ... }: {
+{ inputs, ... }: {
   perSystem = { lib, pkgs, ... }: {
     packages.myGit = inputs.wrapper-modules.wrappers.git.wrap {
       inherit pkgs;

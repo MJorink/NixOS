@@ -1,4 +1,4 @@
-{ self, inputs, ... }: {
+{ ... }: {
   flake.nixosModules.minecraft = { lib, pkgs, ... }: {
     environment.systemPackages = with pkgs; [ prismlauncher ];
 

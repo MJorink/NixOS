@@ -1,4 +1,4 @@
-{ self, inputs, ... }: {
+{ inputs, ... }: {
   perSystem = { lib, pkgs, ... }: {
     packages.myStarship = inputs.wrapper-modules.wrappers.starship.wrap {
       inherit pkgs;

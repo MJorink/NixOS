@@ -1,4 +1,4 @@
-{ self, inputs, ... }: {
+{ inputs, ... }: {
   flake.nixosModules.neovim = { lib, pkgs, ... }: {
     imports = [ inputs.nvf.nixosModules.default ];
 

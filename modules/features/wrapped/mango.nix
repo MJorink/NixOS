@@ -73,7 +73,7 @@
           "SUPER,s,spawn,noctalia msg panel-toggle control-center"
           "SUPER+SHIFT,s,spawn,noctalia msg screenshot-region"
           "SUPER,comma,spawn,noctalia msg settings-toggle"
-          "SUPER,l,spawn,noctalia msg session lock"
+          "SUPER+SHIFT,p,spawn,noctalia msg session lock"
           "SUPER,p,spawn,noctalia msg panel-toggle session"
 
           # Common binds
@@ -86,21 +86,21 @@
           "SUPER+SHIFT, f, togglefullscreen"
 
           # Move/Resize
-          "SUPER+CTRL, Left, resizewin, -50, 0"
-          "SUPER+CTRL, Right, resizewin, +50, 0"
-          "SUPER+CTRL, Up, resizewin, 0, -50"
-          "SUPER+CTRL, Down, resizewin, 0, +50"
-          "SUPER+SHIFT, Up, tagmon, up"
-          "SUPER+SHIFT, Down, tagmon, down"
-          "SUPER+SHIFT, Left, exchange_client, left"
-          "SUPER+SHIFT, Right, exchange_client, right"
+          "SUPER+CTRL, h, resizewin, -50, 0"
+          "SUPER+CTRL, l, resizewin, +50, 0"
+          "SUPER+CTRL, k, resizewin, 0, -50"
+          "SUPER+CTRL, j, resizewin, 0, +50"
+          "SUPER+SHIFT, k, tagmon, up"
+          "SUPER+SHIFT, j, tagmon, down"
+          "SUPER+SHIFT, h, exchange_client, left"
+          "SUPER+SHIFT, l, exchange_client, right"
 
           # Focus
           "ALT, Tab, focusstack, next"
-          "SUPER, Left, focusdir, left"
-          "SUPER, Right, focusdir, right"
-          "SUPER, Up, focusdir, up"
-          "SUPER, Down, focusdir, down"
+          "SUPER, h, focusdir, left"
+          "SUPER, l, focusdir, right"
+          "SUPER, k, focusdir, up"
+          "SUPER, j, focusdir, down"
 
           # Tags
           "SUPER, 1, view, 1, 0"

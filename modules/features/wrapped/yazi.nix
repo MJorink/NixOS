@@ -1,8 +1,12 @@
-{ inputs, ... }: {
-  perSystem = { lib, pkgs, ... }: {
+{inputs, ...}: {
+  perSystem = {
+    lib,
+    pkgs,
+    ...
+  }: {
     packages.myYazi = inputs.wrapper-modules.wrappers.yazi.wrap {
       inherit pkgs;
-      runtimePkgs = [ pkgs.micro ];
+      runtimePkgs = [pkgs.micro];
 
       plugins.lazygit = pkgs.yaziPlugins.lazygit;
 

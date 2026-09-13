@@ -1,9 +1,13 @@
-{ inputs, ... }: {
-  flake.nixosModules.base = { lib, pkgs, ... }: {
-    imports = [ inputs.preservation.nixosModules.default ];
+{inputs, ...}: {
+  flake.nixosModules.base = {
+    lib,
+    pkgs,
+    ...
+  }: {
+    imports = [inputs.preservation.nixosModules.default];
 
     # /etc/machine-id is preserved with preservation, so disable service.
-    systemd.suppressedSystemUnits = [ "systemd-machine-id-commit.service" ];
+    systemd.suppressedSystemUnits = ["systemd-machine-id-commit.service"];
 
     preservation = {
       enable = true;

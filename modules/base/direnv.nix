@@ -1,5 +1,9 @@
-{ ... }: {
-  flake.nixosModules.base = { lib, pkgs, ... }: {
+{...}: {
+  flake.nixosModules.base = {
+    lib,
+    pkgs,
+    ...
+  }: {
     programs.direnv = {
       enable = true;
       nix-direnv.enable = true;

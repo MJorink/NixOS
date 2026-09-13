@@ -1,5 +1,9 @@
-{ ... }: {
-  flake.nixosModules.docker = { lib, pkgs, ... }: {
+{...}: {
+  flake.nixosModules.docker = {
+    lib,
+    pkgs,
+    ...
+  }: {
     environment.systemPackages = with pkgs; [
       lazydocker
     ];
@@ -13,7 +17,7 @@
     };
 
     preservation.preserveAt."/persistent" = {
-      users.jorink.directories = [ "docker" ];
+      users.jorink.directories = ["docker"];
     };
   };
 }

@@ -1,6 +1,10 @@
-{ ... }: {
-  flake.nixosModules.spotify = { lib, pkgs, ... }: {
-    environment.systemPackages = with pkgs; [ spotify ];
+{...}: {
+  flake.nixosModules.spotify = {
+    lib,
+    pkgs,
+    ...
+  }: {
+    environment.systemPackages = with pkgs; [spotify];
 
     preservation.preserveAt."/persistent" = {
       users.jorink.directories = [

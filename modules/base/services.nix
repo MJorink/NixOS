@@ -1,5 +1,9 @@
-{ ... }: {
-  flake.nixosModules.base = { lib, pkgs, ... }: {
+{...}: {
+  flake.nixosModules.base = {
+    lib,
+    pkgs,
+    ...
+  }: {
     services = {
       mullvad-vpn.enable = true;
       auto-cpufreq = {
@@ -16,8 +20,8 @@
     };
 
     preservation.preserveAt."/persistent" = {
-      directories = [ "/etc/mullvad-vpn" ];
-      users.jorink.directories = [ ".config/Mullvad VPN" ];
+      directories = ["/etc/mullvad-vpn"];
+      users.jorink.directories = [".config/Mullvad VPN"];
     };
   };
 }

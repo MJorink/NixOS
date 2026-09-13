@@ -1,5 +1,13 @@
-{ self, inputs, ... }: {
-  perSystem = { lib, pkgs, ... }: {
+{
+  self,
+  inputs,
+  ...
+}: {
+  perSystem = {
+    lib,
+    pkgs,
+    ...
+  }: {
     packages.myShell = inputs.wrapper-modules.wrappers.fish.wrap {
       inherit pkgs;
       runtimePkgs = with pkgs; [

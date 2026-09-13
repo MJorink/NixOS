@@ -1,5 +1,9 @@
-{ inputs, ... }: {
-  flake.nixosModules.hostBaseInstall = { lib, pkgs, ... }: {
+{inputs, ...}: {
+  flake.nixosModules.hostBaseInstall = {
+    lib,
+    pkgs,
+    ...
+  }: {
     imports = [
       inputs.disko.nixosModules.disko
     ];
@@ -52,7 +56,7 @@
         size = "100%";
         content = {
           type = "btrfs";
-          extraArgs = [ "-f" ];
+          extraArgs = ["-f"];
           subvolumes = {
             "/persistent" = {
               mountOptions = [

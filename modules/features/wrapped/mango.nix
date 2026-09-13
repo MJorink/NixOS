@@ -1,5 +1,13 @@
-{ self, inputs, ... }: {
-  perSystem = { lib, pkgs, ... }: {
+{
+  self,
+  inputs,
+  ...
+}: {
+  perSystem = {
+    lib,
+    pkgs,
+    ...
+  }: {
     packages.myMango = inputs.wrapper-modules.wrappers.mangowc.wrap {
       inherit pkgs;
       package = inputs.mangowm.packages.${pkgs.stdenv.hostPlatform.system}.mango;
@@ -22,7 +30,7 @@
       '';
 
       settings = {
-        exec-once = [ "systemctl --user start mango-reload.service" ];
+        exec-once = ["systemctl --user start mango-reload.service"];
 
         monitorrule = [
           "name:^HDMI-A-1$,width:2560,height:1440,refresh:144,x:0,y:1080"

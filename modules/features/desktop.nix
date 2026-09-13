@@ -1,10 +1,18 @@
-{ self, inputs, ... }: {
-  flake.nixosModules.desktop = { lib, pkgs, ... }: {
+{
+  self,
+  inputs,
+  ...
+}: {
+  flake.nixosModules.desktop = {
+    lib,
+    pkgs,
+    ...
+  }: {
     imports = [
       inputs.mangowm.nixosModules.mango
       inputs.noctalia.nixosModules.default
     ];
-    disabledModules = [ "programs/wayland/noctalia.nix" ]; # Conflicts with flake
+    disabledModules = ["programs/wayland/noctalia.nix"]; # Conflicts with flake
 
     services.mullvad-vpn.gui.enable = true;
     services.displayManager.ly.enable = true;
@@ -17,13 +25,13 @@
       enable = true;
       package = self.packages.${pkgs.stdenv.hostPlatform.system}.myMango;
     };
-    systemd.packages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.myMango ]; # For hot-reloading
+    systemd.packages = [self.packages.${pkgs.stdenv.hostPlatform.system}.myMango]; # For hot-reloading
 
     xdg.portal = {
       enable = true;
       wlr.enable = true;
       wlr.settings.screencast.chooser_type = "none";
-      extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
+      extraPortals = [pkgs.xdg-desktop-portal-wlr];
       config.common.defualt = "*";
     };
 
@@ -35,7 +43,7 @@
     };
 
     nix.settings = {
-      extra-substituters = [ "https://noctalia.cachix.org" ];
+      extra-substituters = ["https://noctalia.cachix.org"];
       extra-trusted-public-keys = [
         "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
       ];
@@ -61,7 +69,11 @@
     };
   };
 
-  flake.nixosModules.desktopExtras = { lib, pkgs, ... }: {
+  flake.nixosModules.desktopExtras = {
+    lib,
+    pkgs,
+    ...
+  }: {
     # Install personal packages here (for all hosts)
     environment.systemPackages = with pkgs; [
       librewolf

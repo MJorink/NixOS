@@ -1,6 +1,10 @@
-{ ... }: {
-  flake.nixosModules.minecraft = { lib, pkgs, ... }: {
-    environment.systemPackages = with pkgs; [ prismlauncher ];
+{...}: {
+  flake.nixosModules.minecraft = {
+    lib,
+    pkgs,
+    ...
+  }: {
+    environment.systemPackages = with pkgs; [prismlauncher];
 
     preservation.preserveAt."/persistent" = {
       users.jorink.directories = [

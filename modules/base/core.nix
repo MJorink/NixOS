@@ -1,11 +1,17 @@
-{ self, ... }: {
-  flake.nixosModules.base = { lib, pkgs, ... }: {
+{self, ...}: {
+  flake.nixosModules.base = {
+    lib,
+    pkgs,
+    ...
+  }: {
     security.sudo.wheelNeedsPassword = false;
     users.defaultUserShell = self.packages.${pkgs.stdenv.hostPlatform.system}.myShell;
-    environment.shells = [ "${self.packages.${pkgs.stdenv.hostPlatform.system}.myShell}/bin/fish" ];
-    environment.systemPackages = map (
-      entry: entry.data
-    ) self.packages.${pkgs.stdenv.hostPlatform.system}.myShell.configuration.runtimePkgs;
+    environment.shells = ["${self.packages.${pkgs.stdenv.hostPlatform.system}.myShell}/bin/fish"];
+    environment.systemPackages =
+      map (
+        entry: entry.data
+      )
+      self.packages.${pkgs.stdenv.hostPlatform.system}.myShell.configuration.runtimePkgs;
 
     time.timeZone = "Europe/Amsterdam";
     networking.networkmanager.enable = true;

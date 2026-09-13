@@ -1,6 +1,10 @@
-{ inputs, ... }: {
-  flake.nixosModules.hostVictus = { lib, pkgs, ... }: {
-    imports = [ inputs.disko.nixosModules.disko ];
+{inputs, ...}: {
+  flake.nixosModules.hostVictus = {
+    lib,
+    pkgs,
+    ...
+  }: {
+    imports = [inputs.disko.nixosModules.disko];
 
     fileSystems."/nix".neededForBoot = true;
     fileSystems."/persistent".neededForBoot = true;
@@ -50,7 +54,7 @@
         size = "100%";
         content = {
           type = "btrfs";
-          extraArgs = [ "-f" ];
+          extraArgs = ["-f"];
           subvolumes = {
             "/persistent" = {
               mountOptions = [

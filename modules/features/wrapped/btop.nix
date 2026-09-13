@@ -1,5 +1,9 @@
-{ inputs, ... }: {
-  perSystem = { lib, pkgs, ... }: {
+{inputs, ...}: {
+  perSystem = {
+    lib,
+    pkgs,
+    ...
+  }: {
     packages.myBtop = inputs.wrapper-modules.wrappers.btop.wrap {
       inherit pkgs;
       settings.color_theme = "noctalia";

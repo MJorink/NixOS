@@ -1,9 +1,17 @@
-{ self, inputs, ... }: {
+{
+  self,
+  inputs,
+  ...
+}: {
   flake.nixosConfigurations.NixPad = inputs.nixpkgs.lib.nixosSystem {
-    modules = [ self.nixosModules.hostNixPad ];
+    modules = [self.nixosModules.hostNixPad];
   };
 
-  flake.nixosModules.hostNixPad = { lib, pkgs, ... }: {
+  flake.nixosModules.hostNixPad = {
+    lib,
+    pkgs,
+    ...
+  }: {
     networking.hostName = "NixPad";
     imports = [
       self.nixosModules.base

@@ -1,5 +1,9 @@
-{ ... }: {
-  flake.nixosModules.base = { lib, pkgs, ... }: {
+{...}: {
+  flake.nixosModules.base = {
+    lib,
+    pkgs,
+    ...
+  }: {
     users = {
       users.jorink = {
         isNormalUser = true;

@@ -1,5 +1,5 @@
 {...}: {
-  flake.nixosModules.hostNixPad = {
+  flake.nixosModules.NixPadModule = {
     config,
     lib,
     pkgs,

@@ -7,7 +7,7 @@
     modules = [self.nixosModules.hostNixPad];
   };
 
-  flake.nixosModules.hostNixPad = {
+  flake.nixosModules.NixPadModule = {
     lib,
     pkgs,
     ...

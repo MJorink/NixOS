@@ -37,6 +37,35 @@
           };
         };
 
+        extraPlugins = {
+          vim-be-good.package = pkgs.vimPlugins.vim-be-good;
+        };
+
+        luaConfigRC.netrwStartup = ''
+          vim.api.nvim_create_autocmd("VimEnter", {
+            callback = function()
+              if vim.fn.argc() == 0 then
+                vim.cmd("Explore")
+              end
+            end,
+          })
+        '';
+
+        keymaps = [
+          {
+            key = "<C-d>";
+            mode = ["n" "v"];
+            silent = true;
+            action = "<C-d>zz";
+          }
+          {
+            key = "<C-u>";
+            mode = ["n" "v"];
+            silent = true;
+            action = "<C-u>zz";
+          }
+        ];
+
         autopairs.nvim-autopairs.enable = true;
         comments.comment-nvim.enable = true;
         utility.surround.enable = true;

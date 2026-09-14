@@ -11,8 +11,12 @@
 
     preservation.preserveAt."/persistent" = {
       users.jorink = {
-        directories = [".claude"];
-        files = [".claude.json"];
+        directories = [
+          ".claude"
+        ];
+        files = [
+          ".claude.json"
+        ];
       };
     };
   };

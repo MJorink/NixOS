@@ -33,9 +33,9 @@
         ld = "lazydocker";
 
         # Scripts
-        batstat = "~/NixOS/modules/features/scripts/batstat.sh";
-        system-age-info = "~/NixOS/modules/features/scripts/system-age-info.sh file /persistent/passwd";
-        dnball = "~/NixOS/modules/features/scripts/build-mods.sh";
+        batstat = "~/NixOS/assets/scripts/batstat.sh";
+        system-age-info = "~/NixOS/assets/scripts/system-age-info.sh file /persistent/passwd";
+        dnball = "~/NixOS/assets/scripts/build-mods.sh";
       };
 
       configFile.content = ''
@@ -43,9 +43,9 @@
         direnv hook fish | source
 
         if status is-interactive; and not status is-login
-                set_color green; uname -n | figlet -f slant
-        	set_color blue; uname -r
-        	set_color normal; echo
+          set_color green; uname -n | figlet -f slant
+          set_color blue; uname -r
+          set_color normal; echo
         end
       '';
     };

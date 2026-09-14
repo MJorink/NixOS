@@ -8,8 +8,6 @@
     preservation.url = "github:nix-community/preservation";
     disko.url = "github:nix-community/disko";
 
-    home-manager.url = "github:nix-community/home-manager";
-
     mangowm.url = "github:mangowm/mango";
     noctalia.url = "github:noctalia-dev/noctalia/cachix";
 
@@ -18,8 +16,8 @@
   outputs = inputs:
     inputs.flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
-        ./parts.nix
         (inputs.import-tree ./modules)
+        (inputs.import-tree ./wrapped)
       ];
     };
 }

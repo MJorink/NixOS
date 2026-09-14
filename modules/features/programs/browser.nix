@@ -1,15 +1,16 @@
 {...}: {
-  flake.nixosModules.spotify = {
+  flake.nixosModules.browser = {
     lib,
     pkgs,
     ...
   }: {
-    environment.systemPackages = with pkgs; [spotify];
+    environment.systemPackages = with pkgs; [
+      librewolf
+    ];
 
     preservation.preserveAt."/persistent" = {
       users.jorink.directories = [
-        ".config/spotify"
-        ".cache/spotify"
+        ".config/librewolf"
       ];
     };
   };

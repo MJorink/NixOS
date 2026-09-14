@@ -7,7 +7,7 @@
     packages.myFoot = inputs.wrapper-modules.wrappers.foot.wrap {
       inherit pkgs;
       settings = {
-        main.font = "UbuntuMono Nerd Font:size=14";
+        main.font = "MesloLGS Nerd Font:size=10";
         colors-dark = {
           foreground = "e6dbd3";
           background = "231d1b";

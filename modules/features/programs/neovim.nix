@@ -47,21 +47,6 @@
           nvim-web-devicons.enable = true;
         };
 
-        keymaps = [
-          {
-            key = "<leader>f/";
-            mode = "n";
-            silent = true;
-            action = "<cmd>Telescope current_buffer_fuzzy_find<CR>";
-            desc = "Fuzzy find in current buffer [Telescope]";
-          }
-        ];
-
-        filetree.nvimTree = {
-          enable = true;
-          mappings.toggle = "<leader>e";
-        };
-
         terminal.toggleterm = {
           enable = true;
           lazygit.enable = true;

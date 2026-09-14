@@ -4,9 +4,15 @@
     pkgs,
     ...
   }: {
-    environment.systemPackages = with pkgs; [
-      lazydocker
+    users.users.jorink.extraGroups = [
+      "docker"
     ];
+
+    preservation.preserveAt."/persistent" = {
+      users.jorink.directories = [
+        "docker"
+      ];
+    };
 
     virtualisation.docker = {
       enable = true;
@@ -14,10 +20,6 @@
       daemon.settings = {
         data-root = "/home/jorink/docker";
       };
-    };
-
-    preservation.preserveAt."/persistent" = {
-      users.jorink.directories = ["docker"];
     };
   };
 }

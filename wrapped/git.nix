@@ -8,12 +8,12 @@
       inherit pkgs;
       configFile.content = ''
         [init]
-                defaultBranch = main
+          defaultBranch = main
         [user]
-        	name = Jorink
-        	email = maxjorink@gmail.com
+          name = Jorink
+          email = maxjorink@gmail.com
         [credential]
-        	helper = store --file ~/.config/git/credentials
+          helper = store --file ~/.config/git/credentials
       '';
     };
   };

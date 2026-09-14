@@ -6,7 +6,6 @@
   }: {
     packages.myYazi = inputs.wrapper-modules.wrappers.yazi.wrap {
       inherit pkgs;
-      runtimePkgs = [pkgs.micro];
 
       plugins.lazygit = pkgs.yaziPlugins.lazygit;
 

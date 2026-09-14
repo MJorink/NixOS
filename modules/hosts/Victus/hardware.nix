@@ -1,5 +1,5 @@
 {...}: {
-  flake.nixosModules.hostVictus = {
+  flake.nixosModules.VictusModule = {
     config,
     lib,
     pkgs,

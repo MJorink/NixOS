@@ -4,7 +4,9 @@
     pkgs,
     ...
   }: {
-    environment.systemPackages = with pkgs; [onlyoffice-desktopeditors];
+    environment.systemPackages = with pkgs; [
+      onlyoffice-desktopeditors
+    ];
 
     preservation.preserveAt."/persistent" = {
       users.jorink.directories = [

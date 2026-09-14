@@ -27,6 +27,17 @@
       ];
     };
 
+    # Keychron udev rules (for launcher.keychron.com)
+    services.udev.packages = [
+      (pkgs.writeTextFile {
+        name = "keychron-udev-rules";
+        destination = "/etc/udev/rules.d/60-keychron.rules";
+        text = ''
+          KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3434", ATTRS{idProduct}=="0311", TAG+="uaccess"
+        '';
+      })
+    ];
+
     services.xserver.videoDrivers = ["nvidia"];
 
     hardware.nvidia = {

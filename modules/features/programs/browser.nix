@@ -6,6 +6,7 @@
   }: {
     environment.systemPackages = with pkgs; [
       librewolf
+      ungoogled-chromium
     ];
 
     preservation.preserveAt."/persistent" = {

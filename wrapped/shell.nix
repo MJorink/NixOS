@@ -39,6 +39,8 @@
       };
 
       configFile.content = ''
+        set -g fish_history fish
+
         starship init fish | source
         direnv hook fish | source
 

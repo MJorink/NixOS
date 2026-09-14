@@ -4,7 +4,7 @@
   ...
 }: {
   flake.nixosConfigurations.NixPad = inputs.nixpkgs.lib.nixosSystem {
-    modules = [self.nixosModules.hostNixPad];
+    modules = [self.nixosModules.NixPadModule];
   };
 
   flake.nixosModules.NixPadModule = {

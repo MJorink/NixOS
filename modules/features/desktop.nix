@@ -61,7 +61,10 @@
       };
 
       environment.systemPackages = with pkgs; [ bibata-cursors ];
-      fonts.packages = with pkgs; [ nerd-fonts.meslo-lg ];
+
+      fonts.packages = with pkgs; [
+        nerd-fonts.meslo-lg
+      ];
 
       preservation.preserveAt."/persistent" = {
         users.jorink.directories = [

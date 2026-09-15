@@ -162,8 +162,8 @@
           cursor_theme = "Bibata-Modern-Amber";
 
           # Keyboard
-          repeat_rate = 40;
-          repeat_delay = 250;
+          repeat_rate = 35;
+          repeat_delay = 200;
           xkb_rules_layout = "us";
           xkb_rules_variant = "intl";
 

@@ -1,22 +1,64 @@
 { inputs, ... }:
 let
-  vimSettings = pkgs: {
-    extraPlugins = {
-      vim-be-good.package = pkgs.vimPlugins.vim-be-good;
-    };
+  keymap = key: mode: action: {
+    inherit key mode action;
+    silent = true;
+  };
 
+  vimSettings = pkgs: {
+    # Core
     globals.mapleader = " ";
 
-    autocomplete.blink-cmp.enable = true;
-
-    binds.whichKey.enable = true;
-
-    undoFile.enable = true;
-
-    utility.undotree.enable = true;
+    options = {
+      shiftwidth = 2;
+      tabstop = 2;
+      softtabstop = 2;
+      hlsearch = false;
+      incsearch = true;
+      scrolloff = 8;
+      updatetime = 50;
+      wrap = false;
+      guicursor = "n-v-i-c:block-Cursor";
+    };
 
     searchCase = "smart";
 
+    clipboard = {
+      enable = true;
+      registers = "unnamedplus";
+    };
+
+    undoFile.enable = true;
+
+    # UI
+    mini.hues = {
+      enable = true;
+      setupOpts = {
+        background = "#231d1b";
+        foreground = "#e6dbd3";
+        accent = "orange";
+      };
+    };
+
+    statusline.lualine.enable = true;
+
+    tabline.nvimBufferline.enable = true;
+
+    visuals = {
+      indent-blankline.enable = true;
+      nvim-web-devicons.enable = true;
+    };
+
+    treesitter.context = {
+      enable = true;
+      setupOpts = {
+        max_lines = 5;
+        multiline_threshold = 1;
+        trim_scope = "inner";
+      };
+    };
+
+    # Editing
     autopairs.nvim-autopairs.enable = true;
 
     # Close with semicolon when editing a .nix file
@@ -37,38 +79,14 @@ let
 
     utility.surround.enable = true;
 
-    tabline.nvimBufferline.enable = true;
-
-    statusline.lualine.enable = true;
-
+    # Navigation
     telescope.enable = true;
 
     navigation.harpoon.enable = true;
 
-    options = {
-      shiftwidth = 2;
-      tabstop = 2;
-      softtabstop = 2;
-      hlsearch = false;
-      incsearch = true;
-      scrolloff = 8;
-      updatetime = 50;
-      wrap = false;
-    };
+    utility.undotree.enable = true;
 
-    clipboard = {
-      enable = true;
-      registers = "unnamedplus";
-    };
-
-    mini.hues = {
-      enable = true;
-      setupOpts = {
-        background = "#231d1b";
-        foreground = "#e6dbd3";
-        accent = "orange";
-      };
-    };
+    binds.whichKey.enable = true;
 
     luaConfigRC.netrwStartup = ''
       vim.api.nvim_create_autocmd("VimEnter", {
@@ -80,16 +98,7 @@ let
       })
     '';
 
-    visuals = {
-      indent-blankline.enable = true;
-      nvim-web-devicons.enable = true;
-    };
-
-    terminal.toggleterm = {
-      enable = true;
-      lazygit.enable = true;
-    };
-
+    # Languages / LSP
     languages = {
       enableTreesitter = true;
       enableFormat = true;
@@ -105,11 +114,15 @@ let
       };
     };
 
-    treesitter.context.enable = true;
-
     lsp = {
       enable = true;
       trouble.enable = true;
+    };
+
+    # Tools
+    terminal.toggleterm = {
+      enable = true;
+      lazygit.enable = true;
     };
 
     assistant.copilot = {
@@ -124,67 +137,26 @@ let
       };
     };
 
+    extraPlugins = {
+      vim-be-good.package = pkgs.vimPlugins.vim-be-good;
+    };
+
+    # Keymaps
     keymaps = [
-      {
-        key = "<C-d>";
-        mode = [
-          "n"
-          "v"
-        ];
-        silent = true;
-        action = "<C-d>zz";
-      }
-      {
-        key = "<leader>pv";
-        mode = [ "n" ];
-        silent = true;
-        action = "<Cmd>Ex<CR>";
-      }
-      {
-        key = "<leader>u";
-        mode = [ "n" ];
-        silent = true;
-        action = "<Cmd>UndotreeToggle<CR>";
-      }
-      {
-        key = "<C-u>";
-        mode = [
-          "n"
-          "v"
-        ];
-        silent = true;
-        action = "<C-u>zz";
-      }
-      {
-        key = "J";
-        mode = [ "v" ];
-        silent = true;
-        action = ":m '>+1<CR>gv=gv";
-      }
-      {
-        key = "K";
-        mode = [ "v" ];
-        silent = true;
-        action = ":m '<-2<CR>gv=gv";
-      }
-      {
-        key = "J";
-        mode = [ "n" ];
-        silent = true;
-        action = "mzJ`z";
-      }
-      {
-        key = "n";
-        mode = [ "n" ];
-        silent = true;
-        action = "nzzzv";
-      }
-      {
-        key = "N";
-        mode = [ "n" ];
-        silent = true;
-        action = "Nzzzv";
-      }
+      # Keep cursor centered
+      (keymap "<C-d>" [ "n" "v" ] "<C-d>zz")
+      (keymap "<C-u>" [ "n" "v" ] "<C-u>zz")
+      (keymap "n" [ "n" ] "nzzzv")
+      (keymap "N" [ "n" ] "Nzzzv")
+
+      # Move/join lines
+      (keymap "J" [ "v" ] ":m '>+1<CR>gv=gv")
+      (keymap "K" [ "v" ] ":m '<-2<CR>gv=gv")
+      (keymap "J" [ "n" ] "mzJ`z")
+
+      # Leader binds
+      (keymap "<leader>pv" [ "n" ] "<Cmd>Ex<CR>")
+      (keymap "<leader>u" [ "n" ] "<Cmd>UndotreeToggle<CR>")
     ];
   };
 in

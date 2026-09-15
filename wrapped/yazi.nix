@@ -1,26 +1,28 @@
-{inputs, ...}: {
-  perSystem = {
-    lib,
-    pkgs,
-    ...
-  }: {
-    packages.myYazi = inputs.wrapper-modules.wrappers.yazi.wrap {
-      inherit pkgs;
+{ inputs, ... }: {
+  perSystem =
+    {
+      lib,
+      pkgs,
+      ...
+    }:
+    {
+      packages.myYazi = inputs.wrapper-modules.wrappers.yazi.wrap {
+        inherit pkgs;
 
-      plugins.lazygit = pkgs.yaziPlugins.lazygit;
+        plugins.lazygit = pkgs.yaziPlugins.lazygit;
 
-      settings.yazi.mgr.show_hidden = true;
+        settings.yazi.mgr.show_hidden = true;
 
-      settings.keymap.mgr.prepend_keymap = [
-        {
-          on = [
-            "g"
-            "i"
-          ];
-          run = "plugin lazygit";
-          desc = "run lazygit";
-        }
-      ];
+        settings.keymap.mgr.prepend_keymap = [
+          {
+            on = [
+              "g"
+              "i"
+            ];
+            run = "plugin lazygit";
+            desc = "run lazygit";
+          }
+        ];
+      };
     };
-  };
 }

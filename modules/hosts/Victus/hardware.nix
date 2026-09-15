@@ -33,7 +33,7 @@
         name = "keychron-udev-rules";
         destination = "/etc/udev/rules.d/60-keychron.rules";
         text = ''
-          KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3434", ATTRS{idProduct}=="0311", TAG+="uaccess"
+          KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3434", TAG+="uaccess"
         '';
       })
     ];

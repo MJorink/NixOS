@@ -23,6 +23,12 @@
         undoFile.enable = true;
         searchCase = "smart";
 
+        options = {
+          shiftwidth = 2;
+          tabstop = 2;
+          softtabstop = 2;
+        };
+
         clipboard = {
           enable = true;
           registers = "unnamedplus";

@@ -19,6 +19,20 @@ let
 
     autopairs.nvim-autopairs.enable = true;
 
+    # Close with semicolon when editing a .nix file
+    lazy.plugins.nvim-autopairs.after = ''
+      local npairs = require("nvim-autopairs")
+      for open, close in pairs({ ["{"] = "}", ["["] = "]" }) do
+        npairs.get_rule(open):replace_endpair(function(opts)
+          if vim.bo[opts.bufnr].filetype == "nix"
+            and opts.line:sub(1, opts.col - 1):match("=%s*$") then
+            return close .. ";"
+          end
+          return close
+        end)
+      end
+    '';
+
     comments.comment-nvim.enable = true;
 
     utility.surround.enable = true;
@@ -94,6 +108,18 @@ let
     lsp = {
       enable = true;
       trouble.enable = true;
+    };
+
+    assistant.copilot = {
+      enable = true;
+      setupOpts.suggestion.auto_trigger = true;
+      mappings.suggestion = {
+        accept = "<A-a>";
+        acceptLine = "<A-l>";
+        next = "<A-]>";
+        prev = "<A-[>";
+        dismiss = "<A-e>";
+      };
     };
 
     keymaps = [

@@ -105,6 +105,8 @@ let
       };
     };
 
+    treesitter.context.enable = true;
+
     lsp = {
       enable = true;
       trouble.enable = true;

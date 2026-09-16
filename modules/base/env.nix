@@ -8,7 +8,6 @@
     {
       environment.variables = {
         EDITOR = "nvim";
-        NH_FLAKE = "/home/jorink/NixOS";
         DOTNET_ROOT = "${pkgs.dotnet-sdk_10}/share/dotnet";
       };
 

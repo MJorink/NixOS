@@ -19,9 +19,9 @@
           self.packages.${pkgs.stdenv.hostPlatform.system}.myGit
           self.packages.${pkgs.stdenv.hostPlatform.system}.myBtop
           self.packages.${pkgs.stdenv.hostPlatform.system}.myNeovim
+          self.packages.${pkgs.stdenv.hostPlatform.system}.myNh
           lazygit
           lazydocker
-          nh
           figlet
           unzip
           zip
@@ -37,6 +37,7 @@
           dnr = "clear;dotnet run";
           lg = "lazygit";
           ld = "lazydocker";
+          yazi = "sudo yazi";
           NixPad = "ssh 192.168.100.149";
 
           # Scripts

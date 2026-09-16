@@ -18,7 +18,6 @@
           self.packages.${pkgs.stdenv.hostPlatform.system}.myFoot
           self.packages.${pkgs.stdenv.hostPlatform.system}.myNoctalia
           bibata-cursors
-          nerd-fonts.meslo-lg
           wl-clip-persist
           wl-clipboard
           cliphist

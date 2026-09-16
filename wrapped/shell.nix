@@ -55,6 +55,12 @@
             set_color green; uname -n | figlet -f slant
             set_color blue; uname -r
             set_color normal; echo
+
+            if systemctl is-failed -q nixos-upgrade.service
+              set_color red
+              echo "! nixos-upgrade failed - journalctl -u nixos-upgrade -e"
+              set_color normal; echo
+            end
           end
         '';
       };

@@ -148,6 +148,8 @@ let
       (keymap "<C-u>" [ "n" "v" ] "<C-u>zz")
       (keymap "n" [ "n" ] "nzzzv")
       (keymap "N" [ "n" ] "Nzzzv")
+      (keymap "(" [ "n" ] "(zzzv")
+      (keymap ")" [ "n" ] ")zzzv")
 
       # Move/join lines
       (keymap "J" [ "v" ] ":m '>+1<CR>gv=gv")

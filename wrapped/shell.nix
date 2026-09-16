@@ -27,12 +27,15 @@
           unzip
           zip
           wget
+          dotnet-sdk_10
+          dotnet-runtime_10
         ];
 
         shellAliases = {
           clr = "clear";
           ls = "ls -a --color";
           dnb = "clear;dotnet build";
+          dnr = "clear;dotnet run";
           lg = "lazygit";
           ld = "lazydocker";
 

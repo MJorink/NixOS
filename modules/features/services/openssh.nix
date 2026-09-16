@@ -19,7 +19,7 @@
       '';
 
       users.users.jorink.openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGl5L3w+pAB0VcCfAK8SrdDv3Bqs/P0aV4gfoayEjQYg jorink@Victus"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJm3W8FC3P/KL1QLEZnLf4ut5UmOSntIFbkpkgQyhqRc jorink@Victus"
       ];
     };
 }

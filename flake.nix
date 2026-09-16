@@ -8,9 +8,6 @@
     preservation.url = "github:nix-community/preservation";
     disko.url = "github:nix-community/disko";
 
-    mangowm.url = "github:mangowm/mango";
-    noctalia.url = "github:noctalia-dev/noctalia/cachix";
-
     nvf.url = "github:notashelf/nvf";
   };
   outputs =

@@ -15,56 +15,67 @@ enabled = false
 tint_intensity = 0.30000001192092896
 
 [bar]
-order = [ "main" ]
+order = ["main"]
 
-    [bar.main]
-    auto_hide = false
-    background_opacity = 1.0
-    border = "outline"
-    border_width = 0.0
-    capsule = false
-    capsule_fill = "surface_variant"
-    capsule_group = []
-    capsule_opacity = 1.0
-    capsule_padding = 6.0
-    capsule_thickness = 0.75999999046325684
-    center = [ "volume", "audio_visualizer", "media" ]
-    concave_edge_corners = true
-    contact_shadow = false
-    enabled = true
-    end = [ "temp", "cpu", "ram", "spacer_1", "notifications", "clipboard", "brightness", "battery", "clock", "session" ]
-    font_family = "MesloLGS Nerd Font"
-    font_scale = 1.0
-    font_weight = 500
-    hover_highlight = true
-    layer = "top"
-    margin_edge = 0
-    margin_ends = 100
-    margin_opposite_edge = 0
-    padding = 14
-    panel_overlap = 1
-    position = "left"
-    radius = 12
-    radius_bottom_left = 12
-    radius_bottom_right = 12
-    radius_top_left = 12
-    radius_top_right = 12
-    reserve_space = true
-    scale = 1.0
-    shadow = true
-    show_on_workspace_switch = true
-    smart_auto_hide = false
-    start = [ "workspaces", "tray", "nix-monitor", "privacy" ]
-    thickness = 34
-    widget_spacing = 6
+[bar.main]
+auto_hide = false
+background_opacity = 1.0
+border = "outline"
+border_width = 0.0
+capsule = false
+capsule_fill = "surface_variant"
+capsule_group = []
+capsule_opacity = 1.0
+capsule_padding = 6.0
+capsule_thickness = 0.75999999046325684
+center = ["volume", "audio_visualizer", "media"]
+concave_edge_corners = true
+contact_shadow = false
+enabled = true
+end = [
+  "temp",
+  "cpu",
+  "ram",
+  "spacer_1",
+  "notifications",
+  "clipboard",
+  "brightness",
+  "battery",
+  "clock",
+  "session",
+]
+font_family = "MesloLGS Nerd Font"
+font_scale = 1.0
+font_weight = 500
+hover_highlight = true
+layer = "top"
+margin_edge = 0
+margin_ends = 100
+margin_opposite_edge = 0
+padding = 14
+panel_overlap = 1
+position = "left"
+radius = 12
+radius_bottom_left = 12
+radius_bottom_right = 12
+radius_top_left = 12
+radius_top_right = 12
+reserve_space = true
+scale = 1.0
+shadow = true
+show_on_workspace_switch = true
+smart_auto_hide = false
+start = ["workspaces", "tray", "nix-monitor", "privacy"]
+thickness = 34
+widget_spacing = 6
 
-        [bar.main.dead_zone]
+[bar.main.dead_zone]
 
 [battery]
 warning_threshold = 15
 
-    [battery.device."/org/freedesktop/UPower/devices/battery_BAT1"]
-    warning_threshold = 0
+[battery.device."/org/freedesktop/UPower/devices/battery_BAT1"]
+warning_threshold = 0
 
 [brightness]
 enable_ddcutil = false
@@ -77,7 +88,7 @@ enabled = false
 refresh_minutes = 15
 
 [control_center]
-hidden_tabs = [ "screen-time" ]
+hidden_tabs = ["screen-time"]
 shortcuts = []
 show_session_button = true
 show_shortcut_labels = true
@@ -85,20 +96,20 @@ sidebar = "compact"
 sidebar_section = "compact"
 width = 600
 
-    [control_center.calendar]
-    event_date_format = "%A %e %B"
-    event_time_format = "%H:%M"
-    show_events_card = false
-    show_week_numbers = false
+[control_center.calendar]
+event_date_format = "%A %e %B"
+event_time_format = "%H:%M"
+show_events_card = false
+show_week_numbers = false
 
 [desktop_widgets]
 enabled = false
 schema_version = 2
 
-    [desktop_widgets.grid]
-    cell_size = 16
-    major_interval = 4
-    visible = true
+[desktop_widgets.grid]
+cell_size = 16
+major_interval = 4
+visible = true
 
 [dock]
 active_monitor_only = false
@@ -164,62 +175,62 @@ wifi_enabled = []
 delay_ms = 0
 enabled = false
 
-    [hot_corners.bottom_left]
-    action = "none"
-    command = ""
+[hot_corners.bottom_left]
+action = "none"
+command = ""
 
-    [hot_corners.bottom_right]
-    action = "none"
-    command = ""
+[hot_corners.bottom_right]
+action = "none"
+command = ""
 
-    [hot_corners.top_left]
-    action = "none"
-    command = ""
+[hot_corners.top_left]
+action = "none"
+command = ""
 
-    [hot_corners.top_right]
-    action = "none"
-    command = ""
+[hot_corners.top_right]
+action = "none"
+command = ""
 
 [idle]
-behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
+behavior_order = ["lock", "screen-off", "lock-and-suspend"]
 pre_action_fade_seconds = 2.0
 
-    [idle.behavior.lock]
-    action = "lock"
-    command = ""
-    enabled = false
-    locked_timeout = 0.0
-    resume_command = ""
-    timeout = 600.0
+[idle.behavior.lock]
+action = "lock"
+command = ""
+enabled = false
+locked_timeout = 0.0
+resume_command = ""
+timeout = 600.0
 
-    [idle.behavior.lock-and-suspend]
-    action = "lock_and_suspend"
-    command = ""
-    enabled = false
-    locked_timeout = 0.0
-    resume_command = ""
-    timeout = 900.0
+[idle.behavior.lock-and-suspend]
+action = "lock_and_suspend"
+command = ""
+enabled = false
+locked_timeout = 0.0
+resume_command = ""
+timeout = 900.0
 
-    [idle.behavior.screen-off]
-    action = "screen_off"
-    command = ""
-    enabled = false
-    locked_timeout = 0.0
-    resume_command = ""
-    timeout = 660.0
+[idle.behavior.screen-off]
+action = "screen_off"
+command = ""
+enabled = false
+locked_timeout = 0.0
+resume_command = ""
+timeout = 660.0
 
 [keybinds]
-cancel = [ "Escape" ]
-copy = [ "Ctrl+c" ]
-delete = [ "Delete" ]
-down = [ "Down" ]
-left = [ "Left" ]
-right = [ "Right" ]
-save = [ "Ctrl+s" ]
-tab_next = [ "Tab" ]
-tab_previous = [ "Shift+ISO_Left_Tab" ]
-up = [ "Up" ]
-validate = [ "Return", "KP_Enter", "space" ]
+cancel = ["Escape"]
+copy = ["Ctrl+c"]
+delete = ["Delete"]
+down = ["Down"]
+left = ["Left"]
+right = ["Right"]
+save = ["Ctrl+s"]
+tab_next = ["Tab"]
+tab_previous = ["Shift+ISO_Left_Tab"]
+up = ["Up"]
+validate = ["Return", "KP_Enter", "space"]
 
 [location]
 address = "Zwolle"
@@ -243,128 +254,128 @@ wallpaper = ""
 enabled = false
 schema_version = 2
 widget_order = [
-    "lockscreen-login-box@HDMI-A-1",
-    "lockscreen-login-box@WL-1",
-    "lockscreen-login-box@HDMI-A-2",
-    "lockscreen-login-box@eDP-1"
+  "lockscreen-login-box@HDMI-A-1",
+  "lockscreen-login-box@WL-1",
+  "lockscreen-login-box@HDMI-A-2",
+  "lockscreen-login-box@eDP-1",
 ]
 
-    [lockscreen_widgets.grid]
-    cell_size = 16
-    major_interval = 4
-    visible = true
+[lockscreen_widgets.grid]
+cell_size = 16
+major_interval = 4
+visible = true
 
-    [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
-    box_height = 196.0
-    box_width = 810.0
-    cx = 1920.0
-    cy = 1440.0
-    enabled = true
-    output = "HDMI-A-1"
-    placement_height = 1440.0
-    placement_width = 2560.0
-    rotation = 0.0
-    type = "login_box"
+[lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
+box_height = 196.0
+box_width = 810.0
+cx = 1920.0
+cy = 1440.0
+enabled = true
+output = "HDMI-A-1"
+placement_height = 1440.0
+placement_width = 2560.0
+rotation = 0.0
+type = "login_box"
 
-        [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1".settings]
-        background_color = "surface_variant"
-        background_opacity = 0.88
-        background_radius = 12.0
-        center_password_text = false
-        input_opacity = 1.0
-        input_radius = 6.0
-        layout = "regular"
-        show_caps_lock = true
-        show_keyboard_layout = true
-        show_login_button = true
-        show_media = true
-        show_session_buttons = true
-        show_unlock_hint = true
-        show_weather = true
+[lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1".settings]
+background_color = "surface_variant"
+background_opacity = 0.88
+background_radius = 12.0
+center_password_text = false
+input_opacity = 1.0
+input_radius = 6.0
+layout = "regular"
+show_caps_lock = true
+show_keyboard_layout = true
+show_login_button = true
+show_media = true
+show_session_buttons = true
+show_unlock_hint = true
+show_weather = true
 
-    [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-2"]
-    box_height = 196.0
-    box_width = 720.0
-    cx = 640.0
-    cy = 905.0
-    enabled = true
-    output = "HDMI-A-2"
-    placement_height = 0.0
-    placement_width = 0.0
-    rotation = 0.0
-    type = "login_box"
+[lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-2"]
+box_height = 196.0
+box_width = 720.0
+cx = 640.0
+cy = 905.0
+enabled = true
+output = "HDMI-A-2"
+placement_height = 0.0
+placement_width = 0.0
+rotation = 0.0
+type = "login_box"
 
-        [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-2".settings]
-        background_color = "surface_variant"
-        background_opacity = 0.88
-        background_radius = 12.0
-        center_password_text = false
-        input_opacity = 1.0
-        input_radius = 6.0
-        layout = "regular"
-        show_caps_lock = true
-        show_keyboard_layout = true
-        show_login_button = true
-        show_media = true
-        show_session_buttons = true
-        show_unlock_hint = true
-        show_weather = true
+[lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-2".settings]
+background_color = "surface_variant"
+background_opacity = 0.88
+background_radius = 12.0
+center_password_text = false
+input_opacity = 1.0
+input_radius = 6.0
+layout = "regular"
+show_caps_lock = true
+show_keyboard_layout = true
+show_login_button = true
+show_media = true
+show_session_buttons = true
+show_unlock_hint = true
+show_weather = true
 
-    [lockscreen_widgets.widget."lockscreen-login-box@WL-1"]
-    box_height = 196.0
-    box_width = 720.0
-    cx = 301.0
-    cy = 801.5
-    enabled = true
-    output = "WL-1"
-    placement_height = 0.0
-    placement_width = 0.0
-    rotation = 0.0
-    type = "login_box"
+[lockscreen_widgets.widget."lockscreen-login-box@WL-1"]
+box_height = 196.0
+box_width = 720.0
+cx = 301.0
+cy = 801.5
+enabled = true
+output = "WL-1"
+placement_height = 0.0
+placement_width = 0.0
+rotation = 0.0
+type = "login_box"
 
-        [lockscreen_widgets.widget."lockscreen-login-box@WL-1".settings]
-        background_color = "surface_variant"
-        background_opacity = 0.88
-        background_radius = 12.0
-        center_password_text = false
-        input_opacity = 1.0
-        input_radius = 6.0
-        layout = "regular"
-        show_caps_lock = true
-        show_keyboard_layout = true
-        show_login_button = true
-        show_media = true
-        show_session_buttons = true
-        show_unlock_hint = true
-        show_weather = true
+[lockscreen_widgets.widget."lockscreen-login-box@WL-1".settings]
+background_color = "surface_variant"
+background_opacity = 0.88
+background_radius = 12.0
+center_password_text = false
+input_opacity = 1.0
+input_radius = 6.0
+layout = "regular"
+show_caps_lock = true
+show_keyboard_layout = true
+show_login_button = true
+show_media = true
+show_session_buttons = true
+show_unlock_hint = true
+show_weather = true
 
-    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
-    box_height = 196.0
-    box_width = 720.0
-    cx = 960.0
-    cy = 961.0
-    enabled = true
-    output = "eDP-1"
-    placement_height = 1080.0
-    placement_width = 1920.0
-    rotation = 0.0
-    type = "login_box"
+[lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+box_height = 196.0
+box_width = 720.0
+cx = 960.0
+cy = 961.0
+enabled = true
+output = "eDP-1"
+placement_height = 1080.0
+placement_width = 1920.0
+rotation = 0.0
+type = "login_box"
 
-        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
-        background_color = "surface_variant"
-        background_opacity = 0.88
-        background_radius = 12.0
-        center_password_text = false
-        input_opacity = 1.0
-        input_radius = 6.0
-        layout = "regular"
-        show_caps_lock = true
-        show_keyboard_layout = true
-        show_login_button = true
-        show_media = true
-        show_session_buttons = true
-        show_unlock_hint = true
-        show_weather = true
+[lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+background_color = "surface_variant"
+background_opacity = 0.88
+background_radius = 12.0
+center_password_text = false
+input_opacity = 1.0
+input_radius = 6.0
+layout = "regular"
+show_caps_lock = true
+show_keyboard_layout = true
+show_login_button = true
+show_media = true
+show_session_buttons = true
+show_unlock_hint = true
+show_weather = true
 
 [nightlight]
 enabled = false
@@ -400,22 +411,22 @@ position = "top_center"
 position_vertical = "top_center"
 scale = 1.0
 
-    [osd.kinds]
-    bluetooth = true
-    brightness = true
-    caffeine = true
-    dnd = true
-    keyboard_backlight = true
-    keyboard_layout = true
-    lock_keys = true
-    media = true
-    nightlight = true
-    power_profile = true
-    privacy = true
-    volume = true
-    volume_input = true
-    volume_output = true
-    wifi = true
+[osd.kinds]
+bluetooth = true
+brightness = true
+caffeine = true
+dnd = true
+keyboard_backlight = true
+keyboard_layout = true
+lock_keys = true
+media = true
+nightlight = true
+power_profile = true
+privacy = true
+volume = true
+volume_input = true
+volume_output = true
+wifi = true
 
 [plugin_settings]
 
@@ -423,17 +434,17 @@ scale = 1.0
 auto_update = "all"
 enabled = []
 
-    [[plugins.source]]
-    enabled = false
-    kind = "git"
-    location = "https://github.com/noctalia-dev/official-plugins"
-    name = "official"
+[[plugins.source]]
+enabled = false
+kind = "git"
+location = "https://github.com/noctalia-dev/official-plugins"
+name = "official"
 
-    [[plugins.source]]
-    enabled = false
-    kind = "git"
-    location = "https://github.com/noctalia-dev/community-plugins"
-    name = "community"
+[[plugins.source]]
+enabled = false
+kind = "git"
+location = "https://github.com/noctalia-dev/community-plugins"
+name = "community"
 
 [shell]
 app_icon_colorize = false
@@ -469,147 +480,147 @@ show_location = true
 telemetry_enabled = false
 time_format = "{:%H:%M}"
 
-    [shell.animation]
-    enabled = true
-    speed = 1.0
+[shell.animation]
+enabled = true
+speed = 1.0
 
-    [shell.greeter_sync]
-    auto_sync = false
+[shell.greeter_sync]
+auto_sync = false
 
-    [shell.keyboard_layout]
+[shell.keyboard_layout]
 
-    [shell.launcher]
-    app_grid = false
-    auto_paste = "off"
-    categories = false
-    compact = true
-    fetch_exchange_rates = true
-    pinned = []
-    provider_prefix = "/"
-    show_app_actions = false
-    show_app_origin_indicator = true
-    show_icons = false
-    sort_by_usage = false
+[shell.launcher]
+app_grid = false
+auto_paste = "off"
+categories = false
+compact = true
+fetch_exchange_rates = true
+pinned = []
+provider_prefix = "/"
+show_app_actions = false
+show_app_origin_indicator = true
+show_icons = false
+sort_by_usage = false
 
-        [shell.launcher.dmenu]
+[shell.launcher.dmenu]
 
-        [shell.launcher.providers.emoji]
-        global = false
-        prefix = ""
+[shell.launcher.providers.emoji]
+global = false
+prefix = ""
 
-        [shell.launcher.providers.session]
-        global = false
-        prefix = ""
+[shell.launcher.providers.session]
+global = false
+prefix = ""
 
-    [shell.mpris]
-    blacklist = []
+[shell.mpris]
+blacklist = []
 
-    [shell.panel]
-    borders = true
-    clipboard_placement = "floating"
-    clipboard_position = "center"
-    control_center_placement = "attached"
-    control_center_position = "auto"
-    floating_layer = "overlay"
-    floating_offset = 8
-    launcher_placement = "floating"
-    launcher_position = "center"
-    list_item_background = false
-    open_near_click_clipboard = false
-    open_near_click_control_center = false
-    open_near_click_launcher = false
-    open_near_click_session = false
-    open_near_click_wallpaper = false
-    polkit_placement = "floating"
-    polkit_position = "center"
-    session_placement = "attached"
-    session_position = "auto"
-    shadow = true
-    transparency_mode = "solid"
-    wallpaper_placement = "attached"
-    wallpaper_position = "auto"
+[shell.panel]
+borders = true
+clipboard_placement = "floating"
+clipboard_position = "center"
+control_center_placement = "attached"
+control_center_position = "auto"
+floating_layer = "overlay"
+floating_offset = 8
+launcher_placement = "floating"
+launcher_position = "center"
+list_item_background = false
+open_near_click_clipboard = false
+open_near_click_control_center = false
+open_near_click_launcher = false
+open_near_click_session = false
+open_near_click_wallpaper = false
+polkit_placement = "floating"
+polkit_position = "center"
+session_placement = "attached"
+session_position = "auto"
+shadow = true
+transparency_mode = "solid"
+wallpaper_placement = "attached"
+wallpaper_position = "auto"
 
-    [shell.privacy]
-    cam_filter_regex = ""
-    mic_filter_regex = ""
-    screen_filter_regex = ""
+[shell.privacy]
+cam_filter_regex = ""
+mic_filter_regex = ""
+screen_filter_regex = ""
 
-    [shell.screen_corners]
-    enabled = false
-    size = 32
+[shell.screen_corners]
+enabled = false
+size = 32
 
-    [shell.screenshot]
-    confirm_region = false
-    copy_to_clipboard = true
-    directory = ""
-    filename_pattern = ""
-    freeze_screen = true
-    pipe_command = ""
-    pipe_to_command = false
-    remember_last_region = false
-    save_to_file = true
-    show_cursor = false
+[shell.screenshot]
+confirm_region = false
+copy_to_clipboard = true
+directory = ""
+filename_pattern = ""
+freeze_screen = true
+pipe_command = ""
+pipe_to_command = false
+remember_last_region = false
+save_to_file = true
+show_cursor = false
 
-    [shell.session]
-    grid = true
-    grid_columns = 1
-    show_shortcuts = true
+[shell.session]
+grid = true
+grid_columns = 1
+show_shortcuts = true
 
-        [shell.session.power]
+[shell.session.power]
 
-        [[shell.session.actions]]
-        action = "lock"
-        command = ""
-        countdown_seconds = 0.0
-        enabled = true
-        glyph = ""
-        label = ""
-        shortcut = "1"
-        variant = "default"
+[[shell.session.actions]]
+action = "lock"
+command = ""
+countdown_seconds = 0.0
+enabled = true
+glyph = ""
+label = ""
+shortcut = "1"
+variant = "default"
 
-        [[shell.session.actions]]
-        action = "logout"
-        command = ""
-        countdown_seconds = 0.0
-        enabled = true
-        glyph = ""
-        label = ""
-        shortcut = "2"
-        variant = "default"
+[[shell.session.actions]]
+action = "logout"
+command = ""
+countdown_seconds = 0.0
+enabled = true
+glyph = ""
+label = ""
+shortcut = "2"
+variant = "default"
 
-        [[shell.session.actions]]
-        action = "lock_and_suspend"
-        command = ""
-        countdown_seconds = 0.0
-        enabled = true
-        glyph = ""
-        label = ""
-        shortcut = "3"
-        variant = "default"
+[[shell.session.actions]]
+action = "lock_and_suspend"
+command = ""
+countdown_seconds = 0.0
+enabled = true
+glyph = ""
+label = ""
+shortcut = "3"
+variant = "default"
 
-        [[shell.session.actions]]
-        action = "reboot"
-        command = ""
-        countdown_seconds = 0.0
-        enabled = true
-        glyph = ""
-        label = ""
-        shortcut = "4"
-        variant = "default"
+[[shell.session.actions]]
+action = "reboot"
+command = ""
+countdown_seconds = 0.0
+enabled = true
+glyph = ""
+label = ""
+shortcut = "4"
+variant = "default"
 
-        [[shell.session.actions]]
-        action = "shutdown"
-        command = ""
-        countdown_seconds = 0.0
-        enabled = true
-        glyph = ""
-        label = ""
-        shortcut = "5"
-        variant = "destructive"
+[[shell.session.actions]]
+action = "shutdown"
+command = ""
+countdown_seconds = 0.0
+enabled = true
+glyph = ""
+label = ""
+shortcut = "5"
+variant = "destructive"
 
-    [shell.shadow]
-    alpha = 0.55000001192092896
-    direction = "down_right"
+[shell.shadow]
+alpha = 0.55000001192092896
+direction = "down_right"
 
 [storage]
 key_file = ""
@@ -661,11 +672,11 @@ pure_black_dark = false
 source = "builtin"
 wallpaper_scheme = "vibrant"
 
-    [theme.templates]
-    builtin_ids = [ "gtk3", "gtk4", "qt" ]
-    community_ids = []
-    enable_builtin_templates = true
-    enable_community_templates = true
+[theme.templates]
+builtin_ids = ["gtk3", "gtk4", "qt"]
+community_ids = []
+enable_builtin_templates = true
+enable_community_templates = true
 
 [wallpaper]
 directory = ""
@@ -676,15 +687,15 @@ enabled = false
 fill_color = ""
 fill_mode = "crop"
 per_monitor_directories = false
-transition = [ "fade", "wipe", "disc", "stripes", "zoom", "honeycomb" ]
+transition = ["fade", "wipe", "disc", "stripes", "zoom", "honeycomb"]
 transition_duration = 1500.0
 transition_on_startup = false
 
-    [wallpaper.automation]
-    enabled = false
-    interval_seconds = 1800
-    order = "random"
-    recursive = true
+[wallpaper.automation]
+enabled = false
+interval_seconds = 1800
+order = "random"
+recursive = true
 
 [weather]
 effects = true

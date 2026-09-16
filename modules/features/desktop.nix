@@ -12,10 +12,6 @@
       ...
     }:
     {
-      imports = [
-        inputs.mangowm.nixosModules.mango
-      ];
-
       programs.mango = {
         enable = true;
         package = self.packages.${pkgs.stdenv.hostPlatform.system}.myMango;

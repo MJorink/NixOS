@@ -29,6 +29,7 @@
         self.nixosModules.security
         self.nixosModules.socials
         self.nixosModules.docker
+        self.nixosModules.openssh
       ];
     };
 }

@@ -14,11 +14,20 @@
     {
       imports = [
         inputs.mangowm.nixosModules.mango
-        inputs.noctalia.nixosModules.default
       ];
 
-      # Conflicts with flake
-      disabledModules = [ "programs/wayland/noctalia.nix" ];
+      programs.mango = {
+        enable = true;
+        package = self.packages.${pkgs.stdenv.hostPlatform.system}.myMango;
+      };
+
+      # Make runtimePkgs from myMango available system-wide
+      environment.systemPackages = map (
+        entry: entry.data
+      ) self.packages.${pkgs.stdenv.hostPlatform.system}.myMango.configuration.runtimePkgs;
+
+      # For hot-reloading
+      systemd.packages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.myMango ];
 
       # Only enable mullvad-vpn gui if normal service is enabled
       services.mullvad-vpn.gui.enable = config.services.mullvad-vpn.enable;
@@ -29,14 +38,6 @@
       services.upower.enable = true;
       services.gnome.gnome-keyring.enable = true;
 
-      programs.mango = {
-        enable = true;
-        package = self.packages.${pkgs.stdenv.hostPlatform.system}.myMango;
-      };
-
-      # For hot-reloading
-      systemd.packages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.myMango ];
-
       # Screen sharing/recording support
       xdg.portal = {
         enable = true;
@@ -45,22 +46,6 @@
         extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
         config.common.defualt = "*";
       };
-
-      # Use noctalia from cachix instead of building it
-      nix.settings = {
-        extra-substituters = [ "https://noctalia.cachix.org" ];
-        extra-trusted-public-keys = [
-          "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
-        ];
-      };
-
-      programs.noctalia = {
-        enable = true;
-        recommendedServices.enable = false;
-        # package = self.packages.${pkgs.stdenv.hostPlatform.system}.myNoctalia;
-      };
-
-      environment.systemPackages = with pkgs; [ bibata-cursors ];
 
       fonts.packages = with pkgs; [
         nerd-fonts.meslo-lg

@@ -31,13 +31,10 @@ let
     undoFile.enable = true;
 
     # UI
-    mini.hues = {
+    theme = {
       enable = true;
-      setupOpts = {
-        background = "#231d1b";
-        foreground = "#e6dbd3";
-        accent = "orange";
-      };
+      name = "gruvbox";
+      style = "dark";
     };
 
     statusline.lualine.enable = true;

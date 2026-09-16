@@ -45,6 +45,8 @@
           dnball = "~/NixOS/assets/scripts/build-mods.sh";
         };
 
+        flags."--no-config" = false;
+
         configFile.content = ''
           set -g fish_history fish
 

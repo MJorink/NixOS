@@ -16,20 +16,19 @@
         package = inputs.mangowm.packages.${pkgs.stdenv.hostPlatform.system}.mango;
 
         runtimePkgs = [
-          # self.packages.${pkgs.stdenv.hostPlatform.system}.myNoctalia
           self.packages.${pkgs.stdenv.hostPlatform.system}.myFoot
-          pkgs.cliphist
-          pkgs.wl-clip-persist
-          pkgs.wl-clipboard
+          pkgs.bibata-cursors
+          pkgs.nerd-fonts.meslo-lg
         ];
 
         hotReload.enable = true;
 
         autostart_sh = ''
-          wl-clip-persist --clipboard regular --reconnect-tries 0 &
-          wl-paste --type text --watch cliphist store &
-          noctalia &
-          mullvad-vpn
+          ${pkgs.wl-clip-persist} --clipboard regular --reconnect-tries 0 &
+          ${pkgs.wl-paste} --type text --watch ${pkgs.cliphist} store &
+          ${pkgs.swaybg} -i ${../assets/wallpaper.png} -m fill &
+          ${pkgs.noctalia} &
+          command -v mullvad-vpn >/dev/null && mullvad-vpn
         '';
 
         settings = {
@@ -65,7 +64,7 @@
             # Spawn
             "SUPER, Return, spawn, foot"
             "SUPER+SHIFT, Return, spawn, foot"
-            "SUPER+SHIFT, e, spawn, foot yazi ~/NixOS/modules"
+            "SUPER+SHIFT, e, spawn, foot yazi ~/NixOS"
             "SUPER+CTRL, e, spawn, foot yazi ~/repos"
             "SUPER, e, spawn, foot yazi"
             "SUPER, m, spawn, spotify"
@@ -159,7 +158,7 @@
 
           # Cursor
           cursor_size = 16;
-          cursor_theme = "Bibata-Modern-Amber";
+          cursor_theme = "Bibata-Modern-Ice";
 
           # Keyboard
           repeat_rate = 35;
@@ -191,26 +190,26 @@
           gappov = 10;
 
           # Colors
-          rootcolor = "0x231d1bff";
-          bordercolor = "0x76655fff";
-          dropcolor = "0xb85a3080";
-          splitcolor = "0xd8a657ff";
-          focuscolor = "0xb85a30ff";
-          maximizescreencolor = "0x8b9a5aff";
-          urgentcolor = "0xc25d4eff";
-          scratchpadcolor = "0xd8a657ff";
-          globalcolor = "0x421b0aff";
-          overlaycolor = "0x2f3616ff";
-          jump_label_decorate_fg_color = "0xe6dbd3ff";
-          jump_label_decorate_bg_color = "0x3a302cff";
-          jump_label_decorate_focus_fg_color = "0x1d1816ff";
-          jump_label_decorate_focus_bg_color = "0xb85a30ff";
-          jump_label_decorate_border_color = "0x76655fff";
-          group_bar_decorate_fg_color = "0xe6dbd3ff";
-          group_bar_decorate_bg_color = "0x3a302cff";
-          group_bar_decorate_focus_fg_color = "0x1d1816ff";
-          group_bar_decorate_focus_bg_color = "0xb85a30ff";
-          group_bar_decorate_border_color = "0x76655fff";
+          rootcolor = "0x282828ff";
+          bordercolor = "0x665c54ff";
+          dropcolor = "0xd65d0e80";
+          splitcolor = "0xd79921ff";
+          focuscolor = "0xd65d0eff";
+          maximizescreencolor = "0x98971aff";
+          urgentcolor = "0xcc241dff";
+          scratchpadcolor = "0xd79921ff";
+          globalcolor = "0xaf3a03ff";
+          overlaycolor = "0x79740eff";
+          jump_label_decorate_fg_color = "0xebdbb2ff";
+          jump_label_decorate_bg_color = "0x3c3836ff";
+          jump_label_decorate_focus_fg_color = "0x282828ff";
+          jump_label_decorate_focus_bg_color = "0xd65d0eff";
+          jump_label_decorate_border_color = "0x665c54ff";
+          group_bar_decorate_fg_color = "0xebdbb2ff";
+          group_bar_decorate_bg_color = "0x3c3836ff";
+          group_bar_decorate_focus_fg_color = "0x282828ff";
+          group_bar_decorate_focus_bg_color = "0xd65d0eff";
+          group_bar_decorate_border_color = "0x665c54ff";
         };
       };
     };

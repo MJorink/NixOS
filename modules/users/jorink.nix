@@ -22,7 +22,7 @@
             "NixOS"
             "repos"
             ".config/git" # Credentials are stored here
-            ".local/share/fish"
+            ".ssh"
           ];
         };
       };

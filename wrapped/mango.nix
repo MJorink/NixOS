@@ -14,18 +14,21 @@
       packages.myMango = inputs.wrapper-modules.wrappers.mangowc.wrap {
         inherit pkgs;
 
-        runtimePkgs = [
+        runtimePkgs = with pkgs; [
           self.packages.${pkgs.stdenv.hostPlatform.system}.myFoot
           self.packages.${pkgs.stdenv.hostPlatform.system}.myNoctalia
-          pkgs.bibata-cursors
-          pkgs.nerd-fonts.meslo-lg
+          bibata-cursors
+          nerd-fonts.meslo-lg
+          wl-clip-persist
+          wl-clipboard
+          cliphist
         ];
 
         hotReload.enable = true;
 
         autostart_sh = ''
-          ${lib.getExe pkgs.wl-clip-persist} --clipboard regular --reconnect-tries 0 &
-          ${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${lib.getExe pkgs.cliphist} store &
+          wl-clip-persist --clipboard regular --reconnect-tries 0 &
+          wl-paste --type text --watch cliphist store &
           ${lib.getExe pkgs.swaybg} -i ${../assets/wallpaper.png} -m fill &
           ${lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.myNoctalia} &
           command -v mullvad-vpn >/dev/null && mullvad-vpn

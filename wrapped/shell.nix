@@ -49,6 +49,7 @@
 
         configFile.content = ''
           set -g fish_history fish
+          set -g fish_greeting
 
           starship init fish | source
           direnv hook fish | source

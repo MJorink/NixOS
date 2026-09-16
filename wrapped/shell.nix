@@ -21,7 +21,6 @@
           self.packages.${pkgs.stdenv.hostPlatform.system}.myNeovim
           lazygit
           lazydocker
-          micro
           nh
           figlet
           unzip
@@ -38,6 +37,7 @@
           dnr = "clear;dotnet run";
           lg = "lazygit";
           ld = "lazydocker";
+          NixPad = "ssh 192.168.100.149";
 
           # Scripts
           batstat = "~/NixOS/assets/scripts/batstat.sh";

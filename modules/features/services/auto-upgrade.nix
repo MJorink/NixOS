@@ -16,6 +16,11 @@
         randomizedDelaySec = "10min";
       };
 
+      environment.etc."gitconfig".text = ''
+        [safe]
+          directory = /home/jorink/NixOS
+      '';
+
       systemd.services.nixos-upgrade = {
         serviceConfig = {
           ExecStartPre =

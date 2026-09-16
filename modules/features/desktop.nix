@@ -50,7 +50,6 @@
       preservation.preserveAt."/persistent" = {
         users.jorink.directories = [
           ".local/state/wireplumber"
-          ".local/state/noctalia"
           ".local/share/keyrings"
           "Downloads"
           "Documents"

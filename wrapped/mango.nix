@@ -87,6 +87,7 @@
             "SUPER,comma,spawn,noctalia msg settings-toggle"
             "SUPER+SHIFT,p,spawn,noctalia msg session lock"
             "SUPER,p,spawn,noctalia msg panel-toggle session"
+            "SUPER,v,spawn,noctalia msg panel-toggle clipboard"
 
             # Common binds
             "SUPER, q, killclient"

@@ -47,10 +47,25 @@
         powerManagement.enable = false;
         open = true;
         nvidiaSettings = false;
+        nvidiaPersistenced = true;
+        dynamicBoost.enable = true;
 
         prime.sync.enable = true;
         prime.intelBusId = "PCI:0:2:0";
         prime.nvidiaBusId = "PCI:1:0:0";
+      };
+
+      # Workaround to prevent crashing ( broken gpu :( )
+      systemd.services.nvidia-clock-cap = {
+        description = "Cap NVIDIA GPU clocks";
+        wantedBy = [ "multi-user.target" ];
+        after = [ "nvidia-persistenced.service" ];
+        serviceConfig = {
+          Type = "oneshot";
+          RemainAfterExit = true;
+          ExecStart = "${config.hardware.nvidia.package.bin}/bin/nvidia-smi -lgc 210,2200";
+          ExecStop = "${config.hardware.nvidia.package.bin}/bin/nvidia-smi -rgc";
+        };
       };
     };
 }

@@ -32,6 +32,7 @@
         self.nixosModules.security
         self.nixosModules.socials
         self.nixosModules.steam
+        self.nixosModules.pcsx2
       ];
     };
 }

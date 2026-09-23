@@ -7,7 +7,10 @@ let
 
   vimSettings = pkgs: {
     # Core
-    globals.mapleader = " ";
+    globals = {
+      mapleader = " ";
+      mkdp_browser = "librewolf";
+    };
 
     options = {
       shiftwidth = 2;
@@ -104,9 +107,13 @@ let
       bash.enable = true;
       json.enable = true;
       toml.enable = true;
-      markdown.enable = true;
+      markdown = {
+        enable = true;
+        extensions.render-markdown-nvim.enable = true;
+      };
       csharp = {
         enable = true;
+        lsp.servers = [ "roslyn-ls" ];
         format.type = [ "csharpier" ];
       };
     };
@@ -120,6 +127,11 @@ let
     terminal.toggleterm = {
       enable = true;
       lazygit.enable = true;
+    };
+
+    utility.preview.markdownPreview = {
+      enable = true;
+      alwaysAllowPreview = true;
     };
 
     assistant.copilot = {
@@ -137,6 +149,10 @@ let
     extraPlugins = {
       vim-be-good.package = pkgs.vimPlugins.vim-be-good;
     };
+
+    extraPackages = [
+      pkgs.nodejs-slim
+    ];
 
     # Keymaps
     keymaps = [
@@ -156,6 +172,7 @@ let
       # Leader binds
       (keymap "<leader>pv" [ "n" ] "<Cmd>Ex<CR>")
       (keymap "<leader>u" [ "n" ] "<Cmd>UndotreeToggle<CR>")
+      (keymap "<leader>md" [ "n" ] "<Cmd>MarkdownPreviewToggle<CR>")
     ];
   };
 in

@@ -30,6 +30,7 @@
         self.nixosModules.socials
         self.nixosModules.docker
         self.nixosModules.openssh
+        self.nixosModules.zed
       ];
     };
 }

@@ -33,5 +33,9 @@
         self.nixosModules.steam
         self.nixosModules.pcsx2
       ];
+      environment.systemPackages = [
+        pkgs.zed-editor
+        pkgs.jetbrains.rider
+      ];
     };
 }

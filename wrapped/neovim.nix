@@ -146,10 +146,6 @@ let
       };
     };
 
-    extraPlugins = {
-      vim-be-good.package = pkgs.vimPlugins.vim-be-good;
-    };
-
     extraPackages = [
       pkgs.nodejs-slim
     ];

@@ -30,7 +30,8 @@
           wl-paste --type text --watch cliphist store &
           ${lib.getExe pkgs.swaybg} -i ${../assets/wallpaper.png} -m fill &
           ${lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.myNoctalia} &
-          command -v mullvad-vpn >/dev/null && mullvad-vpn
+          command -v mullvad-vpn >/dev/null && mullvad-vpn &
+          noctalia msg brightness-set 50
         '';
 
         settings = {

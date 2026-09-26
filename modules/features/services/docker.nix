@@ -1,27 +1,21 @@
 { ... }: {
-  flake.nixosModules.docker =
-    {
-      lib,
-      pkgs,
-      ...
-    }:
-    {
-      users.users.jorink.extraGroups = [
+  flake.nixosModules.docker = { lib, pkgs, ... }: {
+    users.users.jorink.extraGroups = [
+      "docker"
+    ];
+
+    preservation.preserveAt."/persistent" = {
+      users.jorink.directories = [
         "docker"
       ];
+    };
 
-      preservation.preserveAt."/persistent" = {
-        users.jorink.directories = [
-          "docker"
-        ];
-      };
-
-      virtualisation.docker = {
-        enable = true;
-        storageDriver = "btrfs";
-        daemon.settings = {
-          data-root = "/home/jorink/docker";
-        };
+    virtualisation.docker = {
+      enable = true;
+      storageDriver = "btrfs";
+      daemon.settings = {
+        data-root = "/home/jorink/docker";
       };
     };
+  };
 }

@@ -171,17 +171,14 @@ let
       (keymap "<leader>md" [ "n" ] "<Cmd>MarkdownPreviewToggle<CR>")
     ];
   };
-in
-{
-  perSystem =
-    { system, ... }:
+in {
+  perSystem = { system, ... }:
     let
       pkgs = import inputs.nixpkgs {
         inherit system;
         config.allowUnfree = true;
       };
-    in
-    {
+    in {
       packages.myNeovim =
         (inputs.nvf.lib.neovimConfiguration {
           inherit pkgs;

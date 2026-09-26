@@ -21,8 +21,9 @@
           directories = [
             "NixOS"
             "repos"
-            ".config/git" # Credentials are stored here
+            ".config/git" # Git credentials are stored here
             ".ssh"
+            ".config/github-copilot" # Copilot auth (neovim)
           ];
         };
       };

@@ -9,7 +9,7 @@ let
     # Core
     globals = {
       mapleader = " ";
-      mkdp_browser = "librewolf";
+      mkdp_browser = "chromium";
     };
 
     options = {

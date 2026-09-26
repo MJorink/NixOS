@@ -72,7 +72,7 @@
             "SUPER, e, spawn, foot yazi"
             "SUPER, m, spawn, spotify"
             "SUPER, u, spawn, foot --hold --app-id rebuild nh os switch"
-            "SUPER, b, spawn, librewolf"
+            "SUPER, b, spawn, chromium"
 
             # Noctalia
             "SUPER+CTRL, r, spawn, noctalia"

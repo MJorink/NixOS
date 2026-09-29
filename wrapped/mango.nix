@@ -12,20 +12,15 @@
         cliphist
       ];
 
-      hotReload.enable = true;
-
       autostart_sh = ''
         wl-clip-persist --clipboard regular --reconnect-tries 0 &
         wl-paste --type text --watch cliphist store &
         ${lib.getExe pkgs.swaybg} -i ${../assets/wallpaper.png} -m fill &
         ${lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.myNoctalia} &
-        command -v mullvad-vpn >/dev/null && mullvad-vpn &
-        noctalia msg brightness-set 50
+        command -v mullvad-vpn >/dev/null && mullvad-vpn
       '';
 
       settings = {
-        exec-once = [ "systemctl --user start mango-reload.service" ];
-
         monitorrule = [
           "name:^HDMI-A-1$,width:2560,height:1440,refresh:144,x:0,y:1080"
           "name:^eDP-1$,width:1920,height:1080,refresh:60,x:0,y:0"

@@ -42,8 +42,6 @@ let
 
     statusline.lualine.enable = true;
 
-    tabline.nvimBufferline.enable = true;
-
     visuals = {
       indent-blankline.enable = true;
       nvim-web-devicons.enable = true;
@@ -58,22 +56,22 @@ let
       };
     };
 
-    # Editing
-    autopairs.nvim-autopairs.enable = true;
-
-    # Close with semicolon when editing a .nix file
-    lazy.plugins.nvim-autopairs.after = ''
-      local npairs = require("nvim-autopairs")
-      for open, close in pairs({ ["{"] = "}", ["["] = "]" }) do
-        npairs.get_rule(open):replace_endpair(function(opts)
-          if vim.bo[opts.bufnr].filetype == "nix"
-            and opts.line:sub(1, opts.col - 1):match("=%s*$") then
-            return close .. ";"
-          end
-          return close
-        end)
-      end
-    '';
+    # # Editing
+    # autopairs.nvim-autopairs.enable = true;
+    #
+    # # Close with semicolon when editing a .nix file
+    # lazy.plugins.nvim-autopairs.after = ''
+    #   local npairs = require("nvim-autopairs")
+    #   for open, close in pairs({ ["{"] = "}", ["["] = "]" }) do
+    #     npairs.get_rule(open):replace_endpair(function(opts)
+    #       if vim.bo[opts.bufnr].filetype == "nix"
+    #         and opts.line:sub(1, opts.col - 1):match("=%s*$") then
+    #         return close .. ";"
+    #       end
+    #       return close
+    #     end)
+    #   end
+    # '';
 
     comments.comment-nvim.enable = true;
 
@@ -82,7 +80,7 @@ let
     # Navigation
     telescope.enable = true;
 
-    navigation.harpoon.enable = true;
+    # navigation.harpoon.enable = true;
 
     utility.undotree.enable = true;
 

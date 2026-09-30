@@ -12,6 +12,7 @@
       self.nixosModules.mullvad-vpn
       self.nixosModules.openssh
       self.nixosModules.tailscale
+      self.nixosModules.syncthing
     ];
 
     preservation.preserveAt."/persistent".directories = [

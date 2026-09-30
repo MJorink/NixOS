@@ -12,20 +12,17 @@
       self.nixosModules.openssh
     ];
 
-    # Remote access goes through tailscale (run `sudo tailscale up` once over LAN ssh)
     services.tailscale = {
       enable = true;
-      openFirewall = true; # UDP 41641 for direct connections instead of DERP relay
+      openFirewall = true;
     };
     networking.firewall.interfaces.tailscale0.allowedTCPPorts = [ 22 ];
 
-    # Keep logs across reboots, root is tmpfs
     preservation.preserveAt."/persistent".directories = [
       "/var/lib/tailscale"
       "/var/log"
     ];
 
-    # Small disk, clean up old generations
     nix.gc = {
       automatic = true;
       dates = "weekly";

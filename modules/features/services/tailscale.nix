@@ -9,6 +9,8 @@
       "/var/lib/tailscale"
     ];
 
+    networking.firewall.interfaces.tailscale0.allowedTCPPorts = [ 22 ];
+
     # Add a desktop entry for Victus RDP
     environment.systemPackages = [
       pkgs.freerdp

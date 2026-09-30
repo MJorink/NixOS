@@ -34,7 +34,7 @@
         wlr.enable = true;
         wlr.settings.screencast.chooser_type = "none";
         extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
-        config.common.defualt = "*";
+        config.common.default = "*";
       };
 
       fonts.packages = with pkgs; [

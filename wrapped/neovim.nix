@@ -86,6 +86,7 @@ let
       bash.enable = true;
       json.enable = true;
       toml.enable = true;
+      xml.enable = true;
       markdown = {
         enable = true;
         extensions.render-markdown-nvim.enable = true;
@@ -95,6 +96,12 @@ let
         lsp.servers = [ "roslyn-ls" ];
         format.type = [ "csharpier" ];
       };
+    };
+
+    # XAML is XML; reuse the xml treesitter grammar and lemminx
+    filetype.extension = {
+      xaml = "xml";
+      axaml = "xml";
     };
 
     lsp = {
@@ -153,13 +160,7 @@ let
 in
 {
   perSystem =
-    { system, ... }:
-    let
-      pkgs = import inputs.nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-    in
+    { pkgs, ... }:
     {
       packages.myNeovim =
         (inputs.nvf.lib.neovimConfiguration {

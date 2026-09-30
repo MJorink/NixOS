@@ -7,7 +7,6 @@
 
     preservation.preserveAt."/persistent".directories = [
       "/var/lib/tailscale"
-      ".config/syncthing"
     ];
 
     # Add a desktop entry for Victus RDP

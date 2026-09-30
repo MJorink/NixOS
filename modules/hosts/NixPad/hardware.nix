@@ -42,6 +42,8 @@
       gpuOffset = -80;
       temp = 90;
       useTimer = true;
+      p1 = { limit = 12; window = 28; }; # long-term, stock 15 W / 28 s
+      p2 = { limit = 20; window = 0.00244; }; # short-term, stock 25 W / 2.44 ms
     };
   };
 }

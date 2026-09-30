@@ -9,7 +9,7 @@
       self.nixosModules.base
       self.nixosModules.jorink
       self.nixosModules.desktop
-      self.nixosModules.auto-cpufreq
+      self.nixosModules.tlp
       self.nixosModules.mullvad-vpn
       self.nixosModules.browser
       self.nixosModules.claude

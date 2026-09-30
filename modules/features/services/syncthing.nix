@@ -4,7 +4,7 @@
       enable = true;
       user = "jorink";
       dataDir = "/home/jorink";
-      # configDir = "/home/jorink/.config/syncthing";
+      configDir = "/home/jorink/.config/syncthing";
       openDefaultPorts = true;
 
       settings = {
@@ -19,6 +19,11 @@
             "nixnuc"
           ];
         };
+      };
+      preservation.preserveAt."/persistent" = {
+        users.jorink.directories = [
+          ".config/syncthing"
+        ];
       };
     };
   };

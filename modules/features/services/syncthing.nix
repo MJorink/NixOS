@@ -16,6 +16,13 @@
           devices = [
             "victus"
             "nixpad"
+          ];
+        };
+        folders."NixOS" = {
+          path = "/home/jorink/NixOS";
+          devices = [
+            "victus"
+            "nixpad"
             "nixnuc"
           ];
         };

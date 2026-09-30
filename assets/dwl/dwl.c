@@ -309,6 +309,7 @@ static void exchangeclient(const Arg *arg);
 static void fair(Monitor *m);
 static void focusclient(Client *c, LayerSurface *l, int lift);
 static void focusdir(const Arg *arg);
+static void focusmon(Monitor *m);
 static void focusstack(const Arg *arg);
 static Client *focustop(Monitor *m);
 static void fullscreennotify(struct wl_listener *listener, void *data);
@@ -1840,11 +1841,40 @@ focusclient(Client *c, LayerSurface *l, int lift)
 void
 focusdir(const Arg *arg)
 {
-	Client *c, *sel = focustop(selmon);
-	if (sel && (c = dirclient(sel, arg->i))) {
+	/* Focus the nearest client in direction dir; if it isn't on selmon or
+	 * the adjacent monitor, go to that monitor even if it is empty */
+	Client *c = NULL, *sel = focustop(selmon);
+	struct wlr_output *next = wlr_output_layout_adjacent_output(output_layout,
+			arg->i, selmon->wlr_output, selmon->m.x + selmon->m.width / 2.0,
+			selmon->m.y + selmon->m.height / 2.0);
+	Monitor *m = next ? next->data : NULL;
+
+	if (sel)
+		c = dirclient(sel, arg->i);
+	if (c && (c->mon == selmon || !m || c->mon == m)) {
 		focusclient(c, NULL, 1);
 		warpto(c);
+	} else if (m) {
+		focusmon(m);
 	}
+}
+
+void
+focusmon(Monitor *m)
+{
+	/* Select m and move the cursor there: onto its top client if it has
+	 * one, otherwise to the center of the monitor */
+	Client *c;
+	selmon = m;
+	if ((c = focustop(m))) {
+		focusclient(c, NULL, 1);
+		warpto(c);
+		return;
+	}
+	focusclient(NULL, NULL, 0);
+	wlr_cursor_warp_closest(cursor, NULL, m->w.x + m->w.width / 2.0,
+			m->w.y + m->w.height / 2.0);
+	motionnotify(0, NULL, 0, 0, 0, 0);
 }
 
 void
@@ -3154,8 +3184,11 @@ void
 tagmon(const Arg *arg)
 {
 	Client *sel = focustop(selmon);
-	if (sel)
-		setmon(sel, dirtomon(arg->i), 0);
+	Monitor *m = dirtomon(arg->i);
+	if (!sel || m == selmon)
+		return;
+	setmon(sel, m, 0);
+	focusmon(m); /* follow the window */
 }
 
 void

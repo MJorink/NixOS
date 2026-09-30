@@ -8,7 +8,6 @@
       openDefaultPorts = false;
 
       settings = {
-        # Only sync over the home LAN or tailscale: no global discovery, relays or NAT traversal
         options = {
           globalAnnounceEnabled = false;
           relaysEnabled = false;
@@ -16,24 +15,25 @@
           localAnnounceEnabled = true;
           urAccepted = -1;
         };
-        # "dynamic" now only resolves via local discovery; the tailscale hostname covers remote
         devices.victus = {
           id = "RB5HBV7-H5WJGZR-HWWVEWL-IMYWQWV-LR5M6DE-SGPTT7T-MJH4TOD-DE7L5QR";
-          addresses = [ "tcp://victus:22000" "dynamic" ];
+          addresses = [
+            "tcp://victus:22000"
+            "dynamic"
+          ];
         };
         devices.nixpad = {
           id = "IYAEDFY-TCF3NRB-TWSJNOR-CGPH3FX-THK5DCI-RU4B22L-UIINIWE-36CCTQP";
-          addresses = [ "tcp://nixpad:22000" "dynamic" ];
+          addresses = [
+            "tcp://nixpad:22000"
+            "dynamic"
+          ];
         };
         devices.nixnuc = {
           id = "TFOQX2M-J6RNRVE-PZAHUXB-KI7SJ7O-63WI4S4-YJMTUXD-MMPMBWY-EQBHOQC";
-          addresses = [ "tcp://nixnuc:22000" "dynamic" ];
-        };
-        folders."repos" = {
-          path = "/home/jorink/repos";
-          devices = [
-            "victus"
-            "nixpad"
+          addresses = [
+            "tcp://nixnuc:22000"
+            "dynamic"
           ];
         };
         folders."NixOS" = {
@@ -43,6 +43,7 @@
             "nixpad"
             "nixnuc"
           ];
+          ignorePatterns = [ ".git" ];
         };
       };
     };

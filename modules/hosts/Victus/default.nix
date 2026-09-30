@@ -20,6 +20,8 @@
       self.nixosModules.security
       self.nixosModules.socials
       self.nixosModules.steam
+      self.nixosModules.tailscale
+      self.nixosModules.syncthing
     ];
 
     # Windows 10 boot option

@@ -9,17 +9,12 @@
     imports = [
       self.nixosModules.base
       self.nixosModules.jorink
+      self.nixosModules.mullvad-vpn
       self.nixosModules.openssh
+      self.nixosModules.tailscale
     ];
 
-    services.tailscale = {
-      enable = true;
-      openFirewall = true;
-    };
-    networking.firewall.interfaces.tailscale0.allowedTCPPorts = [ 22 ];
-
     preservation.preserveAt."/persistent".directories = [
-      "/var/lib/tailscale"
       "/var/log"
     ];
 

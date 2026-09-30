@@ -8,9 +8,9 @@
       openDefaultPorts = true;
 
       settings = {
-        devices.victus.id = "VGATET5-RRWQCIT-AADHMV4-443VIKB-QDVRAC4-J4B2DF5-LAH6JCH-T7Z2BAI";
-        devices.nixpad.id = "2Y3XEMG-XPLTYRA-BDQZO5U-BVX2Y7J-NH5LZWT-CHTNPDZ-BV3LXUV-OJWCXAL";
-        devices.nixnuc.id = "EGPWGET-OFK5A7C-MRSDPKH-HIMT3RG-GCNBKRM-P5B7YZI-7UKDCCR-BKG23QY";
+        devices.victus.id = "RB5HBV7-H5WJGZR-HWWVEWL-IMYWQWV-LR5M6DE-SGPTT7T-MJH4TOD-DE7L5QR";
+        devices.nixpad.id = "IYAEDFY-TCF3NRB-TWSJNOR-CGPH3FX-THK5DCI-RU4B22L-UIINIWE-36CCTQP";
+        devices.nixnuc.id = "TFOQX2M-J6RNRVE-PZAHUXB-KI7SJ7O-63WI4S4-YJMTUXD-MMPMBWY-EQBHOQC";
         folders."repos" = {
           path = "/home/jorink/repos";
           devices = [

@@ -11,6 +11,7 @@
 
     # Networking
     networking.networkmanager.enable = true;
+    systemd.services.NetworkManager-wait-online.enable = false;
     preservation.preserveAt."/persistent" = {
       directories = [
         "/etc/NetworkManager/"

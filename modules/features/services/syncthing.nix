@@ -20,11 +20,11 @@
           ];
         };
       };
-      preservation.preserveAt."/persistent" = {
-        users.jorink.directories = [
-          ".config/syncthing"
-        ];
-      };
+    };
+    preservation.preserveAt."/persistent" = {
+      users.jorink.directories = [
+        ".config/syncthing"
+      ];
     };
   };
 }

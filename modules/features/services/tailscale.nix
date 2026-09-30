@@ -20,9 +20,7 @@
         icon = "preferences-desktop-remote-desktop";
         exec = toString (
           pkgs.writeShellScript "victus-rdp" ''
-            ${pkgs.tailscale}/bin/tailscale up
             ${pkgs.freerdp}/bin/sdl-freerdp /v:victus /u:jorink /p:windows /dynamic-resolution
-            ${pkgs.tailscale}/bin/tailscale down
           ''
         );
       })

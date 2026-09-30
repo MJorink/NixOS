@@ -2,6 +2,8 @@
   flake.nixosModules.openssh = { ... }: {
     services.openssh = {
       enable = true;
+      # Port 22 is opened by the LAN-only rules below, openFirewall would accept it from anywhere
+      openFirewall = false;
       settings = {
         PasswordAuthentication = true;
         KbdInteractiveAuthentication = false;

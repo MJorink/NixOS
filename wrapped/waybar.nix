@@ -9,14 +9,20 @@
         width = 34;
         spacing = 6;
 
-        modules-left = [ "dwl/tags" "tray" ];
-        modules-center = [ "wireplumber" "mpris" ];
+        modules-left = [
+          "dwl/tags"
+          "tray"
+        ];
+
+        # modules-center = [
+        # ];
+
         modules-right = [
           "temperature"
           "cpu"
           "memory"
           "custom/clipboard"
-          "backlight"
+          "wireplumber"
           "battery"
           "clock"
           "custom/session"
@@ -33,7 +39,11 @@
           format = "<span size='large'>{icon}</span>\n{volume}";
           justify = "center";
           format-muted = "<span size='large'>󰖁</span>";
-          format-icons = [ "󰕿" "󰖀" "󰕾" ];
+          format-icons = [
+            "󰕿"
+            "󰖀"
+            "󰕾"
+          ];
           on-click = "dwl-cmd mute";
           on-scroll-up = "dwl-cmd vol-up";
           on-scroll-down = "dwl-cmd vol-down";
@@ -62,19 +72,17 @@
           interval = 2;
         };
 
-        backlight = {
-          format = "<span size='large'>󰃠</span>\n{percent}%";
-          justify = "center";
-          tooltip-format = "Brightness {percent}%";
-          on-scroll-up = "dwl-cmd bri-up";
-          on-scroll-down = "dwl-cmd bri-down";
-        };
-
         battery = {
           format = "<span size='large'>{icon}</span>\n{capacity}%";
           justify = "center";
           format-charging = "<span size='large'>󰂄</span>\n{capacity}%";
-          format-icons = [ "󰁺" "󰁼" "󰁾" "󰂀" "󰁹" ];
+          format-icons = [
+            "󰁺"
+            "󰁼"
+            "󰁾"
+            "󰂀"
+            "󰁹"
+          ];
           states.warning = 15;
         };
 
@@ -122,7 +130,7 @@
         #tags button.focused { background: #d65d0e; color: #282828; }
         #tags button.urgent { background: #cc241d; color: #282828; }
         #tray, #wireplumber, #mpris, #temperature, #cpu, #memory,
-        #custom-clipboard, #backlight, #battery, #clock, #custom-session {
+        #custom-clipboard, #battery, #clock, #custom-session {
           padding: 4px 0;
         }
         #wireplumber.muted, #battery.warning:not(.charging), #temperature.critical {

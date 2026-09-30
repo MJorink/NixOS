@@ -17,9 +17,6 @@
         entry: entry.data
       ) self.packages.${pkgs.stdenv.hostPlatform.system}.myDwl.configuration.runtimePkgs;
 
-      # Only enable mullvad-vpn gui if normal service is enabled
-      services.mullvad-vpn.gui.enable = config.services.mullvad-vpn.enable;
-
       security.pam.services.swaylock = { };
 
       services.displayManager.ly.enable = true;

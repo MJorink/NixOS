@@ -70,8 +70,7 @@
         wl-paste --type text --watch cliphist store &
         ${lib.getExe pkgs.swaybg} -i ${../assets/wallpaper.png} -m fill &
         mako &
-        swayidle -w before-sleep swaylock &
-        command -v mullvad-vpn >/dev/null && mullvad-vpn
+        swayidle -w before-sleep swaylock
       '';
     in
     {

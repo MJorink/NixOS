@@ -7,18 +7,20 @@
       ...
     }:
     {
-      programs.mango = {
+      programs.dwl = {
         enable = true;
-        package = self.packages.${pkgs.stdenv.hostPlatform.system}.myMango;
+        package = self.packages.${pkgs.stdenv.hostPlatform.system}.myDwl;
       };
 
-      # Make runtimePkgs from myMango available system-wide
+      # Make runtimePkgs from myDwl available system-wide
       environment.systemPackages = map (
         entry: entry.data
-      ) self.packages.${pkgs.stdenv.hostPlatform.system}.myMango.configuration.runtimePkgs;
+      ) self.packages.${pkgs.stdenv.hostPlatform.system}.myDwl.configuration.runtimePkgs;
 
       # Only enable mullvad-vpn gui if normal service is enabled
       services.mullvad-vpn.gui.enable = config.services.mullvad-vpn.enable;
+
+      security.pam.services.swaylock = { };
 
       services.displayManager.ly.enable = true;
       services.pipewire.enable = true;

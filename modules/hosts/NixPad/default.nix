@@ -12,6 +12,7 @@
     imports = [
       self.nixosModules.base
       self.nixosModules.jorink
+      self.nixosModules.mullvad-vpn
       self.nixosModules.desktop
       self.nixosModules.tlp
       self.nixosModules.browser

@@ -5,6 +5,7 @@
 
   flake.nixosModules.VictusModule = { lib, pkgs, ... }: {
     networking.hostName = "Victus";
+
     imports = [
       self.nixosModules.base
       self.nixosModules.jorink
@@ -25,7 +26,6 @@
     ];
 
     # Windows 10 boot option
-    boot.loader.systemd-boot.edk2-uefi-shell.enable = true;
     boot.loader.systemd-boot.windows."10" = {
       title = "Windows 10";
       efiDeviceHandle = "HD0b";

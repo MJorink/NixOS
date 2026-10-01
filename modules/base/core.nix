@@ -26,6 +26,9 @@
     # Fixes dynamic binary issues
     programs.nix-ld.enable = true;
 
+    # Skip boot menu, hold Space during boot to show it
+    boot.loader.timeout = 0;
+
     # Basics
     security.sudo.wheelNeedsPassword = false;
     time.timeZone = "Europe/Amsterdam";

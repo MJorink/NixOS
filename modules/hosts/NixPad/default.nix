@@ -6,9 +6,6 @@
   flake.nixosModules.NixPadModule = { lib, pkgs, ... }: {
     networking.hostName = "NixPad";
 
-    # Skip boot menu, hold Space during boot to show it
-    boot.loader.timeout = 0;
-
     imports = [
       self.nixosModules.base
       self.nixosModules.jorink

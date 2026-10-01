@@ -19,16 +19,16 @@
 
       networking.firewall.interfaces.tailscale0.allowedTCPPorts = [ 22 ];
 
-      # Add a desktop entry for Victus RDP (only on hosts with the desktop module)
+      # Add a desktop entry for the Windows VM on NixNuc (only on hosts with the desktop module)
       environment.systemPackages = lib.mkIf config.programs.dwl.enable [
         pkgs.freerdp
         (pkgs.makeDesktopItem {
-          name = "victus-rdp";
-          desktopName = "Victus (Windows)";
+          name = "windows-rdp";
+          desktopName = "Windows (NixNuc)";
           icon = "preferences-desktop-remote-desktop";
           exec = toString (
-            pkgs.writeShellScript "victus-rdp" ''
-              ${pkgs.freerdp}/bin/sdl-freerdp /v:victus /u:jorink /p:windows /dynamic-resolution
+            pkgs.writeShellScript "windows-rdp" ''
+              ${pkgs.freerdp}/bin/sdl-freerdp /v:nixnuc /u:jorink /p:windows /dynamic-resolution
             ''
           );
         })

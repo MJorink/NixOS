@@ -13,6 +13,7 @@
       self.nixosModules.openssh
       self.nixosModules.tailscale
       self.nixosModules.syncthing
+      self.nixosModules.windows-vm
     ];
 
     preservation.preserveAt."/persistent".directories = [

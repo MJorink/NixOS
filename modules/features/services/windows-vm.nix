@@ -9,10 +9,22 @@
     let
       dir = "/var/lib/windows-vm";
       memory = "4G";
-      cores = 2;
+      cores = 4;
       diskSize = "128G";
       qemu = "${pkgs.qemu_kvm}/bin";
       ovmf = "${pkgs.OVMF.fd}/FV";
+      socat = "${pkgs.socat}/bin/socat";
+
+      # Send a command to the QEMU monitor (cont/stop/system_powerdown)
+      monitor = cmd: "echo ${cmd} | ${socat} - UNIX-CONNECT:${dir}/monitor.sock || true";
+
+      # Resume the VM and correct the guest clock, which falls behind while paused
+      resume = pkgs.writeShellScript "windows-vm-resume" ''
+        ${monitor "cont"}
+        echo "{\"execute\":\"guest-set-time\",\"arguments\":{\"time\":$(${pkgs.coreutils}/bin/date +%s%N)}}" \
+          | ${pkgs.coreutils}/bin/timeout 5 ${socat} - UNIX-CONNECT:${dir}/qga.sock || true
+      '';
+      pause = pkgs.writeShellScript "windows-vm-pause" (monitor "stop");
     in
     {
       users.users.windows-vm = {
@@ -36,10 +48,7 @@
         wantedBy = [ "multi-user.target" ];
         after = [ "network-online.target" ];
         wants = [ "network-online.target" ];
-        path = [
-          pkgs.socat
-          pkgs.e2fsprogs
-        ];
+        path = [ pkgs.e2fsprogs ];
 
         preStart = ''
           # Disable btrfs copy-on-write before the disk image is created
@@ -60,8 +69,9 @@
 
           exec ${qemu}/qemu-system-x86_64 \
             -name windows \
-            -machine q35,accel=kvm \
-            -cpu host,hv_relaxed,hv_vapic,hv_spinlocks=0x1fff,hv_time \
+            -machine q35,accel=kvm,hpet=off \
+            -cpu host,hv-relaxed,hv-vapic,hv-spinlocks=0x1fff,hv-vpindex,hv-runtime,hv-time,hv-synic,hv-stimer,hv-stimer-direct,hv-reset,hv-frequencies,hv-tlbflush,hv-ipi \
+            -global kvm-pit.lost_tick_policy=discard \
             -smp ${toString cores} \
             -m ${memory} \
             -rtc base=localtime \
@@ -70,7 +80,10 @@
             -drive file=disk.qcow2,if=virtio,format=qcow2,cache=none,aio=native,discard=unmap \
             "''${installer[@]}" \
             -drive file=${pkgs.virtio-win.src},media=cdrom,readonly=on \
-            -nic user,model=virtio-net-pci,hostfwd=tcp::3389-:3389,hostfwd=udp::3389-:3389 \
+            -nic user,model=virtio-net-pci,hostfwd=tcp:127.0.0.1:13389-:3389 \
+            -device virtio-serial \
+            -chardev socket,path=qga.sock,server=on,wait=off,id=qga0 \
+            -device virtserialport,chardev=qga0,name=org.qemu.guest_agent.0 \
             -vga std \
             -device qemu-xhci \
             -device usb-tablet \
@@ -78,9 +91,10 @@
             -monitor unix:monitor.sock,server,nowait
         '';
 
-        # Ask Windows to shut down cleanly, then wait for QEMU to exit
+        # Ask Windows to shut down cleanly (a paused VM ignores the power button), then wait for QEMU to exit
         preStop = ''
-          echo system_powerdown | socat - UNIX-CONNECT:monitor.sock || true
+          ${monitor "cont"}
+          ${monitor "system_powerdown"}
           while kill -0 "$MAINPID" 2>/dev/null; do sleep 1; done
         '';
 
@@ -93,14 +107,51 @@
         };
       };
 
-      # Only allow RDP over tailscale and from the home LAN
-      networking.firewall.interfaces.tailscale0 = {
-        allowedTCPPorts = [ 3389 ];
-        allowedUDPPorts = [ 3389 ];
+      # Pause the VM while nobody is connected over RDP: connecting to port 3389 starts a proxy
+      # that resumes the VM, and the VM is paused again once the proxy has been idle for an hour
+      systemd.sockets.windows-rdp = {
+        description = "RDP to the Windows VM";
+        wantedBy = [ "sockets.target" ];
+        listenStreams = [ "3389" ];
       };
+
+      systemd.services.windows-rdp = {
+        description = "RDP proxy to the Windows VM";
+        requires = [ "windows-vm.service" ];
+        after = [ "windows-vm.service" ];
+        serviceConfig = {
+          User = "windows-vm";
+          Group = "windows-vm";
+          ExecStartPre = resume;
+          ExecStart = "${config.systemd.package}/lib/systemd/systemd-socket-proxyd --exit-idle-time=60min 127.0.0.1:13389";
+          ExecStopPost = pause;
+        };
+      };
+
+      # Pause the VM after boot if nobody has connected yet
+      systemd.timers.windows-vm-pause = {
+        wantedBy = [ "windows-vm.service" ];
+        partOf = [ "windows-vm.service" ];
+        timerConfig.OnActiveSec = "60min";
+      };
+      systemd.services.windows-vm-pause = {
+        description = "Pause the idle Windows VM";
+        serviceConfig = {
+          Type = "oneshot";
+          User = "windows-vm";
+          Group = "windows-vm";
+        };
+        script = ''
+          if ! ${config.systemd.package}/bin/systemctl is-active --quiet windows-rdp.service; then
+            ${pause}
+          fi
+        '';
+      };
+
+      # Only allow RDP over tailscale and from the home LAN
+      networking.firewall.interfaces.tailscale0.allowedTCPPorts = [ 3389 ];
       networking.firewall.extraCommands = ''
         iptables -A nixos-fw -p tcp --dport 3389 -s 192.168.100.0/24 -j nixos-fw-accept
-        iptables -A nixos-fw -p udp --dport 3389 -s 192.168.100.0/24 -j nixos-fw-accept
       '';
     };
 }

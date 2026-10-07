@@ -18,7 +18,6 @@
         # ];
 
         modules-right = [
-          "temperature"
           "cpu"
           "memory"
           "custom/clipboard"
@@ -55,17 +54,12 @@
           tooltip-format = "{artist} - {title}";
         };
 
-        temperature = {
-          format = "<span size='large'>󰔏</span>\n{temperatureC}°";
-          justify = "center";
-          interval = 2;
-          critical-threshold = 85;
-        };
         cpu = {
           format = "<span size='large'>󰍛</span>\n{usage}%";
           justify = "center";
           interval = 2;
         };
+
         memory = {
           format = "<span size='large'></span>\n{percentage}%";
           justify = "center";
@@ -129,11 +123,11 @@
         #tags button.occupied { color: #ebdbb2; }
         #tags button.focused { background: #d65d0e; color: #282828; }
         #tags button.urgent { background: #cc241d; color: #282828; }
-        #tray, #wireplumber, #mpris, #temperature, #cpu, #memory,
+        #tray, #wireplumber, #mpris, #cpu, #memory,
         #custom-clipboard, #battery, #clock, #custom-session {
           padding: 4px 0;
         }
-        #wireplumber.muted, #battery.warning:not(.charging), #temperature.critical {
+        #wireplumber.muted, #battery.warning:not(.charging) {
           color: #cc241d;
         }
       '';

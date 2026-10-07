@@ -42,9 +42,22 @@
       nvidiaPersistenced = true;
       dynamicBoost.enable = true;
 
-      prime.sync.enable = true;
+      # PRIME sync is X11-only and does nothing under dwl (Wayland), so use
+      # offload and route games to the dGPU explicitly (see Steam below)
+      prime.offload.enable = true;
+      prime.offload.enableOffloadCmd = true;
       prime.intelBusId = "PCI:0:2:0";
       prime.nvidiaBusId = "PCI:1:0:0";
+    };
+
+    # Run Steam (and every game it launches) on the NVIDIA GPU
+    programs.steam.package = pkgs.steam.override {
+      extraEnv = {
+        __NV_PRIME_RENDER_OFFLOAD = "1";
+        __NV_PRIME_RENDER_OFFLOAD_PROVIDER = "NVIDIA-G0";
+        __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+        __VK_LAYER_NV_optimus = "NVIDIA_only";
+      };
     };
 
     # Workaround to prevent crashing ( broken gpu :( )

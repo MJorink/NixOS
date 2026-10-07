@@ -32,7 +32,10 @@
             done
 
             ${mullvad} tunnel set daita off
+            ${mullvad} relay set location nl
+            ${mullvad} relay set ownership owned
             ${mullvad} relay set multihop on
+            ${mullvad} relay set entry location nl
             ${mullvad} auto-connect set on
             ${mullvad} lan set allow
             ${mullvad} dns set default

@@ -16,10 +16,6 @@
       self.nixosModules.windows-vm
     ];
 
-    preservation.preserveAt."/persistent".directories = [
-      "/var/log"
-    ];
-
     nix.gc = {
       automatic = true;
       dates = "weekly";

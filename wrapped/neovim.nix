@@ -56,6 +56,23 @@ let
       };
     };
 
+    # Editing
+    autopairs.nvim-autopairs.enable = true;
+
+    # Close with semicolon when editing a .nix file
+    lazy.plugins.nvim-autopairs.after = ''
+      local npairs = require("nvim-autopairs")
+      for open, close in pairs({ ["{"] = "}", ["["] = "]" }) do
+        npairs.get_rule(open):replace_endpair(function(opts)
+          if vim.bo[opts.bufnr].filetype == "nix"
+            and opts.line:sub(1, opts.col - 1):match("=%s*$") then
+            return close .. ";"
+          end
+          return close
+        end)
+      end
+    '';
+
     comments.comment-nvim.enable = true;
 
     utility.surround.enable = true;
@@ -122,7 +139,7 @@ let
 
     assistant.copilot = {
       enable = true;
-      setupOpts.suggestion.auto_trigger = true;
+      setupOpts.suggestion.auto_trigger = false;
       mappings.suggestion = {
         accept = "<A-a>";
         acceptLine = "<A-l>";
@@ -155,6 +172,9 @@ let
       (keymap "<leader>pv" [ "n" ] "<Cmd>Ex<CR>")
       (keymap "<leader>u" [ "n" ] "<Cmd>UndotreeToggle<CR>")
       (keymap "<leader>md" [ "n" ] "<Cmd>MarkdownPreviewToggle<CR>")
+
+      # Manually trigger a Copilot suggestion
+      ((keymap "<A-s>" [ "i" ] "function() require('copilot.suggestion').next() end") // { lua = true; })
     ];
   };
 in

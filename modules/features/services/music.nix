@@ -186,6 +186,9 @@
         iptables -A nixos-fw -p tcp --dport 4533 -s 192.168.100.0/24 -j nixos-fw-accept
         iptables -A nixos-fw -p tcp --dport 8686 -s 192.168.100.0/24 -j nixos-fw-accept
         iptables -A nixos-fw -p tcp --dport 5030 -s 192.168.100.0/24 -j nixos-fw-accept
+        # iptables -A nixos-fw -p tcp --dport 4533 -s 192.168.10.0/24 -j nixos-fw-accept
+        # iptables -A nixos-fw -p tcp --dport 8686 -s 192.168.10.0/24 -j nixos-fw-accept
+        # iptables -A nixos-fw -p tcp --dport 5030 -s 192.168.10.0/24 -j nixos-fw-accept
       '';
     };
 }

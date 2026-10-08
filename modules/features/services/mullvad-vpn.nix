@@ -42,7 +42,25 @@
           '';
         };
 
-      # Route 192.168.10.0/24 via the LAN gateway, otherwise Mullvad's routing table sends it into the tunnel
+      systemd.services.mullvad-exclude-jorink = {
+        description = "Exclude jorink.nl from the Mullvad tunnel";
+        wantedBy = [ "multi-user.target" ];
+        serviceConfig = {
+          Type = "oneshot";
+          RemainAfterExit = true;
+          ExecStart = "${pkgs.nftables}/bin/nft -f ${pkgs.writeText "mullvad-exclude-jorink.nft" ''
+            table inet mullvadExclude {
+              chain output {
+                type route hook output priority 0; policy accept;
+                ip daddr { 185.103.156.20, 85.144.174.244 } ct mark set 0x00000f41 meta mark set 0x6d6f6c65
+                ip daddr 192.168.100.1 meta l4proto { tcp, udp } th dport 53 ct mark set 0x00000f41 meta mark set 0x6d6f6c65
+              }
+            }
+          ''}";
+          ExecStop = "${pkgs.nftables}/bin/nft delete table inet mullvadExclude";
+        };
+      };
+
       networking.networkmanager.dispatcherScripts = [
         {
           type = "basic";

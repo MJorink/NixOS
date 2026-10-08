@@ -15,8 +15,8 @@
       # SLSKD_SLSK_PASSWORD="password" (Soulseek)
       # SLSKD_USERNAME="username" (slskd web UI)
       # SLSKD_PASSWORD="password" (slskd web UI)
-      # SLSKD_API_KEY=(16+ chars, used by Soularr) # openssl -- rand -hex 16
-      # LIDARR__AUTH__APIKEY=(32 hex chars, used by Soularr) # openssl -- rand -hex 24
+      # SLSKD_API_KEY=(16+ chars, used by Soularr) # nix run nixpkgs#openssl -- rand -hex 24
+      # LIDARR__AUTH__APIKEY=(32 hex chars, used by Soularr) # nix run nixpkgs#openssl -- rand -hex 16
       secrets = "/persistent/secrets/music.env";
 
       mullvad = lib.optional config.services.mullvad-vpn.enable "mullvad-settings.service";
@@ -77,6 +77,10 @@
         minimum_filename_match_ratio = 0.8
         minimum_search_interval = 5
         allowed_filetypes = flac 16/44.1,flac
+        # Prefix the artist so queries stay specific after phrases are stripped
+        album_prepend_artist = True
+        # The Soulseek server returns nothing for searches containing these phrases, so strip them from queries
+        search_blacklist = Planet Earth
         search_type = incrementing_page
         number_of_albums_to_grab = 10
         search_source = missing
@@ -187,11 +191,11 @@
         }
       ];
 
-      # Web UIs and the Subsonic API are only reachable over tailscale
-      networking.firewall.interfaces.tailscale0.allowedTCPPorts = [
-        4533
-        8686
-        5030
-      ];
+      # Web UIs and the Subsonic API are only reachable from the home LAN
+      networking.firewall.extraCommands = ''
+        iptables -A nixos-fw -p tcp --dport 4533 -s 192.168.100.0/24 -j nixos-fw-accept
+        iptables -A nixos-fw -p tcp --dport 8686 -s 192.168.100.0/24 -j nixos-fw-accept
+        iptables -A nixos-fw -p tcp --dport 5030 -s 192.168.100.0/24 -j nixos-fw-accept
+      '';
     };
 }

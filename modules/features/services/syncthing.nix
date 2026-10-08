@@ -48,8 +48,6 @@
       };
     };
 
-    networking.firewall.interfaces.tailscale0.allowedTCPPorts = [ 22000 ];
-
     # Only allow syncthing sync/discovery from the home LAN
     networking.firewall.extraCommands = ''
       iptables -A nixos-fw -p tcp --dport 22000 -s 192.168.100.0/24 -j nixos-fw-accept

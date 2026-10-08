@@ -20,7 +20,6 @@
       self.nixosModules.socials
       self.nixosModules.docker
       self.nixosModules.openssh
-      self.nixosModules.tailscale
       self.nixosModules.syncthing
     ];
 

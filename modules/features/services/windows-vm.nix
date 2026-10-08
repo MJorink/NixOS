@@ -148,11 +148,7 @@
         '';
       };
 
-      # Only allow RDP and the guest's syncthing (22001) over tailscale and from the home LAN
-      networking.firewall.interfaces.tailscale0.allowedTCPPorts = [
-        3389
-        22001
-      ];
+      # Only allow RDP and the guest's syncthing (22001) from the home LAN
       networking.firewall.extraCommands = ''
         iptables -A nixos-fw -p tcp --dport 3389 -s 192.168.100.0/24 -j nixos-fw-accept
         iptables -A nixos-fw -p tcp --dport 22001 -s 192.168.100.0/24 -j nixos-fw-accept

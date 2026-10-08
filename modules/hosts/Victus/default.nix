@@ -20,7 +20,6 @@
       self.nixosModules.recording
       self.nixosModules.security
       self.nixosModules.socials
-      self.nixosModules.tailscale
       self.nixosModules.syncthing
       self.nixosModules.steam
     ];

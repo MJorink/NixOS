@@ -15,7 +15,21 @@
       # Make runtimePkgs from myDwl available system-wide
       environment.systemPackages = map (
         entry: entry.data
-      ) self.packages.${pkgs.stdenv.hostPlatform.system}.myDwl.configuration.runtimePkgs;
+      ) self.packages.${pkgs.stdenv.hostPlatform.system}.myDwl.configuration.runtimePkgs
+      ++ [
+        # Desktop entry for the Windows VM on NixNuc
+        pkgs.freerdp
+        (pkgs.makeDesktopItem {
+          name = "windows-rdp";
+          desktopName = "Windows (NixNuc)";
+          icon = "preferences-desktop-remote-desktop";
+          exec = toString (
+            pkgs.writeShellScript "windows-rdp" ''
+              ${pkgs.freerdp}/bin/sdl-freerdp /v:nixnuc /u:jorink /p:windows /dynamic-resolution
+            ''
+          );
+        })
+      ];
 
       security.pam.services.swaylock = { };
 

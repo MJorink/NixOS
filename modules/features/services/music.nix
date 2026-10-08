@@ -19,8 +19,6 @@
       # LIDARR__AUTH__APIKEY=(32 hex chars, used by Soularr) # nix run nixpkgs#openssl -- rand -hex 16
       secrets = "/persistent/secrets/music.env";
 
-      mullvad = lib.optional config.services.mullvad-vpn.enable "mullvad-settings.service";
-
       slskd-api = pkgs.python3Packages.buildPythonPackage rec {
         pname = "slskd_api";
         version = "0.1.5";
@@ -159,14 +157,6 @@
           OnUnitInactiveSec = "10min";
         };
       };
-
-      # Don't go online before Mullvad's lockdown firewall is up
-      systemd.services.slskd.after = mullvad;
-      systemd.services.slskd.requires = mullvad;
-      systemd.services.lidarr.after = mullvad;
-      systemd.services.lidarr.requires = mullvad;
-      systemd.services.navidrome.after = mullvad;
-      systemd.services.navidrome.requires = mullvad;
 
       preservation.preserveAt."/persistent".directories = [
         "/var/lib/navidrome"

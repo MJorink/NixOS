@@ -14,6 +14,7 @@
       self.nixosModules.tailscale
       self.nixosModules.syncthing
       self.nixosModules.windows-vm
+      self.nixosModules.music
     ];
 
     nix.gc = {

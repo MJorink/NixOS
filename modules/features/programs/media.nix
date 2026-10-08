@@ -3,6 +3,7 @@
     environment.systemPackages = with pkgs; [
       spotify
       mpv
+      supersonic
     ];
 
     preservation.preserveAt."/persistent" = {

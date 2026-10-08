@@ -14,19 +14,14 @@
         unzip
         zip
         wget
-        dotnet-sdk_10
-        dotnet-runtime_10
       ];
 
       shellAliases = {
         clr = "clear";
         ls = "ls -a --color";
-        dnb = "clear;dotnet build";
-        dnr = "clear;dotnet run";
         lg = "lazygit";
         ld = "lazydocker";
         yazi = "sudo yazi";
-        NixPad = "ssh 192.168.100.149";
 
         # Scripts
         batstat = "~/NixOS/assets/scripts/batstat.sh";
@@ -42,8 +37,6 @@
 
         direnv hook fish | source
 
-        # Pure-style prompt: dir, git branch (* dirty, ⇡⇣ ahead/behind), duration, ❯
-        # One git call per prompt; fish_git_prompt spawns git 3-4 times
         function fish_prompt
           set -l last $status
           echo

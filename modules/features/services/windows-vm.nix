@@ -80,7 +80,7 @@
             -drive file=disk.qcow2,if=virtio,format=qcow2,cache=none,aio=native,discard=unmap \
             "''${installer[@]}" \
             -drive file=${pkgs.virtio-win.src},media=cdrom,readonly=on \
-            -nic user,model=virtio-net-pci,hostfwd=tcp:127.0.0.1:13389-:3389 \
+            -nic user,model=virtio-net-pci,hostfwd=tcp:127.0.0.1:13389-:3389,hostfwd=tcp::22001-:22000 \
             -device virtio-serial \
             -chardev socket,path=qga.sock,server=on,wait=off,id=qga0 \
             -device virtserialport,chardev=qga0,name=org.qemu.guest_agent.0 \
@@ -148,10 +148,14 @@
         '';
       };
 
-      # Only allow RDP over tailscale and from the home LAN
-      networking.firewall.interfaces.tailscale0.allowedTCPPorts = [ 3389 ];
+      # Only allow RDP and the guest's syncthing (22001) over tailscale and from the home LAN
+      networking.firewall.interfaces.tailscale0.allowedTCPPorts = [
+        3389
+        22001
+      ];
       networking.firewall.extraCommands = ''
         iptables -A nixos-fw -p tcp --dport 3389 -s 192.168.100.0/24 -j nixos-fw-accept
+        iptables -A nixos-fw -p tcp --dport 22001 -s 192.168.100.0/24 -j nixos-fw-accept
       '';
     };
 }

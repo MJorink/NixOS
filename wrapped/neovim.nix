@@ -84,16 +84,6 @@ let
 
     binds.whichKey.enable = true;
 
-    luaConfigRC.netrwStartup = ''
-      vim.api.nvim_create_autocmd("VimEnter", {
-        callback = function()
-          if vim.fn.argc() == 0 then
-            vim.cmd("Explore")
-          end
-        end,
-      })
-    '';
-
     # Languages / LSP
     languages = {
       enableTreesitter = true;

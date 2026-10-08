@@ -9,8 +9,6 @@
     {
       services.mullvad-vpn.enable = true;
 
-      # Mullvad keeps its settings in /etc/mullvad-vpn/settings.json, so apply them via the CLI on every boot
-      # The kill switch is always on in the Mullvad app and has no setting
       systemd.services.mullvad-settings =
         let
           mullvad = "${config.services.mullvad-vpn.package}/bin/mullvad";
@@ -25,7 +23,6 @@
             RemainAfterExit = true;
           };
           script = ''
-            # Wait for the daemon to accept connections
             for _ in $(seq 30); do
               ${mullvad} status >/dev/null 2>&1 && break
               sleep 1
@@ -44,6 +41,19 @@
             ${mullvad} tunnel set quantum-resistant on
           '';
         };
+
+      # Route 192.168.10.0/24 via the LAN gateway, otherwise Mullvad's routing table sends it into the tunnel
+      networking.networkmanager.dispatcherScripts = [
+        {
+          type = "basic";
+          source = pkgs.writeShellScript "mullvad-lan-route" ''
+            [ "$2" = "up" ] || exit 0
+            case "$IP4_ADDRESS_0" in
+              192.168.100.*) ${pkgs.iproute2}/bin/ip route replace 192.168.10.0/24 via "$IP4_GATEWAY" dev "$DEVICE_IFACE" ;;
+            esac
+          '';
+        }
+      ];
 
       preservation.preserveAt."/persistent" = {
         directories = [ "/etc/mullvad-vpn" ];

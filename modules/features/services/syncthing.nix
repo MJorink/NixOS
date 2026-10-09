@@ -1,5 +1,7 @@
 { ... }: {
-  flake.nixosModules.syncthing = { ... }: {
+  flake.nixosModules.syncthing = { config, lib, ... }: let
+    isNixPad = config.networking.hostName == "NixPad";
+  in {
     services.syncthing = {
       enable = true;
       user = "jorink";
@@ -14,7 +16,6 @@
           natEnabled = false;
           localAnnounceEnabled = true;
           urAccepted = -1;
-          # NixNuc lives on its own VLAN, still treat it (and the home LAN) as local
           alwaysLocalNets = [
             "192.168.100.0/24"
             "192.168.10.0/24"
@@ -32,12 +33,24 @@
           id = "TFOQX2M-J6RNRVE-PZAHUXB-KI7SJ7O-63WI4S4-YJMTUXD-MMPMBWY-EQBHOQC";
           addresses = [ "tcp://192.168.10.20:22000" ];
         };
+        devices.windows = lib.mkIf isNixPad {
+          id = "MU4V2FX-HD2ZG2E-64AXAVC-DX7XVMD-F7RFNDJ-SPVRT3T-U4FTXYZ-W6R5EAT";
+          addresses = [ "tcp://192.168.10.20:22001" ];
+        };
         folders."NixOS" = {
           path = "/home/jorink/NixOS";
           devices = [
             "victus"
             "nixpad"
             "nixnuc"
+          ];
+          ignorePatterns = [ ".git" ];
+        };
+        folders."repos" = lib.mkIf isNixPad {
+          path = "/home/jorink/repos";
+          devices = [
+            "windows"
+            "nixpad"
           ];
           ignorePatterns = [ ".git" ];
         };

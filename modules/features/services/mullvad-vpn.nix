@@ -23,8 +23,9 @@
             RemainAfterExit = true;
           };
           script = ''
-            for _ in $(seq 30); do
-              ${mullvad} status >/dev/null 2>&1 && break
+            # The daemon answers before its relay list is loaded; location commands fail until then
+            for _ in $(seq 60); do
+              ${mullvad} relay list 2>/dev/null | grep -q . && break
               sleep 1
             done
 
@@ -75,7 +76,10 @@
       ];
 
       preservation.preserveAt."/persistent" = {
-        directories = [ "/etc/mullvad-vpn" ];
+        directories = [
+          "/etc/mullvad-vpn"
+          "/var/cache/mullvad-vpn"
+        ];
       };
     };
 }

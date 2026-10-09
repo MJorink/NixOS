@@ -62,18 +62,17 @@
         };
       };
 
-      networking.networkmanager.dispatcherScripts = [
-        {
-          type = "basic";
-          source = pkgs.writeShellScript "mullvad-lan-route" ''
-            [ "$2" = "up" ] || exit 0
-            case "$IP4_ADDRESS_0" in
-              192.168.100.*) ${pkgs.iproute2}/bin/ip route replace 192.168.10.0/24 via "$IP4_GATEWAY" dev "$DEVICE_IFACE" ;;
-              192.168.10.*) ${pkgs.iproute2}/bin/ip route replace 192.168.100.0/24 via "$IP4_GATEWAY" dev "$DEVICE_IFACE" ;;
-            esac
-          '';
-        }
-      ];
+      # Route home subnets (192.168.10/24 <-> 192.168.100/24) via the normal default route, before Mullvad's tunnel table (prio 32765)
+      systemd.services.mullvad-lan-route = {
+        description = "Keep home LAN traffic out of the Mullvad tunnel";
+        wantedBy = [ "multi-user.target" ];
+        serviceConfig = {
+          Type = "oneshot";
+          RemainAfterExit = true;
+          ExecStart = map (net: "${pkgs.iproute2}/bin/ip rule add to ${net} lookup main priority 100") [ "192.168.10.0/24" "192.168.100.0/24" ];
+          ExecStop = map (net: "${pkgs.iproute2}/bin/ip rule del to ${net} lookup main priority 100") [ "192.168.10.0/24" "192.168.100.0/24" ];
+        };
+      };
 
       preservation.preserveAt."/persistent" = {
         directories = [

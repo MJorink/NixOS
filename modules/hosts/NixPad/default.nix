@@ -23,11 +23,11 @@
       self.nixosModules.syncthing
     ];
 
-    # Sync repos to the Windows VM on NixNuc (its syncthing is forwarded on nixnuc:22001)
+    # Sync repos to the Windows VM on NixNuc (its syncthing is forwarded on 192.168.10.20:22001)
     services.syncthing.settings = {
       devices.windows = {
         id = "MU4V2FX-HD2ZG2E-64AXAVC-DX7XVMD-F7RFNDJ-SPVRT3T-U4FTXYZ-W6R5EAT";
-        addresses = [ "tcp://nixnuc:22001" ];
+        addresses = [ "tcp://192.168.10.20:22001" ];
       };
       folders."repos" = {
         path = "/home/jorink/repos";

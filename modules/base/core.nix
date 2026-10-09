@@ -12,7 +12,6 @@
     # Networking
     networking.networkmanager.enable = true;
     systemd.services.NetworkManager-wait-online.enable = false;
-    networking.hosts."192.168.10.20" = [ "nixnuc" ];
     preservation.preserveAt."/persistent" = {
       directories = [
         "/etc/NetworkManager/"

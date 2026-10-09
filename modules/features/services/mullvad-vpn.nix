@@ -68,6 +68,7 @@
             [ "$2" = "up" ] || exit 0
             case "$IP4_ADDRESS_0" in
               192.168.100.*) ${pkgs.iproute2}/bin/ip route replace 192.168.10.0/24 via "$IP4_GATEWAY" dev "$DEVICE_IFACE" ;;
+              192.168.10.*) ${pkgs.iproute2}/bin/ip route replace 192.168.100.0/24 via "$IP4_GATEWAY" dev "$DEVICE_IFACE" ;;
             esac
           '';
         }

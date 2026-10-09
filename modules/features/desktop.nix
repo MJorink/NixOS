@@ -25,7 +25,7 @@
           icon = "preferences-desktop-remote-desktop";
           exec = toString (
             pkgs.writeShellScript "windows-rdp" ''
-              ${pkgs.freerdp}/bin/sdl-freerdp /v:nixnuc /u:jorink /p:windows /dynamic-resolution
+              ${pkgs.freerdp}/bin/sdl-freerdp /v:192.168.10.20 /u:jorink /p:windows /dynamic-resolution
             ''
           );
         })

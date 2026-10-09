@@ -9,15 +9,14 @@
     let
       library = "/srv/music";
       downloads = "/srv/downloads/soulseek";
-
-      # Must contain:
+      secrets = "/persistent/secrets/music.env";
+      # Secrets must contain:
       # SLSKD_SLSK_USERNAME="username" (Soulseek)
       # SLSKD_SLSK_PASSWORD="password" (Soulseek)
       # SLSKD_USERNAME="username" (slskd web UI)
       # SLSKD_PASSWORD="password" (slskd web UI)
       # SLSKD_API_KEY=(16+ chars, used by Soularr) # nix run nixpkgs#openssl -- rand -hex 24
       # LIDARR__AUTH__APIKEY=(32 hex chars, used by Soularr) # nix run nixpkgs#openssl -- rand -hex 16
-      secrets = "/persistent/secrets/music.env";
 
       slskd-api = pkgs.python3Packages.buildPythonPackage rec {
         pname = "slskd_api";
@@ -75,9 +74,7 @@
         minimum_filename_match_ratio = 0.8
         minimum_search_interval = 5
         allowed_filetypes = flac 16/44.1,flac
-        # Prefix the artist so queries stay specific after phrases are stripped
         album_prepend_artist = True
-        # The Soulseek server returns nothing for searches containing these phrases, so strip them from queries
         search_blacklist = Planet Earth
         search_type = incrementing_page
         number_of_albums_to_grab = 10
@@ -186,7 +183,7 @@
         iptables -A nixos-fw -p tcp --dport 4533 -s 192.168.100.0/24 -j nixos-fw-accept
         iptables -A nixos-fw -p tcp --dport 8686 -s 192.168.100.0/24 -j nixos-fw-accept
         iptables -A nixos-fw -p tcp --dport 5030 -s 192.168.100.0/24 -j nixos-fw-accept
-        # iptables -A nixos-fw -p tcp --dport 4533 -s 192.168.10.0/24 -j nixos-fw-accept
+        iptables -A nixos-fw -p tcp --dport 4533 -s 192.168.10.0/24 -j nixos-fw-accept # For Nginx
         # iptables -A nixos-fw -p tcp --dport 8686 -s 192.168.10.0/24 -j nixos-fw-accept
         # iptables -A nixos-fw -p tcp --dport 5030 -s 192.168.10.0/24 -j nixos-fw-accept
       '';

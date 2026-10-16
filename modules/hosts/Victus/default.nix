@@ -22,6 +22,7 @@
       self.nixosModules.socials
       self.nixosModules.syncthing
       self.nixosModules.steam
+      self.nixosModules.rac
     ];
 
     # Windows 10 boot option, listed first and booted by default

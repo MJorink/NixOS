@@ -115,11 +115,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1794322570,
-        "narHash": "sha256-fWU7VaGzrYUrU5QMdnvtTKJoRN3I3FY6p+Y3fuI5yZ4=",
+        "lastModified": 1794324126,
+        "narHash": "sha256-h+PCXGez0IkVnAqG1pta7YntsUdrqC+4dFdBlOlTgB4=",
         "owner": "MJorink",
         "repo": "packages",
-        "rev": "15183b45058e15fa2e858ec1feb497b3d35b075f",
+        "rev": "6522e3e27e4e7243ecaf53fe08209f3e73ebb0a0",
         "type": "github"
       },
       "original": {

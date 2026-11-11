@@ -23,11 +23,11 @@
     "dotfiles": {
       "flake": false,
       "locked": {
-        "lastModified": 1794407730,
-        "narHash": "sha256-bPgV9cFUNYhIb7/HAqOAXavkHSfcizXzyfYcK2xkR4k=",
+        "lastModified": 1794409431,
+        "narHash": "sha256-zI298uqKoiAwxRrY+SXSp09HseklY5NiZRiLyvBgjL8=",
         "owner": "MJorink",
         "repo": "dotfiles",
-        "rev": "5f16af3a4db15bd05c03c6c50b79f5afa5d2f5e7",
+        "rev": "71f01ed2b0d0940572bb4a345105a2ae9a30cb43",
         "type": "github"
       },
       "original": {

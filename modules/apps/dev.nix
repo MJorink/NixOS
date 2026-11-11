@@ -5,12 +5,16 @@
     let
       df = inputs.dotfiles;
       wrap = args: inputs.wrappers.lib.wrapPackage ({ inherit pkgs; } // args);
-      # MOD+u (dwl config.h): update all inputs and switch
+      # MOD+u (dwl config.h): update all inputs and switch. `up -n`: switch without updating.
+      # dotfiles/packages come from the local checkouts (unpushed edits included, new files
+      # need `git add`); the lock keeps the GitHub revs so install.sh still works.
+      # nh builds as the user (root can't open the user-owned repos) and doas-es only to activate.
       up = pkgs.writeShellScriptBin "up" ''
         set -e
-        cd ~/repos/NixOS
-        nix flake update
-        doas nixos-rebuild switch --flake .
+        [ "$1" = -n ] || update=-u
+        nh os switch $update ~/repos/NixOS -- \
+          --override-input dotfiles ~/repos/dotfiles \
+          --override-input packages ~/repos/packages
       '';
     in
     {

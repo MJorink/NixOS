@@ -11,6 +11,6 @@
           extraPolicies = (lib.importJSON "${df}/.librewolf/policies.json").policies;
         }))
       ];
-      environment.persistence."/persist".users.jorink.directories = [ ".config/librewolf" ]; # LibreWolf now uses XDG, not ~/.librewolf
+      environment.persistence."/persist".users.jorink.directories = [ ".config/librewolf" ];
     };
 }

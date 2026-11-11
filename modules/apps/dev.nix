@@ -28,7 +28,7 @@
         })
         (wrap { package = htop; env.HTOPRC = "${df}/.config/htop/htoprc"; }) # vim keys (packages repo)
         up
-        gitMinimal # no docs/perl/python (send-email, svn, gui unused)
+        gitMinimal
         lazygit
         nnn
         fzf

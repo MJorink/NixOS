@@ -31,4 +31,4 @@ Packages and patches: [MJorink/packages](https://github.com/MJorink/packages).
 Dotfiles: [MJorink/dotfiles](https://github.com/MJorink/dotfiles). See `CLAUDE.md` for the rules.
 
 Persisted: `~/repos`, `~/Downloads`, `~/Documents`, `~/.ssh`, `~/.local/state`,
-`~/.local/share/nvim`, `~/.librewolf`, `~/.claude`, `~/.nuget`, and `/var/lib/{nixos,iwd,bluetooth,docker,systemd/timers}`, `/etc/machine-id`.
+`~/.local/share/nvim`, `~/.config/librewolf`, `~/.claude`, `~/.nuget`, and `/var/lib/{nixos,iwd,bluetooth,docker,systemd/timers}`, `/etc/machine-id`.

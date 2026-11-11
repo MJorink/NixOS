@@ -10,6 +10,10 @@
       hashedPasswordFile = "/persist/passwords/jorink";
     };
 
+    # disk is LUKS-encrypted, so the unlock passphrase already gates login; once per boot only
+    services.getty.autologinUser = "jorink";
+    services.getty.autologinOnce = true;
+
     security.sudo.enable = false;
     security.doas = {
       enable = true;

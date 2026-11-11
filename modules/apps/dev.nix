@@ -36,6 +36,8 @@
         lua-language-server
         clang-tools # clangd
         csharp-ls
+        nil # nix LSP
+        nixfmt # nil's formatter
         dotnet-sdk_10
         nodejs # Claude Code plugin hooks (ECC) run on node
         claude-code

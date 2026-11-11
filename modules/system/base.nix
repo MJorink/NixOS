@@ -45,5 +45,10 @@
     services.journald.settings.Journal.RuntimeMaxUse = "32M";
 
     zramSwap = { enable = true; memoryPercent = 25; algorithm = "zstd"; };
+
+    programs.nh = {
+      enable = true;
+      flake = "/home/jorink/repos/NixOS";
+    };
   };
 }

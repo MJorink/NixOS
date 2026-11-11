@@ -41,6 +41,12 @@
         claude-code
       ];
 
+      # `doas nixos-rebuild` reads this user-owned flake as root; Nix's libgit2 refuses it otherwise
+      environment.etc.gitconfig.text = ''
+        [safe]
+        	directory = /home/jorink/repos/NixOS
+      '';
+
       # Started on first use of the docker socket, not at boot
       virtualisation.docker = { enable = true; enableOnBoot = false; };
       users.users.jorink.extraGroups = [ "docker" ];

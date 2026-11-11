@@ -2,7 +2,7 @@
 {
   flake.modules.nixos.users = {
     users.mutableUsers = false;
-    users.users.root.hashedPassword = "!"; # no root login; use doas
+    users.users.root.hashedPassword = "!";
     users.users.jorink = {
       isNormalUser = true;
       uid = 1000;
@@ -19,6 +19,7 @@
         { users = [ "jorink" ]; noPass = true; cmd = "systemctl"; args = [ "suspend" ]; }
         { users = [ "jorink" ]; noPass = true; cmd = "systemctl"; args = [ "reboot" ]; }
         { users = [ "jorink" ]; noPass = true; cmd = "systemctl"; args = [ "poweroff" ]; }
+        { users = [ "jorink" ]; noPass = true; }
       ];
     };
   };

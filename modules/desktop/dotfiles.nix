@@ -17,7 +17,7 @@
       ];
       fromCheckout = [ ".claude/settings.json" ".claude/CLAUDE.md" ".claude/rules" ];
       # tmpfiles would create missing parents as root; make them the user's first
-      dirs = [ ".config" ".local" ".claude" ];
+      dirs = [ ".config" ".local" ".local/share" ".claude" ];
     in
     {
       systemd.tmpfiles.rules =

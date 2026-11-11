@@ -37,6 +37,7 @@
         HandlePowerKey = "suspend";
       };
       services.udev.packages = [ pkgs.brightnessctl ]; # video group may set the backlight
+      security.pam.services.swaylock = { }; # without /etc/pam.d/swaylock PAM uses "other", which denies every password
 
       fonts = {
         enableDefaultPackages = false;

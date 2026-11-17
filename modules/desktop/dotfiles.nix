@@ -14,6 +14,7 @@
         ".config/dwl"
         ".config/git"
         ".config/mimeapps.list"
+        ".config/wallpaper.jpg"
       ];
       fromCheckout = [ ".claude/settings.json" ".claude/CLAUDE.md" ".claude/rules" ];
       # tmpfiles would create missing parents as root; make them the user's first

@@ -16,6 +16,7 @@
         (wrap fnott { "--config" = "${df}/.config/fnott/fnott.ini"; })
         (wrap swaylock { "--config" = "${df}/.config/swaylock/config"; })
         swayidle
+        wbg # wallpaper (dotfiles autostart)
         wlopm
         wlr-randr
         grim

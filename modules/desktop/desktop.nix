@@ -42,10 +42,11 @@
 
       fonts = {
         enableDefaultPackages = false;
-        packages = with pkgs; [ jetbrains-mono-nl-nerd-font liberation_ttf noto-fonts-color-emoji ];
+        # Inter stands in for Apple's SF Pro (packages repo: the variable font only)
+        packages = with pkgs; [ jetbrains-mono-nl-nerd-font inter-variable liberation_ttf noto-fonts-color-emoji ];
         fontconfig.defaultFonts = {
           monospace = [ "JetBrainsMonoNL Nerd Font Mono" ];
-          sansSerif = [ "Liberation Sans" ];
+          sansSerif = [ "Inter Variable" "Liberation Sans" ];
           serif = [ "Liberation Serif" ];
           emoji = [ "Noto Color Emoji" ];
         };

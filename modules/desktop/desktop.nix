@@ -17,6 +17,7 @@
         (wrap swaylock { "--config" = "${df}/.config/swaylock/config"; })
         swayidle
         wbg # wallpaper (dotfiles autostart)
+        apple-cursor-macos # packages repo: macOS cursor as the default theme
         wlopm
         wlr-randr
         grim

@@ -10,7 +10,6 @@
       impermanence
       users
       network
-      ssh
       audio
       bluetooth
       desktop

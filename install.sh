@@ -33,10 +33,10 @@ echo "==> Persistent state"
 install -d -m 0700 /mnt/persist/passwords
 printf '%s\n' "$hash" > "/mnt/persist/passwords/$user"
 chmod 0600 "/mnt/persist/passwords/$user"
-install -d -m 0755 /mnt/persist/etc/ssh
 
 home=/mnt/persist/home/$user
-install -d "$home/repos" "$home/Downloads" "$home/Documents" "$home/.local/state"
+install -d "$home/repos" "$home/Downloads" "$home/Documents" "$home/.local/state" "$home/.nuget"
+install -d -m 0700 "$home/.ssh"
 cp -a . "$home/repos/NixOS"
 for repo in dotfiles packages; do
 	git clone "https://github.com/MJorink/$repo" "$home/repos/$repo"

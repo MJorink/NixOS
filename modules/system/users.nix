@@ -23,7 +23,6 @@
         { users = [ "jorink" ]; noPass = true; cmd = "systemctl"; args = [ "suspend" ]; }
         { users = [ "jorink" ]; noPass = true; cmd = "systemctl"; args = [ "reboot" ]; }
         { users = [ "jorink" ]; noPass = true; cmd = "systemctl"; args = [ "poweroff" ]; }
-        { users = [ "jorink" ]; noPass = true; }
       ];
     };
   };

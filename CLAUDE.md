@@ -35,7 +35,7 @@ flake.nix                    inputs; outputs = import-tree ./modules
 install.sh                   ISO installer (disko + password + clone repos + nixos-install)
 modules/flake.nix            flake-parts: systems, flake.modules
 modules/hosts/thinkpad/      host: feature list + hardware
-modules/system/              base (nix, trimming), boot, disk (disko), impermanence, users (doas), network (iwd), ssh, audio, bluetooth
+modules/system/              base (nix, trimming), boot, disk (disko), impermanence, users (doas), network (iwd), audio, bluetooth
 modules/desktop/             desktop (dwl session, wrapped foot/fnott/swaylock, fonts, logind), dotfiles (links)
 modules/apps/                browser (LibreWolf), dev (nvim, htop, LSPs, docker, claude-code, `up`)
 ```

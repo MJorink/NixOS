@@ -25,10 +25,10 @@ reboot
 | Logs | journald in RAM (32M) | No disk writes. |
 | Swap | zram 25% | |
 | Firmware | X270 subset only | Not the whole linux-firmware. |
-| Docker, sshd | socket-activated | Nothing runs until first use. |
+| Docker | socket-activated | Nothing runs until first use. |
 
 Packages and patches: [MJorink/packages](https://github.com/MJorink/packages).
 Dotfiles: [MJorink/dotfiles](https://github.com/MJorink/dotfiles). See `CLAUDE.md` for the rules.
 
 Persisted: `~/repos`, `~/Downloads`, `~/Documents`, `~/.ssh`, `~/.local/state`,
-`~/.local/share/nvim`, `~/.config/librewolf`, `~/.claude`, `~/.nuget`, and `/var/lib/{nixos,iwd,bluetooth,docker,systemd/timers}`, `/etc/machine-id`.
+`~/.local/share/nvim`, `~/.config/librewolf`, `~/.claude`, `~/.nuget`, and `/var/lib/{iwd,bluetooth,docker,systemd/timers}`, `/etc/machine-id`.

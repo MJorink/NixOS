@@ -8,7 +8,6 @@
     environment.persistence."/persist" = {
       hideMounts = true;
       directories = [
-        "/var/lib/nixos" # uid/gid map
         "/var/lib/systemd/timers" # missed timers (nix gc) run after boot
       ];
       files = [ "/etc/machine-id" ];

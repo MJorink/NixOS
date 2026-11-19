@@ -5,7 +5,7 @@
     let
       df = inputs.dotfiles;
       wrap = args: inputs.wrappers.lib.wrapPackage ({ inherit pkgs; } // args);
-      # MOD+u (dwl config.h): switch without updating. `up -u`: update all inputs first.
+      # MOD+u (glasswm config.h): switch without updating. `up -u`: update all inputs first.
       # dotfiles/packages come from the local checkouts (unpushed edits included, new files
       # need `git add`); the lock keeps the GitHub revs so install.sh still works.
       # nh builds as the user (root can't open the user-owned repos) and doas-es only to activate.

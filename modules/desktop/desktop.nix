@@ -1,4 +1,4 @@
-# dwl session (started from ~/.profile on tty1) and its tools.
+# glasswm session (started from ~/.profile on tty1) and its tools.
 # Programs that take a config path are wrapped to read it from the dotfiles input.
 { inputs, ... }:
 {
@@ -9,7 +9,7 @@
     in
     {
       environment.systemPackages = with pkgs; [
-        dwl # packages repo: patched, config.h compiled in
+        glasswm # packages repo: macOS-style compositor (dwl based)
         slstatus
         bemenu
         (wrap foot { "--config" = "${df}/.config/foot/foot.ini"; })

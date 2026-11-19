@@ -42,7 +42,7 @@ modules/apps/                browser (LibreWolf), dev (nvim, htop, LSPs, docker,
 
 ## Workflow
 
-- Apply: `doas nixos-rebuild switch --flake ~/repos/NixOS`. Update everything: `up` (MOD+u).
+- Apply: `doas nixos-rebuild switch --flake ~/repos/NixOS`. Switch with local dotfiles/packages: `up` (MOD+u); also update all inputs: `up -u`.
 - Test local changes of the other repos without pushing:
   `--override-input dotfiles ~/repos/dotfiles` / `--override-input packages ~/repos/packages`.
 - New files must be `git add`ed before Nix sees them (flakes only read tracked files).

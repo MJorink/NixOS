@@ -5,13 +5,13 @@
     let
       df = inputs.dotfiles;
       wrap = args: inputs.wrappers.lib.wrapPackage ({ inherit pkgs; } // args);
-      # MOD+u (dwl config.h): update all inputs and switch. `up -n`: switch without updating.
+      # MOD+u (dwl config.h): switch without updating. `up -u`: update all inputs first.
       # dotfiles/packages come from the local checkouts (unpushed edits included, new files
       # need `git add`); the lock keeps the GitHub revs so install.sh still works.
       # nh builds as the user (root can't open the user-owned repos) and doas-es only to activate.
       up = pkgs.writeShellScriptBin "up" ''
         set -e
-        [ "$1" = -n ] || update=-u
+        [ "$1" = -u ] && update=-u
         nh os switch $update ~/repos/NixOS -- \
           --override-input dotfiles ~/repos/dotfiles \
           --override-input packages ~/repos/packages

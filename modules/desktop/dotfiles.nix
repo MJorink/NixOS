@@ -14,7 +14,9 @@
         ".config/dwl"
         ".config/git"
         ".config/mimeapps.list"
-        ".config/wallpaper.jpg"
+        ".config/wallpaper.jpg" # glasswm config.h
+        ".config/wallpaper-locked.jpg" # swaylock
+        ".local/share/applications" # Spotlight/menu bar: hide helpers, footclient is "Terminal"
       ];
       fromCheckout = [ ".claude/settings.json" ".claude/CLAUDE.md" ];
       # tmpfiles would create missing parents as root; make them the user's first

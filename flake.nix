@@ -1,5 +1,5 @@
 {
-  description = "NixOS for a ThinkPad X270: dwl, tmpfs root (impermanence), as light as possible";
+  description = "NixOS for a ThinkPad X270: glasswm (macOS look), tmpfs root (impermanence), as light as possible";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";

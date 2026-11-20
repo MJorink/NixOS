@@ -1,6 +1,6 @@
 # NixOS
 
-NixOS for a ThinkPad X270: the dwl desktop from `alpine-setup`, on a tmpfs root.
+NixOS for a ThinkPad X270: the glasswm desktop (macOS look), on a tmpfs root.
 
 ## Install
 
@@ -21,7 +21,7 @@ reboot
 | Disk | GPT, ESP, **LUKS2 → btrfs** (zstd, noatime) | zstd roughly halves `/nix`; no ZFS module/ARC (less RAM, no kernel pinning). |
 | Boot | systemd-boot (no menu: hold Space), systemd initrd | Fastest path to the LUKS prompt. |
 | Network | **iwd** alone (DHCP built in), resolvconf | No NetworkManager/dhcpcd/resolved. |
-| Session | logind + dwl from `~/.profile` on tty1 | No display manager, no seatd, no polkit; doas rules for suspend/reboot/poweroff. |
+| Session | logind + glasswm from `~/.profile` on tty1 | No display manager, no seatd, no polkit; doas rules for suspend/reboot/poweroff. |
 | Logs | journald in RAM (32M) | No disk writes. |
 | Swap | zram 25% | |
 | Firmware | X270 subset only | Not the whole linux-firmware. |

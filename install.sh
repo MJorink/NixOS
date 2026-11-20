@@ -46,4 +46,4 @@ chown -R 1000:100 "$home" # uid of $user (users.nix), group users
 echo "==> Installing"
 nixos-install --flake ".#$host" --no-root-passwd --no-channel-copy
 
-echo "Done. Reboot, log in on tty1 and dwl starts."
+echo "Done. Reboot, log in on tty1 and glasswm starts."

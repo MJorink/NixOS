@@ -5,7 +5,7 @@
 - **As light as possible**: CPU, RAM, disk, boot time. Pick the lightest tool that fully
   does the job; no daemons that could be socket/on-demand activated; no default packages,
   docs (only mandoc man pages), portals, polkit, NetworkManager, sudo.
-- **Vim keybinds wherever possible** (bemenu, htop, shell `set -o vi`, nvim, Vimium, dwl hjkl).
+- **Vim keybinds wherever possible** (bemenu, htop, shell `set -o vi`, nvim, Vimium, glasswm hjkl).
 - **Impermanence**: `/` (and $HOME) is tmpfs. Only paths listed in
   `environment.persistence."/persist"` survive a reboot. Each feature module lists its own
   paths next to the feature. Programs that save files by rename need a persisted
@@ -16,7 +16,7 @@
   `_` are ignored by import-tree.
 - **One-command install**: `sudo ./install.sh` from the NixOS ISO (after internet + clone).
   Keep it that way.
-- **Custom packages/patches** (dwl, slstatus, bemenu, htop, font subset, firmware subset)
+- **Custom packages/patches** (glasswm, slstatus, bemenu, htop, font subset, firmware subset)
   live in github.com/MJorink/packages (`~/repos/packages`), used through its overlay.
   Never put patches or package derivations here.
 - **Dotfiles are not written in Nix.** They live in github.com/MJorink/dotfiles
@@ -36,7 +36,7 @@ install.sh                   ISO installer (disko + password + clone repos + nix
 modules/flake.nix            flake-parts: systems, flake.modules
 modules/hosts/thinkpad/      host: feature list + hardware
 modules/system/              base (nix, trimming), boot, disk (disko), impermanence, users (doas), network (iwd), audio, bluetooth
-modules/desktop/             desktop (dwl session, wrapped foot/fnott/swaylock, fonts, logind), dotfiles (links)
+modules/desktop/             desktop (glasswm session, wrapped foot/fnott/swaylock, fonts, logind), dotfiles (links)
 modules/apps/                browser (LibreWolf), dev (nvim, htop, LSPs, docker, claude-code, `up`)
 ```
 

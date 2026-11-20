@@ -16,7 +16,6 @@
         (wrap fnott { "--config" = "${df}/.config/fnott/fnott.ini"; })
         (wrap swaylock { "--config" = "${df}/.config/swaylock/config"; })
         swayidle
-        wbg # wallpaper (dotfiles autostart)
         apple-cursor-macos # packages repo: macOS cursor as the default theme
         wlopm
         wlr-randr
@@ -45,6 +44,7 @@
         enableDefaultPackages = false;
         # Inter stands in for Apple's SF Pro (packages repo: the variable font only)
         packages = with pkgs; [ jetbrains-mono-nl-nerd-font inter-variable liberation_ttf noto-fonts-color-emoji ];
+        fontconfig.hinting.enable = false; # macOS draws text unhinted
         fontconfig.defaultFonts = {
           monospace = [ "JetBrainsMonoNL Nerd Font Mono" ];
           sansSerif = [ "Inter Variable" "Liberation Sans" ];

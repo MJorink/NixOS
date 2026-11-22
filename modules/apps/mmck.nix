@@ -16,16 +16,20 @@
 
       mmck = pkgs.writeShellApplication {
         name = "mmck";
-        runtimeInputs = with pkgs; [ dotnet-sdk_10 docker curl gnugrep ];
+        runtimeInputs = with pkgs; [ dotnet-sdk_10 docker curl ];
         text = ''
           cd ${repo}
-          log=''${XDG_CACHE_HOME:-$HOME/.cache}/mmck.log
-          mkdir -p "$(dirname "$log")"
-          exec > >(tee "$log") 2>&1
 
-          # Nix SDK installs workloads user-local in ~/.dotnet (persisted)
-          dotnet workload list | grep -q maui-tizen || dotnet workload install maui-tizen
+          # Nix SDK installs workloads user-local in ~/.dotnet (persisted). A fresh install
+          # records the workload but leaves no packs; the repair downloads them.
+          if [ ! -d "$HOME/.dotnet/packs/Microsoft.Maui.Sdk" ]; then
+            dotnet workload install maui-tizen
+            dotnet workload repair
+          fi
 
+          # The backend lives as long as the app: nothing keeps running after it closes
+          trap 'echo "stopping backend..."; docker compose stop api garage postgres >/dev/null 2>&1' EXIT
+          trap exit HUP INT TERM
           docker compose up -d api
           echo "waiting for the API on :5243..."
           for _ in $(seq 120); do
@@ -37,7 +41,7 @@
           export GST_PLUGIN_SYSTEM_PATH_1_0="${lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" gstPlugins}"
           # Only the Linux target (Android needs its own workload). Build output goes outside the
           # repo: Docker owns the shared projects' bin/ and obj/ (API container volumes).
-          exec dotnet run --project MyMediaContentKingdom.Maui -f net10.0 \
+          dotnet run --project MyMediaContentKingdom.Maui -f net10.0 \
             -p:TargetFrameworks=net10.0 --artifacts-path "$HOME/.cache/mmck-artifacts"
         '';
       };
@@ -48,7 +52,8 @@
         (pkgs.makeDesktopItem {
           name = "mmck";
           desktopName = "My Media Content Kingdom";
-          exec = "mmck";
+          # footclient = the Terminal (dotfiles); --hold keeps the output readable after exit
+          exec = "footclient --hold --title \"My Media Content Kingdom\" mmck";
           icon = "video-x-generic";
           categories = [ "Development" ];
         })

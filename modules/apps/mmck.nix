@@ -46,7 +46,8 @@
           done
 
           export LD_LIBRARY_PATH="${lib.makeLibraryPath libs}''${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
-          export GST_PLUGIN_SYSTEM_PATH_1_0="${lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" gstPlugins}"
+          # Not GST_PLUGIN_SYSTEM_PATH_1_0: that replaces the core plugins (queue, typefind)
+          export GST_PLUGIN_PATH="${lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" gstPlugins}"
           # Only the Linux target (Android needs its own workload). Build output goes outside the
           # repo: Docker owns the shared projects' bin/ and obj/ (API container volumes).
           # With one target the committed packages.lock.json would be rewritten; lockProps

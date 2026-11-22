@@ -16,6 +16,7 @@
       dotfiles
       browser
       dev
+      mmck
     ];
   };
 }

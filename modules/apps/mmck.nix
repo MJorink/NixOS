@@ -60,5 +60,12 @@
       ];
 
       environment.persistence."/persist".users.jorink.directories = [ ".dotnet" ];
+
+      # The app's file picker (upload) asks xdg-desktop-portal; GTK provides the dialog
+      xdg.portal = {
+        enable = true;
+        extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+        config.common.default = "gtk";
+      };
     };
 }

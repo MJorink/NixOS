@@ -38,6 +38,14 @@
         HandlePowerKey = "suspend";
       };
       services.udev.packages = [ pkgs.brightnessctl ]; # video group may set the backlight
+      # glasswm starts from .profile, not systemd: autostart.sh starts this target so
+      # graphical-session.target (required by xdg-desktop-portal) becomes active
+      systemd.user.targets.glasswm-session = {
+        description = "glasswm session";
+        bindsTo = [ "graphical-session.target" ];
+        wants = [ "graphical-session-pre.target" ];
+        after = [ "graphical-session-pre.target" ];
+      };
       security.pam.services.swaylock = { }; # without /etc/pam.d/swaylock PAM uses "other", which denies every password
 
       fonts = {

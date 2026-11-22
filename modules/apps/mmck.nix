@@ -14,6 +14,14 @@
       ];
       gstPlugins = with pkgs.gst_all_1; [ gst-plugins-base gst-plugins-good gst-plugins-bad gst-libav ];
 
+      lockProps = pkgs.writeText "mmck-lockfile.props" ''
+        <Project>
+          <PropertyGroup>
+            <NuGetLockFilePath>$(MSBuildProjectExtensionsPath)packages.lock.json</NuGetLockFilePath>
+          </PropertyGroup>
+        </Project>
+      '';
+
       mmck = pkgs.writeShellApplication {
         name = "mmck";
         runtimeInputs = with pkgs; [ dotnet-sdk_10 docker curl ];
@@ -41,8 +49,11 @@
           export GST_PLUGIN_SYSTEM_PATH_1_0="${lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" gstPlugins}"
           # Only the Linux target (Android needs its own workload). Build output goes outside the
           # repo: Docker owns the shared projects' bin/ and obj/ (API container volumes).
+          # With one target the committed packages.lock.json would be rewritten; lockProps
+          # sends each project's lock file to its obj/ folder there instead.
           dotnet run --project MyMediaContentKingdom.Maui -f net10.0 \
-            -p:TargetFrameworks=net10.0 --artifacts-path "$HOME/.cache/mmck-artifacts"
+            -p:TargetFrameworks=net10.0 -p:CustomBeforeMicrosoftCommonProps=${lockProps} \
+            --artifacts-path "$HOME/.cache/mmck-artifacts"
         '';
       };
     in

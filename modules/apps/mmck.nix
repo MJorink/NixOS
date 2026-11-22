@@ -12,7 +12,8 @@
         libx11 libxcursor libxext libxi libxrandr
         gst_all_1.gstreamer gst_all_1.gst-plugins-base
       ];
-      gstPlugins = with pkgs.gst_all_1; [ gst-plugins-base gst-plugins-good gst-plugins-bad gst-libav ];
+      # gstreamer itself: the core plugins (queue, typefind); Nix's build has no default path
+      gstPlugins = with pkgs.gst_all_1; [ gstreamer gst-plugins-base gst-plugins-good gst-plugins-bad gst-libav ];
 
       lockProps = pkgs.writeText "mmck-lockfile.props" ''
         <Project>
@@ -46,8 +47,7 @@
           done
 
           export LD_LIBRARY_PATH="${lib.makeLibraryPath libs}''${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
-          # Not GST_PLUGIN_SYSTEM_PATH_1_0: that replaces the core plugins (queue, typefind)
-          export GST_PLUGIN_PATH="${lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" gstPlugins}"
+          export GST_PLUGIN_SYSTEM_PATH_1_0="${lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" gstPlugins}"
           # Only the Linux target (Android needs its own workload). Build output goes outside the
           # repo: Docker owns the shared projects' bin/ and obj/ (API container volumes).
           # With one target the committed packages.lock.json would be rewritten; lockProps

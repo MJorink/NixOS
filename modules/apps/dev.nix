@@ -30,6 +30,7 @@
         up
         gitMinimal
         lazygit
+        glab # GitLab CLI (school MMCK repo on gitlab.windesheim.nl)
         nnn
         fzf
         ripgrep
@@ -63,6 +64,7 @@
           ".claude" # all Claude Code state (CLAUDE_CONFIG_DIR, see dotfiles .profile)
           ".local/share/nvim" # vim.pack plugins
           ".nuget" # NuGet package cache
+          ".config/glab-cli" # glab login token for gitlab.windesheim.nl
         ];
       };
     };

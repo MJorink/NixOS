@@ -8,7 +8,6 @@
       home = "/home/jorink";
       fromStore = [
         ".profile"
-        ".ashrc"
         ".bashrc"
         ".local/bin"
         ".config/dwl"

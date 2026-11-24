@@ -47,8 +47,6 @@ modules/apps/                browser (LibreWolf), dev (nvim, htop, LSPs, docker,
   `--override-input dotfiles ~/repos/dotfiles` / `--override-input packages ~/repos/packages`.
 - New files must be `git add`ed before Nix sees them (flakes only read tracked files).
 - Check before switching: `nix eval .#nixosConfigurations.thinkpad.config.system.build.toplevel.drvPath`,
-  then `nix build` of the same attribute. On a machine without Nix (the old Alpine install), use
-  rootless nix-portable: `NP_LOCATION=~/.cache/nix-portable ~/.cache/nix-portable/nix-portable nix ...`
-  (keep TMPDIR on /tmp: builds fail with "chmod: Operation not permitted" on the ZFS home).
+  then `nix build` of the same attribute.
 - Do not commit or push: put the commit message on the clipboard (`wl-copy`) and say so.
 - Ask before running anything as root.

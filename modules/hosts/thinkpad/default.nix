@@ -17,6 +17,7 @@
       browser
       dev
       mmck
+      discord
     ];
   };
 }

@@ -3,7 +3,7 @@
 {
   flake.modules.nixos.base = { lib, ... }: {
     nixpkgs.overlays = [ inputs.packages.overlays.default ];
-    nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "claude-code" "apple_cursor" "apple-cursor-macos" ];
+    nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "claude-code" "discord" "discord-unwrapped" "apple_cursor" "apple-cursor-macos" ];
 
     nix = {
       channel.enable = false;

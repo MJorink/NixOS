@@ -5,7 +5,7 @@
 - **As light as possible**: CPU, RAM, disk, boot time. Pick the lightest tool that fully
   does the job; no daemons that could be socket/on-demand activated; no default packages,
   docs (only mandoc man pages), portals, polkit, NetworkManager, sudo.
-- **Vim keybinds wherever possible** (bemenu, htop, shell `set -o vi`, nvim, Vimium, glasswm hjkl).
+- **Vim keybinds wherever possible** (bemenu, htop, shell `set -o vi`, nvim, glasswm hjkl).
 - **Impermanence**: `/` (and $HOME) is tmpfs. Only paths listed in
   `environment.persistence."/persist"` survive a reboot. Each feature module lists its own
   paths next to the feature. Programs that save files by rename need a persisted

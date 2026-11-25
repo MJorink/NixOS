@@ -31,7 +31,6 @@
         gitMinimal
         lazygit
         glab # GitLab CLI (school MMCK repo on gitlab.windesheim.nl)
-        nnn
         fzf
         ripgrep
         fd
